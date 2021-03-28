@@ -5,4 +5,5 @@
 </template>
 
 <style lang="scss">
+@import '@/../colony-vue/src/assets/scss/reset.scss';
 </style>
