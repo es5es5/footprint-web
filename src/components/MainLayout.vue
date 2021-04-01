@@ -3,10 +3,11 @@
     <Header />
     <MultiSelect
       v-if="selectOptions"
-      :id="`paymentMeansCodeCard`"
+      id="paymentMeansCodeCard"
       v-model="multiForm.dataObject"
       :preselectFirst="true"
-      :hideSelected="true"
+      :hideSelected="false"
+      :closeOnSelect="!isMultiple"
       :options="selectOptions"
       label="title"
       trackBy="id"
@@ -16,8 +17,9 @@
       @callback="countCallback"
     />
     <p>multiForm.dataValue: {{ multiForm.dataValue }}</p>
-    <p>multiForm.dataObject: {{ multiForm.dataObject }}</p>
+    <p>multiForm.dataObject: <pre>{{ multiForm.dataObject }}</pre></p>
     <p>callback: {{ callback }}</p>
+    <p>lastCallbackValue: <pre>{{ lastCallbackValue }}</pre></p>
   </div>
 </template>
 
@@ -33,7 +35,7 @@ export default {
     return {
       isMultiple: false,
       multiForm: {
-        dataValue: '2',
+        dataValue: ['1', '2'],
       },
       selectOptions: [{
         title: 'Hi',
@@ -41,13 +43,22 @@ export default {
       }, {
         title: 'Bye',
         id: '2'
+      }, {
+        title: 'Hello',
+        id: '3'
+      }, {
+        title: 'Good',
+        id: '4'
       }],
-      callback: 0
+      callback: 0,
+      lastCallbackValue: null
     }
   },
   methods: {
-    countCallback () {
+    countCallback (value, id) {
+      console.log(value, id)
       this.callback++
+      this.lastCallbackValue = value
     }
   }
 }
