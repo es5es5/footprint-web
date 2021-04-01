@@ -4,6 +4,8 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
+Vue.component('MultiSelect', () => import('@/../colony-vue/src/components/element/multiselect'))
+
 Vue.config.productionTip = false
 
 new Vue({
