@@ -6,7 +6,7 @@
       id="paymentMeansCodeCard"
       v-model="multiForm.dataObject"
       :preselectFirst="true"
-      :hideSelected="false"
+      :hideSelected="true"
       :closeOnSelect="!isMultiple"
       :options="selectOptions"
       label="title"
@@ -16,6 +16,7 @@
       :dataValue.sync="multiForm.dataValue"
       @callback="countCallback"
     />
+    <p>isMultiple: {{ isMultiple }}</p>
     <p>multiForm.dataValue: {{ multiForm.dataValue }}</p>
     <p>multiForm.dataObject: <pre>{{ multiForm.dataObject }}</pre></p>
     <p>callback: {{ callback }}</p>
@@ -35,7 +36,8 @@ export default {
     return {
       isMultiple: false,
       multiForm: {
-        dataValue: ['1', '2'],
+        // dataValue: ['1', '2'],
+        dataValue: '3',
       },
       selectOptions: [{
         title: 'Hi',
