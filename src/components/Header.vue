@@ -1,11 +1,29 @@
 <template>
   <div id="header">
+    <BurgerButton
+      :active="isActive"
+      @click="isActive = !isActive"
+    />
+    <Slider v-if="false" />
+    <MySlider v-if="isActive" />
   </div>
 </template>
 
 <script>
+import Slider from './Slider'
+import MySlider from './MySlider'
+
 export default {
-  name: 'Header'
+  name: 'Header',
+  components: {
+    Slider,
+    MySlider,
+  },
+  data () {
+    return {
+      isActive: false
+    }
+  }
 }
 </script>
 

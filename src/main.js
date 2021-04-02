@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'
+import './plugins'
 import router from './router'
 import store from './store'
 
-Vue.component('MultiSelect', () => import('@/../colony-vue/src/components/element/multiselect'))
+import GlobalComponents from './components'
+
+Vue.use(GlobalComponents)
 
 Vue.config.productionTip = false
 

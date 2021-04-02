@@ -1,16 +1,17 @@
 <template>
-  <div>
-    <Header />
+  <div id="slider">
+    Hi
   </div>
 </template>
 
 <script>
-import Header from './Header'
-
 export default {
-  name: 'MainLayout',
+  name: 'MySlider',
   components: {
-    Header
+  },
+  computed: {
+  },
+  watch: {
   },
   data () {
     return {
@@ -21,6 +22,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.ul {
+  height: 500px;
+}
 
+.li {
+  display: block;
+}
 </style>
