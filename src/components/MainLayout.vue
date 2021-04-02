@@ -9,7 +9,7 @@
       :hideSelected="true"
       :closeOnSelect="!isMultiple"
       :options="selectOptions"
-      label="title"
+      label="name"
       trackBy="id"
       :multiple="isMultiple"
       dataKey="id"
@@ -41,15 +41,19 @@ export default {
       },
       selectOptions: [{
         title: 'Hi',
+        name: '김루이',
         id: '1'
       }, {
         title: 'Bye',
+        name: 'Vue.js',
         id: '2'
       }, {
         title: 'Hello',
+        name: 'React',
         id: '3'
       }, {
         title: 'Good',
+        name: 'Svelte',
         id: '4'
       }],
       callback: 0,
