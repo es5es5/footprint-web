@@ -20,7 +20,7 @@
     <p>multiForm.dataValue: {{ multiForm.dataValue }}</p>
     <p>multiForm.dataObject: <pre>{{ multiForm.dataObject }}</pre></p>
     <p>callback: {{ callback }}</p>
-    <p>lastCallbackValue: <pre>{{ lastCallbackValue }}</pre></p>
+    <p>lastCallbackValue: {{ lastCallbackValue }}</p>
   </div>
 </template>
 
