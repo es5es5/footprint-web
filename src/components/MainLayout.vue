@@ -14,10 +14,18 @@
           :isOpen="info"
           :marker="marker">
           <div class="info-window-container">
-            Hi
+            <h1>{{'hello'}}</h1>
           </div>
         </naver-info-window>
-        <naver-marker :lat="37" :lng="127" @click="onMarkerClicked" @load="onMarkerLoaded"/>
+        <naver-marker
+          v-for="(item, index) in markers"
+          :key="index"
+          :id="item.id"
+          :lat="item.lat"
+          :lng="item.lng"
+          @click="onMarkerClicked"
+          @load="onMarkerLoaded($event, item.id)"
+        />
       </naver-maps>
     </div>
   </div>
@@ -45,11 +53,20 @@ export default {
       map: null,
       isCTT: false,
       mapOptions: {
-        lat: 37,
-        lng: 127,
-        zoom: 12,
+        lat: 37.873785,
+        lng: 127.742249,
+        zoom: 16,
         zoomControl: true,
       },
+      markers: [{
+        id: '1',
+        lat: 37.873785,
+        lng: 127.742249,
+      }, {
+        id: '2',
+        lat: 37.124121,
+        lng: 127.124124,
+      }],
       initLayers: ['BACKGROUND', 'BACKGROUND_DETAIL', 'POI_KOREAN', 'TRANSIT', 'ENGLISH', 'CHINESE', 'JAPANESE']
     }
   },
@@ -57,13 +74,17 @@ export default {
     onLoad (vue) {
       this.map = vue
     },
-    onWindowLoad (that) {
+    onWindowLoad () {
+      console.log('onWindowLoad', arguments)
     },
-    onMarkerClicked (event) {
+    onMarkerClicked () {
+      console.log('onMarkerClicked', arguments)
       this.info = !this.info
     },
-    onMarkerLoaded (vue) {
-      this.marker = vue.marker
+    onMarkerLoaded () {
+      console.log('onMarkerLoaded', arguments)
+      return false
+      // this.marker = vue.marker
     }
   },
 }
