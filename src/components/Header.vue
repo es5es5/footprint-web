@@ -3,6 +3,8 @@
     <BurgerButton
       :active="isActive"
       @click="isActive = !isActive"
+      :barHeight="6"
+      :barWidth="50"
     />
     <Slider v-if="false" />
     <MySlider v-if="isActive" />
