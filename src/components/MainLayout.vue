@@ -14,7 +14,6 @@
           @load="onWindowLoad"
           :isOpen="isOpen"
           :marker="selectedMarker.naverMarker">
-          <p>aa</p>
           <div class="info-window-container">
             <h1>{{ selectedMarker.title }}</h1>
           </div>
