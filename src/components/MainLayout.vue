@@ -20,12 +20,10 @@
         </naver-info-window>
         <naver-marker
           v-for="(item, index) in markers"
-          :ref="'markerRef'"
           :key="index"
           :id="item.id"
           :lat="item.lat"
           :lng="item.lng"
-          title="asdf"
           @mouseover="onMarkerClicked($event, item.id)"
           @mouseout="closeMarker"
           @click="onMarkerClicked($event, item.id)"
@@ -91,7 +89,6 @@ export default {
       this.isOpen = false
       this.marker = null
       console.log('onClickE', arguments)
-      console.log(this.$refs.markerRef)
     },
     closeMarker () {
       console.log('closeMarker')
