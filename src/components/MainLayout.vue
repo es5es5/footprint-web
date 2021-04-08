@@ -7,7 +7,7 @@
         :height="_height"
         :mapOptions="mapOptions"
         :initLayers="initLayers"
-        @click="onClickE"
+        @click="closeMarker"
         @load="onLoad">
         <naver-info-window
           class="info-window"
@@ -24,9 +24,9 @@
           :id="item.id"
           :lat="item.lat"
           :lng="item.lng"
-          @mouseover="onMarkerClicked($event, item.id)"
+          @mouseover="openMarker($event, item.id)"
           @mouseout="closeMarker"
-          @click="onMarkerClicked($event, item.id)"
+          @click="clickMarker($event, item.id)"
           @load="onMarkerLoaded($event, item.id)"
         />
       </naver-maps>
@@ -47,6 +47,7 @@ export default {
   computed: {
     _width () { return window.innerWidth },
     _height () { return window.innerHeight - 50 },
+    _isMobile () { return window.innerWidth < 500 }
   },
   data () {
     return {
@@ -85,13 +86,7 @@ export default {
     }
   },
   methods: {
-    onClickE () {
-      this.isOpen = false
-      this.marker = null
-      console.log('onClickE', arguments)
-    },
     closeMarker () {
-      console.log('closeMarker')
       this.isOpen = false
       this.marker = null
     },
@@ -101,24 +96,19 @@ export default {
     onWindowLoad () {
       console.log('onWindowLoad', arguments)
     },
-    onMarkerClicked (event, markerId) {
-      this.isOpen = false
-      console.log('onMarkerClicked', arguments)
-      this.selectedMarker = this.markers.find(marker => {
-        return marker.id === markerId
-      })
-      this.$nextTick(() => {
-        this.isOpen = true
-      })
+    clickMarker (event, markerId) {
+      if (this._isMobile) {
+        this.openMarker(event, markerId)
+      }
     },
-    onMarkerLoaded () {
-      console.log(arguments[0])
-      this.markers.find(marker => {
-        return marker.id === arguments[1]
-      }).naverMarker = arguments[0]
-      return false
-      // this.marker = vue.marker
-    }
+    openMarker (event, markerId) {
+      if (!this._isMobile) return false
+
+      this.isOpen = false
+      this.selectedMarker = this.markers.find(marker => { return marker.id === markerId })
+      this.$nextTick(() => { this.isOpen = true })
+    },
+    onMarkerLoaded () { this.markers.find(marker => { return marker.id === arguments[1] }).naverMarker = arguments[0] }
   },
 }
 </script>
