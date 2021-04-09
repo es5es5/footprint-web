@@ -104,7 +104,7 @@ export default {
     },
     clickMarker (event, markerId) {
       this.isMarkerClickState = true
-      // this.openWindow(event, markerId)
+      this.setSelectMarker(markerId)
       this.openModal()
     },
     hoverMarker (event, markerId) {
@@ -116,9 +116,12 @@ export default {
       if (this.isMarkerClickState) return false
       this.closeWindow()
     },
+    setSelectMarker (markerId) {
+      this.selectedMarker = this.markers.find(marker => { return marker.id === markerId })
+    },
     openWindow (event, markerId) {
       this.isWindowOpen = false
-      this.selectedMarker = this.markers.find(marker => { return marker.id === markerId })
+      this.setSelectMarker(markerId)
       this.$nextTick(() => { this.isWindowOpen = true })
     },
     onMarkerLoaded () {

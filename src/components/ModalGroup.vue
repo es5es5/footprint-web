@@ -36,7 +36,6 @@ export default {
   },
   methods: {
     openModal (type, data) {
-      console.log('openModal (type, data) {', type, data)
       this.modals[type].init = true
       this.modals[type].openIndex = ++this.openIndexTotal
       this.modalData = data
