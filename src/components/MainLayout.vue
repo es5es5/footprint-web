@@ -7,12 +7,12 @@
         :height="_height"
         :mapOptions="mapOptions"
         :initLayers="initLayers"
-        @click="closeMarker"
-        @load="onLoad">
+        @click="clickMap"
+        @load="loadMap">
         <naver-info-window
           class="info-window"
-          @load="onWindowLoad"
-          :isOpen="isOpen"
+          @load="loadWindow"
+          :isOpen="isWindowOpen"
           :marker="selectedMarker.naverMarker">
           <div class="info-window-container">
             <h1>{{ selectedMarker.title }}</h1>
@@ -24,8 +24,8 @@
           :id="item.id"
           :lat="item.lat"
           :lng="item.lng"
-          @mouseover="openMarker($event, item.id)"
-          @mouseout="closeMarker"
+          @mouseover="hoverMarker($event, item.id)"
+          @mouseout="hoverOutMarker"
           @click="clickMarker($event, item.id)"
           @load="onMarkerLoaded($event, item.id)"
         />
@@ -51,14 +51,12 @@ export default {
   },
   data () {
     return {
-      info: false,
       selectedMarker: {
         naverMarker: {}
       },
-      count: 1,
       map: null,
-      isCTT: false,
-      isOpen: false,
+      isWindowOpen: false,
+      isMarkerClickState: false,
       mapOptions: {
         lat: 37.873785,
         lng: 127.742249,
@@ -86,29 +84,41 @@ export default {
     }
   },
   methods: {
-    closeMarker () {
-      this.isOpen = false
-      this.marker = null
+    loadMap () {
+      console.log('loadMap', arguments)
     },
-    onLoad () {
-      console.log('onLoad', arguments)
+    loadWindow () {
+      console.log('loadWindow', arguments)
     },
-    onWindowLoad () {
-      console.log('onWindowLoad', arguments)
+    clickMap () {
+      this.closeWindow()
+      this.isMarkerClickState = false
     },
     clickMarker (event, markerId) {
-      if (this._isMobile) {
-        this.openMarker(event, markerId)
+      this.isMarkerClickState = true
+      this.openWindow(event, markerId)
+    },
+    hoverMarker (event, markerId) {
+      if (!this._isMobile) {
+        this.openWindow(event, markerId)
       }
     },
-    openMarker (event, markerId) {
-      if (!this._isMobile) return false
-
-      this.isOpen = false
-      this.selectedMarker = this.markers.find(marker => { return marker.id === markerId })
-      this.$nextTick(() => { this.isOpen = true })
+    hoverOutMarker () {
+      if (this.isMarkerClickState) return false
+      this.closeWindow()
     },
-    onMarkerLoaded () { this.markers.find(marker => { return marker.id === arguments[1] }).naverMarker = arguments[0] }
+    openWindow (event, markerId) {
+      this.isWindowOpen = false
+      this.selectedMarker = this.markers.find(marker => { return marker.id === markerId })
+      this.$nextTick(() => { this.isWindowOpen = true })
+    },
+    onMarkerLoaded () {
+      this.markers.find(marker => { return marker.id === arguments[1] }).naverMarker = arguments[0]
+    },
+    closeWindow () {
+      this.isWindowOpen = false
+      this.marker = null
+    },
   },
 }
 </script>
@@ -122,7 +132,4 @@ export default {
 .info-window-container {
   padding: 10px;
 }
-</style>
-
-<style lang="scss">
 </style>
