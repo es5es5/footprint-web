@@ -42,6 +42,7 @@ export default {
   overflow-y: scroll;
   background-color: rgba(#000, .5);
   -webkit-transition: all .5s;
+  -webkit-transition: -webkit-all .5s;
   transition: all .5s;
 
   &.active {
