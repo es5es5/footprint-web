@@ -7,7 +7,7 @@
       :barHeight="6"
       :barWidth="50"
     />
-    <button type="button" style="width: 200px" @click="toggleIsActive">{{ isActive }}</button>
+    <button type="button" :style="`width: ${isActive ? '200px' : '300px'}`" @click="toggleIsActive">{{ isActive }}</button>
     <MySlider :isActive="isActive" />
   </div>
 </template>
