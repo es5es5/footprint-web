@@ -31,7 +31,6 @@ export default {
 
 <style lang="scss" scoped>
 #header {
-  z-index: 9100;
   width: 100%;
   height: 50px;
   background-color: #42B983;
@@ -40,7 +39,6 @@ export default {
 
 <style lang="scss">
 .burguer-button {
-  z-index: 9101;
   float: left;
   height: 50px !important;
   margin: 0 10px;

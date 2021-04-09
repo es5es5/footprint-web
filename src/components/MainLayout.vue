@@ -64,7 +64,7 @@ export default {
         lat: 37.873785,
         lng: 127.742249,
         zoom: 16,
-        zoomControl: true,
+        zoomControl: false,
         naverMarker: null,
       },
       markers: [
