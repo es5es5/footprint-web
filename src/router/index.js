@@ -20,9 +20,20 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  linkActiveClass: 'active',
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const routeMetaTitle = to.meta.title
+  if (!routeMetaTitle) {
+    document.title = '발자취'
+  } else {
+    document.title = `${to.meta.title} | 발자취`
+  }
+  next()
 })
 
 export default router

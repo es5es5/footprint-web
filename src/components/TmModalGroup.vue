@@ -1,13 +1,11 @@
 <template>
   <div id="tm_modal_group" class="tm_modal_group">
-    <ModalOutCallMobile v-if="modals.ModalOutCallMobile.init" :style="{'z-index': modals.ModalOutCallMobile.openIndex}" />
-    <ModalInCallMobile v-if="modals.ModalInCallMobile.init" :style="{'z-index': modals.ModalInCallMobile.openIndex}" />
+    <ModalSample v-if="modals.ModalSample.init" :style="{'z-index': modals.ModalSample.openIndex}" :modalData="modalData" />
   </div>
 </template>
 
 <script>
-import ModalOutCallMobile from './modal/ModalOutCallMobile'
-import ModalInCallMobile from './modal/ModalInCallMobile'
+import ModalSample from './ModalSample'
 
 export default {
   name: 'TmModalGroup',
@@ -20,40 +18,28 @@ export default {
     this.$eventBus.$off('closeModal')
   },
   components: {
-    ModalOutCallMobile,
-    // ModalProvideOutCallMobile,
-    ModalInCallMobile,
-    // ModalInCallingMobile
+    ModalSample,
   },
   data () {
     return {
       modals: {
-        ModalOutCallMobile: {
+        ModalSample: {
           init: false,
           openIndex: 0
         },
-        modalProvideOutCallMobile: {
-          init: false,
-          openIndex: 0
-        },
-        ModalInCallMobile: {
-          init: false,
-          openIndex: 0
-        },
-        modalInCallingMobile: {
-          init: false,
-          openIndex: 0
-        }
       },
-      openIndexTotal: 0
+      openIndexTotal: 0,
+      modalData: null,
     }
   },
   computed: {
   },
   methods: {
     openModal (type, data) {
+      console.log('openModal (type, data) {', type, data)
       this.modals[type].init = true
       this.modals[type].openIndex = ++this.openIndexTotal
+      this.modalData = data
     },
     closeModal (type) {
       this.modals[type].init = false

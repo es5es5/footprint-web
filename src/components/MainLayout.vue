@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header />
+    <TmModalGroup />
     <div class="map_container">
       <naver-maps
         :width="_width"
@@ -36,13 +37,15 @@
 
 <script>
 import Header from './Header'
+import TmModalGroup from './TmModalGroup'
 
 export default {
   name: 'MainLayout',
   mounted () {
   },
   components: {
-    Header
+    Header,
+    TmModalGroup,
   },
   computed: {
     _width () { return window.innerWidth },
@@ -84,6 +87,9 @@ export default {
     }
   },
   methods: {
+    openModal () {
+      this.$eventBus.$emit('openModal', 'ModalSample', this.selectedMarker)
+    },
     loadMap () {
       console.log('loadMap', arguments)
     },
@@ -96,7 +102,8 @@ export default {
     },
     clickMarker (event, markerId) {
       this.isMarkerClickState = true
-      this.openWindow(event, markerId)
+      // this.openWindow(event, markerId)
+      this.openModal()
     },
     hoverMarker (event, markerId) {
       if (!this._isMobile) {
