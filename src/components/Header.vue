@@ -2,12 +2,12 @@
   <div id="header">
     <BurgerButton
       :active="isActive"
-      @click.stop="isActive = !isActive"
-      @click.native="isActive = !isActive"
+      @click.stop="toggleIsActive"
+      @click.native="toggleIsActive"
       :barHeight="6"
       :barWidth="50"
     />
-    <button type="button" style="width: 200px" @click="isActive = !isActive">{{ isActive }}</button>
+    <button type="button" style="width: 200px" @click="toggleIsActive">{{ isActive }}</button>
     <MySlider :isActive="isActive" />
   </div>
 </template>
@@ -24,6 +24,9 @@ export default {
     return {
       isActive: false
     }
+  },
+  methods: {
+    toggleIsActive () { this.isActive = !this.isActive }
   }
 }
 </script>
