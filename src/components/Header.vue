@@ -7,7 +7,7 @@
       :barHeight="6"
       :barWidth="50"
     />
-    <button type="button" style="width: 200px" @click="isActive = !isActive">Hi</button>
+    <button type="button" style="width: 200px" @click="isActive = !isActive">{{ isActive }}</button>
     <MySlider :isActive="isActive" />
   </div>
 </template>
