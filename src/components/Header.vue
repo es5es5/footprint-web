@@ -26,7 +26,10 @@ export default {
     }
   },
   methods: {
-    toggleIsActive () { this.isActive = !this.isActive }
+    toggleIsActive () {
+      this.isActive = !this.isActive
+      alert(this.isActive)
+    }
   }
 }
 </script>
