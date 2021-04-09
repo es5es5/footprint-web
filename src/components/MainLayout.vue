@@ -2,7 +2,7 @@
   <div>
     <Header />
     <TmModalGroup />
-    <div class="map_container">
+    <div id="map_container">
       <naver-maps
         :width="_width"
         :height="_height"
@@ -73,6 +73,7 @@ export default {
           lat: 37.873785,
           lng: 127.742249,
           title: '3POP',
+          contents: '3POP HIHI',
           naverMarker: null,
         },
         {
@@ -80,6 +81,7 @@ export default {
           lat: 37.874000,
           lng: 127.743000,
           title: 'YOON',
+          contents: 'YOON HIHI',
           naverMarker: null,
         },
       ],

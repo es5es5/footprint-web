@@ -1,32 +1,12 @@
 <template>
-  <div class="tm_modal" :id="_modalId" :class="_theme" v-if="theme === 'white'">
+  <div class="tm_modal" :id="_modalId" v-draggable="draggableOptions">
     <div class="tm_modal_title" v-if="$slots.modalTitle" :ref="`handle_${id}`">
       <h3 class="modal__title">
         <slot name="modalTitle" v-if="$slots.modalTitle"></slot>
       </h3>
-      <img src="@/assets/images/icons/close.png" class="closeImg" alt="close" @click="closeModal">
     </div>
-    <div class="tm_modal_body">
-      <slot name="modalBody" v-if="$slots.modalBody"></slot>
-    </div>
-    <div class="tm_modal_actions" v-if="$slots.modalActions">
-      <slot name="modalActions"></slot>
-    </div>
-  </div>
+    <button type="button" class="ui button btn_close" @click.stop="closeModal">&times;</button>
 
-  <div class="tm_modal" :id="_modalId" :class="_theme" v-else v-draggable="draggableOptions">
-    <div class="tm_modal_title" v-if="$slots.modalTitle" :ref="`handle_${id}`">
-      <h3 class="modal__title">
-        <slot name="modalTitle" v-if="$slots.modalTitle"></slot>
-      </h3>
-
-      <template v-if="$slots.modalClose">
-        <slot name="modalClose"></slot>
-      </template>
-      <template v-else>
-        <button type="button" class="ui button btn_close" :class="theme" @click="closeModal">&times;</button>
-      </template>
-    </div>
     <div class="tm_modal_body">
       <slot name="modalBody" v-if="$slots.modalBody"></slot>
     </div>
@@ -66,7 +46,7 @@ export default {
     return {
       draggableOptions: {
         handle: '',
-        boundingElement: document.getElementById('main'),
+        boundingElement: document.getElementById('map_container'),
         onDragEnd: this.onDragEnd
       }
     }
@@ -75,10 +55,6 @@ export default {
     _modalId () {
       return this.id
     },
-    _theme () {
-      if (this.theme === '') { return '' }
-      return `tm_modal--${this.theme}`
-    }
   },
   watch: {},
   methods: {
@@ -129,18 +105,6 @@ export default {
     width: 15px;
     height: 15px;
   }
-  .btn_close,
-  .btn_minify {
-    float: right;
-    margin: -4px 0 0 0;
-    padding: 0 4px;
-    height: auto;
-    min-height: 0;
-    font-size: 22px;
-    color: $gray;
-    background: none;
-    border: 0;
-  }
 }
 
 .tm_modal_body {
@@ -151,43 +115,16 @@ export default {
   padding: 0 20px 20px 20px;
 }
 
-.tm_modal--white {
-  .tm_modal_title {
-    height: auto;
-    min-height: 55px;
-    background-color: rgb(255,255,255);
-    cursor: auto;
-  }
-  .modal__title {
-    max-width: calc(100% - 40px);
-    font-size: 20px;
-    color: rgb(80,90,95);
-    cursor: auto;
-  }
-  .btn_close {
-    margin: 0;
-    color: rgb(179, 179, 179);
-  }
-}
-
-.tm_modal--red {
-  .tm_modal_title {
-    position: relative;
-    height: 150px;
-    background-color: $red;
-    text-align: center;
-  }
-  .modal__title {
-    padding: 20px 0;
-    font-size: 20px;
-    color: rgb(80,90,95);
-  }
-  .btn_close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    margin: 0;
-    color: rgb(179, 179, 179);
-  }
+.btn_close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2px 4px;
+  line-height: 33px;
+  font-size: 46px;
+  color: $gray;
+  background: none;
+  border: 0;
+  color: rgb(179, 179, 179);
 }
 </style>

@@ -4,6 +4,7 @@
       {{ modalData.title }}
     </template>
     <template slot="modalBody">
+      {{ modalData.contents }}
     </template>
     <div slot="modalActions">
     </div>
