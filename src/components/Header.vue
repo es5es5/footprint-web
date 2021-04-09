@@ -2,7 +2,8 @@
   <div id="header">
     <BurgerButton
       :active="isActive"
-      @click="isActive = !isActive"
+      @click.stop="isActive = !isActive"
+      @click.native="isActive = !isActive"
       :barHeight="6"
       :barWidth="50"
     />
