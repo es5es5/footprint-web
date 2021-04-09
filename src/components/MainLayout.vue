@@ -2,7 +2,7 @@
   <div>
     <Header />
     <ModalGroup />
-    <div id="map_container" v-if="false">
+    <div id="map_container">
       <naver-maps
         :width="_width"
         :height="_height"

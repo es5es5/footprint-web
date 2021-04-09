@@ -7,7 +7,6 @@
       :barHeight="6"
       :barWidth="50"
     />
-    <button type="button" @click="toggleIsActive">{{ isActive }}</button>
     <MySlider :isActive="isActive" />
   </div>
 </template>
