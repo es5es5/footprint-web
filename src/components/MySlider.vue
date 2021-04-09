@@ -33,19 +33,20 @@ export default {
 <style lang="scss" scoped>
 .slider_wrap {
   position: fixed;
-  top: 0;
+  top: 50px;
   left: 0;
   width: 0;
-  height: 100vh;
-  z-index: 9999;
+  height: calc(100vh - 50px);
+  z-index: 9000;
   overflow-y: scroll;
   background-color: rgba(#000, .5);
   transition: width .5s;
 
   &.active {
-    @media (max-width: 500px) { width: 200px; }
-    @media (max-width: 750px) { width: 300px; }
-    @media (min-width: 750px) { width: 400px; }
+    @media (max-width: 400px) { width: 150px; }
+    @media (min-width: 500px) { width: 200px; }
+    @media (min-width: 750px) { width: 300px; }
+    @media (min-width: 1024px) { width: 400px; }
   }
 }
 </style>
