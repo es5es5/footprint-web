@@ -41,7 +41,8 @@ export default {
   z-index: 9000;
   overflow-y: scroll;
   background-color: rgba(#000, .5);
-  transition: width .5s;
+  -webkit-transition: all .5s;
+  transition: all .5s;
 
   &.active {
     @media (max-width: 400px) { width: 150px; }
