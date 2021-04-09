@@ -1,6 +1,7 @@
 <template>
   <div id="slider">
-    Hi
+    <div class="slider_wrap" :class="isActive ? 'active' : ''">
+    </div>
   </div>
 </template>
 
@@ -13,6 +14,13 @@ export default {
   },
   watch: {
   },
+  props: {
+    isActive: {
+      type: Boolean,
+      require: true,
+      default: () => false,
+    }
+  },
   data () {
     return {
     }
@@ -22,12 +30,22 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.ul {
-  height: 500px;
-}
+<style lang="scss" scoped>
+.slider_wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100vh;
+  z-index: 9999;
+  overflow-y: scroll;
+  background-color: rgba(#000, .5);
+  transition: width .5s;
 
-.li {
-  display: block;
+  &.active {
+    @media (max-width: 500px) { width: 200px; }
+    @media (max-width: 750px) { width: 300px; }
+    @media (min-width: 750px) { width: 400px; }
+  }
 }
 </style>

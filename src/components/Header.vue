@@ -7,7 +7,7 @@
       :barWidth="50"
     />
     <Slider v-if="false" />
-    <MySlider v-if="isActive" />
+    <MySlider :isActive="isActive" />
   </div>
 </template>
 
