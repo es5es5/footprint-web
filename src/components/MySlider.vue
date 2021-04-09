@@ -46,10 +46,11 @@ export default {
   transition: all .5s;
 
   &.active {
-    @media (max-width: 400px) { width: 150px; }
-    @media (min-width: 500px) { width: 200px; }
-    @media (min-width: 750px) { width: 300px; }
-    @media (min-width: 1024px) { width: 400px; }
+    width: 10px;
+    // @media (max-width: 400px) { width: 150px; }
+    // @media (min-width: 500px) { width: 200px; }
+    // @media (min-width: 750px) { width: 300px; }
+    // @media (min-width: 1024px) { width: 400px; }
   }
 }
 </style>
