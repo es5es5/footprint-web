@@ -7,19 +7,17 @@
       :barHeight="6"
       :barWidth="50"
     />
-    <Slider v-if="false" />
+    <button type="button" style="width: 200px" @click="isActive = !isActive">Hi</button>
     <MySlider :isActive="isActive" />
   </div>
 </template>
 
 <script>
-import Slider from './Slider'
 import MySlider from './MySlider'
 
 export default {
   name: 'Header',
   components: {
-    Slider,
     MySlider,
   },
   data () {
