@@ -1,7 +1,7 @@
 <template>
   <div id="slider">
-    <div class="slider_wrap" :class="isActive ? 'active' : ''">
-      {{ isActive }}
+    {{ isActive }}
+    <div class="slider_wrap" :class="isActive ? '' : 'active'">
     </div>
   </div>
 </template>
