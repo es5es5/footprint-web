@@ -36,3 +36,10 @@ export default {
   background-color: #42B983;
 }
 </style>
+
+<style lang="scss">
+.burguer-button {
+  height: 50px !important;
+  margin-left: 10px;
+}
+</style>
