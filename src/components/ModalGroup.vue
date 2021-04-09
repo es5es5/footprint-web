@@ -1,5 +1,5 @@
 <template>
-  <div id="modal_group" class="modal_group">
+  <div id="modal_group" :style="{position: 'fixed', 'z-index': 100, top: '150px', left: 'calc(50% - 100px)'}">
     <ModalSample v-if="modals.ModalSample.init" :style="{'z-index': modals.ModalSample.openIndex}" :modalData="modalData" />
   </div>
 </template>
@@ -54,7 +54,7 @@ export default {
 .modal_group {
   position: fixed;
   top: 70px;
-  left: 250px;
+  left: 0px;
   z-index: 100;
 }
 </style>

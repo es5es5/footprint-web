@@ -39,7 +39,8 @@ export default {
 
 <style lang="scss">
 .burguer-button {
+  float: right;
   height: 50px !important;
-  margin-left: 10px;
+  margin-right: 10px;
 }
 </style>
