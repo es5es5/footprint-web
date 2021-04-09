@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <TmModalGroup />
+    <ModalGroup />
     <div id="map_container">
       <naver-maps
         :width="_width"
@@ -37,7 +37,7 @@
 
 <script>
 import Header from './Header'
-import TmModalGroup from './TmModalGroup'
+import ModalGroup from './ModalGroup'
 
 export default {
   name: 'MainLayout',
@@ -45,7 +45,7 @@ export default {
   },
   components: {
     Header,
-    TmModalGroup,
+    ModalGroup,
   },
   computed: {
     _width () { return window.innerWidth },

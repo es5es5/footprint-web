@@ -1,16 +1,16 @@
 <template>
-  <div class="tm_modal" :id="_modalId" v-draggable="draggableOptions">
-    <div class="tm_modal_title" v-if="$slots.modalTitle" :ref="`handle_${id}`">
+  <div class="modal" :id="_modalId" v-draggable="draggableOptions">
+    <div class="modal_title" v-if="$slots.modalTitle" :ref="`handle_${id}`">
       <h3 class="modal__title">
         <slot name="modalTitle" v-if="$slots.modalTitle"></slot>
       </h3>
     </div>
     <button type="button" class="ui button btn_close" @click.stop="closeModal">&times;</button>
 
-    <div class="tm_modal_body">
+    <div class="modal_body">
       <slot name="modalBody" v-if="$slots.modalBody"></slot>
     </div>
-    <div class="tm_modal_actions" v-if="$slots.modalActions">
+    <div class="modal_actions" v-if="$slots.modalActions">
       <slot name="modalActions"></slot>
     </div>
   </div>
@@ -20,7 +20,7 @@
 import { Draggable } from 'draggable-vue-directive'
 
 export default {
-  name: 'TmModal',
+  name: 'Modal',
   created () {},
   mounted () {
     this.draggableOptions.handle = this.$refs[`handle_${this.id}`]
@@ -78,7 +78,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.tm_modal {
+.modal {
   display: inline-block;
   margin-left: 2px;
   min-width: 400px;
@@ -87,7 +87,7 @@ export default {
   box-shadow: 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
 }
 
-.tm_modal_title {
+.modal_title {
   padding: 10px;
   height: 36px;
   background-color: #253966;
@@ -107,11 +107,11 @@ export default {
   }
 }
 
-.tm_modal_body {
+.modal_body {
   min-height: 100px;
   padding: 20px;
 }
-.tm_modal_actions {
+.modal_actions {
   padding: 0 20px 20px 20px;
 }
 

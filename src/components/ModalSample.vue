@@ -1,5 +1,5 @@
 <template>
-  <tm-modal :id="'ModalSample'">
+  <Modal :id="'ModalSample'">
     <template slot="modalTitle">
       {{ modalData.title }}
     </template>
@@ -8,7 +8,7 @@
     </template>
     <div slot="modalActions">
     </div>
-  </tm-modal>
+  </Modal>
 </template>
 
 <script>

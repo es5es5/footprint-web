@@ -1,5 +1,5 @@
 <template>
-  <div id="tm_modal_group" class="tm_modal_group">
+  <div id="modal_group" class="modal_group">
     <ModalSample v-if="modals.ModalSample.init" :style="{'z-index': modals.ModalSample.openIndex}" :modalData="modalData" />
   </div>
 </template>
@@ -8,7 +8,7 @@
 import ModalSample from './ModalSample'
 
 export default {
-  name: 'TmModalGroup',
+  name: 'ModalGroup',
   created () {
     this.$eventBus.$on('openModal', this.openModal)
     this.$eventBus.$on('closeModal', this.closeModal)
@@ -52,7 +52,7 @@ export default {
 <style lang="scss" scoped>
 //
 
-.tm_modal_group {
+.modal_group {
   position: fixed;
   top: 70px;
   left: 250px;
