@@ -8,8 +8,9 @@ export default {
         }
       },
       computed: {
-        isMobile () { return window.innerWidth < 500 },
+        mixinIsMobile () { return window.innerWidth < 500 },
         mixinMarkers () { return this.$store.getters.getMarkers },
+        mixinSelectedMarker () { return this.$store.getters.getSelectedMarker },
       },
       methods: {
         /**

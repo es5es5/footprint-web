@@ -33,13 +33,18 @@ export default new Vuex.Store({
         createtime: '2020-05-13 20:00',
         naverMarker: null,
       },
-    ]
+    ],
+    selectedMarker: {
+      naverMarker: {}
+    }
   },
   mutations: {
     setMarkers (state, value) { state.markers = value },
+    setSelectedMarker (state, value) { state.selectedMarker = value },
   },
   getters: {
     getMarkers: state => state.markers,
+    getSelectedMarker: state => state.selectedMarker,
   },
   actions: {
   },

@@ -11,13 +11,13 @@
         class="info-window"
         @load="loadWindow"
         :isOpen="isWindowOpen"
-        :marker="selectedMarker.naverMarker">
+        :marker="mixinSelectedMarker.naverMarker">
         <div class="info-window-container">
-          <h1>{{ selectedMarker.title }}</h1>
+          <h1>{{ mixinSelectedMarker.title }}</h1>
         </div>
       </naver-info-window>
       <naver-marker
-        v-for="(item, index) in markers"
+        v-for="(item, index) in mixinMarkers"
         :key="index"
         :id="item.id"
         :lat="item.lat"
@@ -40,9 +40,6 @@ export default {
   },
   data () {
     return {
-      selectedMarker: {
-        naverMarker: {}
-      },
       map: null,
       isWindowOpen: false,
       isMarkerClickState: false,
@@ -64,7 +61,6 @@ export default {
     },
     loadMap () {
       console.log('loadMap', arguments)
-      this.markers = this.mixinMarkers
     },
     loadWindow () {
       console.log('loadWindow', arguments)
@@ -80,7 +76,7 @@ export default {
       this.openModal()
     },
     hoverMarker (event, markerId) {
-      if (!this.isMobile) {
+      if (!this.mixinIsMobile) {
         this.openWindow(event, markerId)
       }
     },
@@ -89,7 +85,7 @@ export default {
       this.closeWindow()
     },
     setSelectMarker (markerId) {
-      this.selectedMarker = this.markers.find(marker => { return marker.id === markerId })
+      this.$store.commit('setSelectedMarker', this.mixinMarkers.find(marker => { return marker.id === markerId }))
     },
     openWindow (event, markerId) {
       this.isWindowOpen = false
@@ -97,7 +93,7 @@ export default {
       this.$nextTick(() => { this.isWindowOpen = true })
     },
     onMarkerLoaded () {
-      this.markers.find(marker => { return marker.id === arguments[1] }).naverMarker = arguments[0]
+      this.mixinMarkers.find(marker => { return marker.id === arguments[1] }).naverMarker = arguments[0]
     },
     closeWindow () {
       this.isWindowOpen = false
