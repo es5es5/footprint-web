@@ -5,7 +5,7 @@
       @click.stop="toggleIsActive"
       @click.native="toggleIsActive"
       :barHeight="6"
-      :barWidth="50"
+      :barWidth="30"
     />
     <MySlider :isActive="isActive" />
   </div>
@@ -36,6 +36,7 @@ export default {
 #header {
   width: 100%;
   height: 50px;
+  padding: 10px;
   background-color: $primary;
 }
 </style>
@@ -43,7 +44,7 @@ export default {
 <style lang="scss">
 .burguer-button {
   float: left;
-  height: 50px !important;
-  margin: 0 10px;
+  height: 30px !important;
+  // margin: 0 10px;
 }
 </style>

@@ -84,6 +84,14 @@ export default {
           contents: 'YOON HIHI',
           naverMarker: null,
         },
+        {
+          id: '2',
+          lat: 37.874000,
+          lng: 127.743000,
+          title: 'YOON',
+          contents: 'YOON HIHI',
+          naverMarker: null,
+        },
       ],
       initLayers: ['BACKGROUND', 'BACKGROUND_DETAIL', 'POI_KOREAN', 'TRANSIT', 'ENGLISH', 'CHINESE', 'JAPANESE']
     }

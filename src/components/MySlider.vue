@@ -2,7 +2,7 @@
   <div id="slider">
     <div class="slider_wrap" :class="isActive ? 'active' : ''">
       <div class="card_container">
-        <ul class="card_wrap">
+        <ul class="card_wrap" :class="isActive ? 'active' : ''">
           <li class="card" v-for="index in 30" :key="index">
             <p class="title">YOON</p>
             <p class="contents">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, repellendus.</p>
@@ -54,9 +54,9 @@ export default {
   @media (min-width: 750px) { font-size: 18px; }
   @media (min-width: 1024px) { font-size: 20px; }
 
-  -webkit-transition: all .5s;
-  -webkit-transition: -webkit-all .5s;
-  transition: all .5s;
+  -webkit-transition: width .5s ease-in-out;
+  -webkit-transition: -webkit-width .5s ease-in-out;
+  transition: width .5s ease-in-out;
 
   &.active {
     width: 180px;
@@ -68,12 +68,18 @@ export default {
 
 .card_wrap {
   padding: 1em;
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+
+  &.active {
+    opacity: 1;
+  }
 }
 .card {
   margin-bottom: 1em;
   padding: .8em 1em;
   border-radius: .4em;
-  background-color: rgba(#fff, .8);
+  background-color: rgba(#fff, .9);
   color: grey;
   @include shadow;
 
@@ -95,7 +101,7 @@ export default {
 
   > .createtime {
     text-align: right;
-    font-size: .5em;
+    font-size: .6em;
   }
 }
 </style>
