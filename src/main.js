@@ -6,8 +6,10 @@ import router from './router'
 import store from './store'
 
 import GlobalComponents from './components'
+import MIXSINS from './assets/js/mixins'
 
 Vue.use(GlobalComponents)
+Vue.use(MIXSINS)
 
 Vue.config.productionTip = false
 Vue.prototype.$eventBus = new Vue()

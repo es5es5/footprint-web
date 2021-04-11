@@ -37,7 +37,6 @@ export default {
   computed: {
     _width () { return window.innerWidth },
     _height () { return window.innerHeight - 50 },
-    _isMobile () { return window.innerWidth < 500 }
   },
   data () {
     return {
