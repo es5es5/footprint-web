@@ -3,7 +3,12 @@
     <div class="slider_wrap" :class="isActive ? 'active' : ''">
       <div class="card_container">
         <ul class="card_wrap" :class="isActive ? 'active' : ''">
-          <li class="card" v-for="index in 30" :key="index">
+          <li
+            class="card"
+            :class="activeCard === index ? 'active' : ''"
+            v-for="index in 30" :key="index"
+            @click="setCardActive(index)"
+          >
             <p class="title">YOON</p>
             <p class="contents">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, repellendus.</p>
             <p class="createtime">2020-05-05 16:30</p>
@@ -32,9 +37,13 @@ export default {
   },
   data () {
     return {
+      activeCard: null,
     }
   },
   methods: {
+    setCardActive (index) {
+      this.activeCard = index
+    }
   }
 }
 </script>
@@ -82,15 +91,39 @@ export default {
   background-color: rgba(#fff, .9);
   color: grey;
   @include shadow;
+  transition: all .5s;
 
   &:hover {
     cursor: pointer;
+    transform: translateX(.5em);
+  }
+
+  &.active {
+    transform: translateX(.5em);
+
+    > .title {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: .4em;
+        margin: 0 -.4em;
+        background-color: rgba(#2F96FD, .6);
+        border-radius: .4em;
+      }
+    }
   }
 
   > .title {
+    display: inline-block;
     font-size: 1em;
     color: $primary;
     font-weight: bold;
+    transition: all 1s;
   }
 
   > .contents {
