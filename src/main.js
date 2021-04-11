@@ -7,12 +7,15 @@ import store from './store'
 
 import GlobalComponents from './components'
 import MIXSINS from './assets/js/mixins'
+import COMMON from '@/../colony-vue/src/js/common'
 
 Vue.use(GlobalComponents)
 Vue.use(MIXSINS)
 
 Vue.config.productionTip = false
 Vue.prototype.$eventBus = new Vue()
+
+Vue.prototype.COMMON = COMMON
 
 new Vue({
   router,

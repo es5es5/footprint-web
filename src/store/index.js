@@ -27,7 +27,7 @@ export default new Vuex.Store({
       {
         id: '3',
         lat: 37.874000,
-        lng: 127.743000,
+        lng: 127.745000,
         title: 'YOON',
         contents: 'YOON HIHI',
         createtime: '2020-05-13 20:00',
