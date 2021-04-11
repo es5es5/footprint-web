@@ -5,7 +5,9 @@
         v-for="(item, index) in mixinMarkers"
         :key="index"
         :marker="item"
+        :isActiveCard="item.id === activeCardId"
         :isSliderActive="isSliderActive"
+        @click.native="setCardActive(item.id)"
       ></Card>
     </div>
   </div>
@@ -32,9 +34,13 @@ export default {
   },
   data () {
     return {
+      activeCardId: null
     }
   },
   methods: {
+    setCardActive (id) {
+      this.activeCardId = id
+    }
   }
 }
 </script>

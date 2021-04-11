@@ -1,10 +1,11 @@
 <template>
   <div>
-    <div class="card_wrap" :class="isSliderActive ? 'active' : ''">
+    <div class="card_wrap"
+      :class="isSliderActive ? 'active' : ''"
+    >
       <div
         class="card"
-        :class="activeCard ? 'active' : ''"
-        @click="setCardActive"
+        :class="isActiveCard ? 'active' : ''"
       >
         <p class="title">{{ marker.title }}</p>
         <p class="contents">{{ marker.contents }}</p>
@@ -27,17 +28,18 @@ export default {
       type: Boolean,
       require: true,
       default: () => false,
+    },
+    isActiveCard: {
+      type: Boolean,
+      require: true,
+      default: () => false,
     }
   },
   data () {
     return {
-      activeCard: false,
     }
   },
   methods: {
-    setCardActive () {
-      this.activeCard = true
-    }
   }
 }
 </script>
