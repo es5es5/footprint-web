@@ -1,13 +1,13 @@
 <template>
   <div id="header">
     <BurgerButton
-      :active="isActive"
-      @click.stop="toggleIsActive"
-      @click.native="toggleIsActive"
+      :active="isSliderActive"
+      @click.stop="toggleSlider"
+      @click.native="toggleSlider"
       :barHeight="6"
       :barWidth="30"
     />
-    <MySlider :isActive="isActive" />
+    <MySlider :isSliderActive="isSliderActive" />
   </div>
 </template>
 
@@ -21,12 +21,12 @@ export default {
   },
   data () {
     return {
-      isActive: false
+      isSliderActive: false
     }
   },
   methods: {
-    toggleIsActive () {
-      this.isActive = !this.isActive
+    toggleSlider () {
+      this.isSliderActive = !this.isSliderActive
     }
   }
 }
