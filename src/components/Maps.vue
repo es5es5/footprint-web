@@ -54,30 +54,6 @@ export default {
         naverMarker: null,
       },
       markers: [
-        {
-          id: '1',
-          lat: 37.873785,
-          lng: 127.742249,
-          title: '3POP',
-          contents: '3POP HIHI',
-          naverMarker: null,
-        },
-        {
-          id: '2',
-          lat: 37.874000,
-          lng: 127.743000,
-          title: 'YOON',
-          contents: 'YOON HIHI',
-          naverMarker: null,
-        },
-        {
-          id: '2',
-          lat: 37.874000,
-          lng: 127.743000,
-          title: 'YOON',
-          contents: 'YOON HIHI',
-          naverMarker: null,
-        },
       ],
       initLayers: ['BACKGROUND', 'BACKGROUND_DETAIL', 'POI_KOREAN', 'TRANSIT', 'ENGLISH', 'CHINESE', 'JAPANESE']
     }
@@ -88,11 +64,13 @@ export default {
     },
     loadMap () {
       console.log('loadMap', arguments)
+      this.markers = this.mixinMarkers
     },
     loadWindow () {
       console.log('loadWindow', arguments)
     },
     clickMap () {
+      console.log('clickMap', arguments)
       this.closeWindow()
       this.isMarkerClickState = false
     },
@@ -102,7 +80,7 @@ export default {
       this.openModal()
     },
     hoverMarker (event, markerId) {
-      if (!this._isMobile) {
+      if (!this.isMobile) {
         this.openWindow(event, markerId)
       }
     },
