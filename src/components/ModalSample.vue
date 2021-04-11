@@ -1,10 +1,10 @@
 <template>
   <Modal :id="'ModalSample'">
     <template slot="modalTitle">
-      {{ modalData.title }}
+      {{ mixinSelectedMarker.title }}
     </template>
     <template slot="modalBody">
-      {{ modalData.contents }}
+      {{ mixinSelectedMarker.contents }}
     </template>
     <div slot="modalActions">
     </div>
@@ -15,11 +15,6 @@
 export default {
   name: 'ModalSample',
   props: {
-    modalData: {
-      type: Object,
-      require: true,
-      default: () => {}
-    }
   },
   methods: {
   }

@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     openModal () {
-      this.$eventBus.$emit('openModal', 'ModalSample', this.selectedMarker)
+      this.$eventBus.$emit('openModal', 'ModalSample')
     },
     loadMap () {
       console.log('loadMap', arguments)
@@ -97,7 +97,7 @@ export default {
     },
     closeWindow () {
       this.isWindowOpen = false
-      this.marker = null
+      this.$store.commit('setSelectedMarker', { naverMarker: null })
     },
   },
 }

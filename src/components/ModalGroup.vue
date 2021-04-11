@@ -1,6 +1,6 @@
 <template>
   <div id="modal_group" :style="{position: 'fixed', 'z-index': 100, top: '150px', left: 'calc(50% - 100px)'}">
-    <ModalSample v-if="modals.ModalSample.init" :style="{'z-index': modals.ModalSample.openIndex}" :modalData="modalData" />
+    <ModalSample v-if="modals.ModalSample.init" :style="{'z-index': modals.ModalSample.openIndex}" />
   </div>
 </template>
 
