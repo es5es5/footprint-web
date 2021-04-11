@@ -36,7 +36,7 @@ export default {
 #header {
   width: 100%;
   height: 50px;
-  background-color: #42B983;
+  background-color: $primary;
 }
 </style>
 
