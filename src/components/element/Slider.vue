@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import MixinMap from '../MixinMap'
 import Card from './Card'
 
 export default {
@@ -23,6 +24,9 @@ export default {
   },
   computed: {
   },
+  mixins: [
+    MixinMap,
+  ],
   watch: {
   },
   props: {
@@ -38,8 +42,9 @@ export default {
     }
   },
   methods: {
-    setCardActive (id) {
-      this.activeCardId = id
+    setCardActive (markerId) {
+      this.activeCardId = markerId
+      this.clickMarker(null, markerId)
     }
   }
 }
