@@ -81,7 +81,7 @@ export default {
         bottom: 0;
         height: .4em;
         margin: 0 -.4em;
-        background-color: rgba(#2F96FD, .6);
+        background-color: rgba($success, .6);
         border-radius: .4em;
       }
     }

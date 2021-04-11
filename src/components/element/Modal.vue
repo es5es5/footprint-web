@@ -90,7 +90,7 @@ export default {
 .modal_title {
   padding: 10px;
   height: 36px;
-  background-color: #253966;
+  background-color: $success;
   @include grab;
   @include clearfix;
 
@@ -98,7 +98,6 @@ export default {
     display: inline-block;
     color: #fff;
     font-size: 15px;
-    font-weight: 500;
   }
 
   .closeImg {
@@ -109,8 +108,9 @@ export default {
 
 .modal_body {
   min-height: 100px;
-  padding: 20px;
+  padding: 10px;
 }
+
 .modal_actions {
   padding: 0 20px 20px 20px;
 }
