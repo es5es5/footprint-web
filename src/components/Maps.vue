@@ -40,6 +40,7 @@ export default {
   },
   data () {
     return {
+      isMapStateConsole: true,
       map: null,
       isWindowOpen: false,
       isMarkerClickState: false,
@@ -60,13 +61,13 @@ export default {
       this.$eventBus.$emit('openModal', 'ModalSample')
     },
     loadMap () {
-      console.log('loadMap', arguments)
+      if (this.isMapStateConsole) console.log('loadMap', arguments)
     },
     loadWindow () {
-      console.log('loadWindow', arguments)
+      if (this.isMapStateConsole) console.log('loadWindow', arguments)
     },
     clickMap () {
-      console.log('clickMap', arguments)
+      if (this.isMapStateConsole) console.log('clickMap', arguments)
       this.closeWindow()
       this.isMarkerClickState = false
     },
