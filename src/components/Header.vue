@@ -7,17 +7,17 @@
       :barHeight="6"
       :barWidth="30"
     />
-    <MySlider :isSliderActive="isSliderActive" />
+    <Slider :isSliderActive="isSliderActive" />
   </div>
 </template>
 
 <script>
-import MySlider from './MySlider'
+import Slider from './element/Slider'
 
 export default {
   name: 'Header',
   components: {
-    MySlider,
+    Slider,
   },
   data () {
     return {
@@ -45,6 +45,5 @@ export default {
 .burguer-button {
   float: left;
   height: 30px !important;
-  // margin: 0 10px;
 }
 </style>

@@ -1,18 +1,15 @@
 <template>
   <div>
-    <div class="card_container">
-      <ul class="card_wrap" :class="isSliderActive ? 'active' : ''">
-        <li
-          class="card"
-          :class="activeCard === index ? 'active' : ''"
-          v-for="index in 30" :key="index"
-          @click="setCardActive(index)"
-        >
-          <p class="title">YOON</p>
-          <p class="contents">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, repellendus.</p>
-          <p class="createtime">2020-05-05 16:30</p>
-        </li>
-      </ul>
+    <div class="card_wrap" :class="isSliderActive ? 'active' : ''">
+      <div
+        class="card"
+        :class="activeCard ? 'active' : ''"
+        @click="setCardActive"
+      >
+        <p class="title">{{ marker.title }}</p>
+        <p class="contents">{{ marker.contents }}</p>
+        <p class="createtime">{{ marker.createtime }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -21,6 +18,11 @@
 export default {
   name: 'Card',
   props: {
+    marker: {
+      type: Object,
+      require: true,
+      default: () => {}
+    },
     isSliderActive: {
       type: Boolean,
       require: true,
@@ -29,12 +31,12 @@ export default {
   },
   data () {
     return {
-      activeCard: null,
+      activeCard: false,
     }
   },
   methods: {
-    setCardActive (index) {
-      this.activeCard = index
+    setCardActive () {
+      this.activeCard = true
     }
   }
 }
@@ -42,7 +44,7 @@ export default {
 
 <style lang="scss" scoped>
 .card_wrap {
-  padding: 1em;
+  padding: .5em 1em;
   opacity: 0;
   transition: opacity .5s ease-in-out;
 
@@ -51,7 +53,6 @@ export default {
   }
 }
 .card {
-  margin-bottom: 1em;
   padding: .8em 1em;
   border-radius: .4em;
   background-color: rgba(#fff, .9);

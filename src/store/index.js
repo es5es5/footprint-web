@@ -12,6 +12,7 @@ export default new Vuex.Store({
         lng: 127.742249,
         title: '3POP',
         contents: '3POP HIHI',
+        createtime: '2020-05-13 20:00',
         naverMarker: null,
       },
       {
@@ -20,14 +21,16 @@ export default new Vuex.Store({
         lng: 127.743000,
         title: 'YOON',
         contents: 'YOON HIHI',
+        createtime: '2020-05-13 20:00',
         naverMarker: null,
       },
       {
-        id: '2',
+        id: '3',
         lat: 37.874000,
         lng: 127.743000,
         title: 'YOON',
         contents: 'YOON HIHI',
+        createtime: '2020-05-13 20:00',
         naverMarker: null,
       },
     ]

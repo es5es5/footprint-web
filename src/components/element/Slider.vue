@@ -2,6 +2,9 @@
   <div id="slider">
     <div class="slider_wrap" :class="isSliderActive ? 'active' : ''">
       <Card
+        v-for="(item, index) in mixinMarkers"
+        :key="index"
+        :marker="item"
         :isSliderActive="isSliderActive"
       ></Card>
     </div>
@@ -9,10 +12,10 @@
 </template>
 
 <script>
-import Card from './element/Card'
+import Card from './Card'
 
 export default {
-  name: 'MySlider',
+  name: 'Slider',
   components: {
     Card,
   },
@@ -38,6 +41,7 @@ export default {
 
 <style lang="scss" scoped>
 .slider_wrap {
+  padding: 1em 0;
   position: fixed;
   top: 50px;
   left: 0;
