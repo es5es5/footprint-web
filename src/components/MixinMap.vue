@@ -18,22 +18,29 @@ export default {
       if (this.isMapStateConsole) console.log('clickMap', arguments)
       this.closeWindow()
       this.closeModal()
+      this.setDeSelectMarker()
       this.isMarkerClickState = false
     },
     clickMarker (event, markerId) {
-      console.log('clickMarker', arguments)
+      if (this.isMapStateConsole) console.log('clickMarker', arguments)
       this.isMarkerClickState = true
       this.setSelectMarker(markerId)
       this.openModal()
     },
     hoverMarker (event, markerId) {
-      if (!this.mixinIsMobile) {
+      if (this.mixinIsMobile) {
+        return false
+      } else {
         this.openWindow(null, markerId)
       }
     },
     hoverOutMarker () {
       if (this.isMarkerClickState) return false
-      this.closeWindow()
+      if (this.mixinIsMobile) {
+        return false
+      } else {
+        this.closeWindow()
+      }
     },
     setSelectMarker (markerId) {
       if (this.isMapStateConsole) console.log('setSelectMarker', markerId)
@@ -55,8 +62,11 @@ export default {
     },
     closeWindow () {
       this.isWindowOpen = false
-      this.$store.commit('setDeSelectMarker')
+      this.setDeSelectMarker()
     },
+    setDeSelectMarker () {
+      this.$store.commit('setDeSelectMarker')
+    }
   }
 }
 </script>

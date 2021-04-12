@@ -51,7 +51,7 @@ export default {
       mapOptions: {
         lat: 37.873785,
         lng: 127.742249,
-        zoom: 16,
+        zoom: 19,
         zoomControl: false,
         naverMarker: null,
       },
