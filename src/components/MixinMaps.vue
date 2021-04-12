@@ -104,7 +104,7 @@ export default {
       this.openModal()
     },
     setMapCenter (lat, lng) {
-      this.$store.commit('setMapCenter', [lat, lng])
+      this.$store.commit('setMapCenter', [lat, lng - 0.00025])
     },
     setMapZoom (level) {
       this.$store.commit('setMapZoom', level)
