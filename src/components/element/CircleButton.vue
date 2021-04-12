@@ -27,6 +27,20 @@ export default {
   border-radius: 50%;
   @include shadow;
 
+  opacity: .8;
+  transition: all .5s ease-out;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+    transform: translateY(-1em);
+  }
+
+  &.active {
+    opacity: 1;
+    transform: translateY(-1em);
+  }
+
   @media (min-width: 500px) {
     width: 4em;
     height: 4em;

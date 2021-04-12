@@ -48,7 +48,7 @@ export default {
 .card_wrap {
   padding: .6em 1.25em;
   opacity: 0;
-  transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-out;
 
   &.active {
     opacity: 1;
