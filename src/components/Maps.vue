@@ -1,5 +1,6 @@
 <template>
   <div id="map_container">
+    <!-- <button type="button" @click="addMarker">HI</button> -->
     <naver-maps
       :width="_width"
       :height="_height"
@@ -45,7 +46,6 @@ export default {
   ],
   data () {
     return {
-      isMapStateConsole: true,
       isWindowOpen: false,
       isMarkerClickState: false,
       mapOptions: {

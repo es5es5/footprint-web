@@ -5,6 +5,11 @@
 <script>
 export default {
   name: 'MixinMap',
+  data () {
+    return {
+      isMapStateConsole: false,
+    }
+  },
   methods: {
     openModal () { this.$eventBus.$emit('openModal', 'ModalSample') },
     closeModal () { this.$eventBus.$emit('closeModal', 'ModalSample') },
@@ -16,10 +21,24 @@ export default {
     },
     clickMap () {
       if (this.isMapStateConsole) console.log('clickMap', arguments)
+      console.log('lat: ', arguments[0].latlng._lat)
+      console.log('lng: ', arguments[0].latlng._lng)
+      // this.addMarker(arguments[0].latlng)
       this.closeWindow()
       this.closeModal()
       this.setDeSelectMarker()
       this.isMarkerClickState = false
+    },
+    addMarker (latlng) {
+      this.$store.commit('addMarker', {
+        id: this.COMMON.UUID(),
+        lat: latlng._lat,
+        lng: latlng._lng,
+        title: 'HIHI',
+        contents: 'HIHI',
+        createtime: '2020-05-13 20:00',
+        naverMarker: null,
+      })
     },
     clickMarker (event, markerId) {
       if (this.isMapStateConsole) console.log('clickMarker', arguments)
@@ -66,7 +85,7 @@ export default {
     },
     setDeSelectMarker () {
       this.$store.commit('setDeSelectMarker')
-    }
+    },
   }
 }
 </script>

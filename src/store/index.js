@@ -83,6 +83,9 @@ export default new Vuex.Store({
         return marker.id === _markerId
       }).naverMarker = __naverMaker
     },
+    addMarker (state, marker) {
+      state.markers.push(marker)
+    },
   },
   getters: {
     getMarkers: state => state.markers,
