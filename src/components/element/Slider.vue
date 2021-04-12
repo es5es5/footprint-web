@@ -7,7 +7,11 @@
         :marker="item"
         :isActiveCard="item.id === mixinSelectedMarker.id"
         :isSliderActive="isSliderActive"
-        @click.native="clickCard(item.id)"
+        @click.native="clickCard({
+          id: item.id,
+          lat: item.lat,
+          lng: item.lng,
+        })"
       ></Card>
     </div>
   </div>
@@ -42,10 +46,6 @@ export default {
     }
   },
   methods: {
-    clickCard (markerId) {
-      this.setSelectMarker(markerId)
-      this.openModal()
-    }
   }
 }
 </script>

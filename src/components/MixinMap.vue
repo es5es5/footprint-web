@@ -7,16 +7,21 @@ export default {
   name: 'MixinMap',
   data () {
     return {
+      isMapStateConsole: true,
+
       isWindowOpen: false,
       isMarkerClickState: false,
-      isMapStateConsole: false,
     }
   },
   methods: {
     openModal () { this.$eventBus.$emit('openModal', 'ModalSample') },
     closeModal () { this.$eventBus.$emit('closeModal', 'ModalSample') },
+    debug () {
+      console.log(this.Map.getCenterPoint())
+    },
     loadMap () {
       if (this.isMapStateConsole) console.log('loadMap', arguments)
+      this.$store.commit('setMap', arguments[0])
     },
     loadWindow () {
       if (this.isMapStateConsole) console.log('loadWindow', arguments)
@@ -70,12 +75,12 @@ export default {
       this.$store.commit('setSelectedMarker', _marker)
     },
     openWindow (event, markerId) {
-      if (this.isMapStateConsole) console.log('openWindow', arguments, markerId)
-      this.closeWindow()
-      this.setSelectMarker(markerId)
-      this.$nextTick(() => {
-        this.isWindowOpen = true
-      })
+      // if (this.isMapStateConsole) console.log('openWindow', arguments, markerId)
+      // this.closeWindow()
+      // this.setSelectMarker(markerId)
+      // this.$nextTick(() => {
+      //   this.isWindowOpen = true
+      // })
     },
     onMarkerLoaded () {
       if (this.isMapStateConsole) console.log('onMarkerLoaded', arguments[0], arguments[1])
@@ -87,6 +92,17 @@ export default {
     },
     setDeSelectMarker () {
       this.$store.commit('setDeSelectMarker')
+    },
+    clickCard (marker) {
+      this.setMapCenter(marker.lat, marker.lng)
+      this.setSelectMarker(marker.id)
+      this.openModal()
+    },
+    setMapCenter (lat, lng) {
+      this.$store.commit('setMapCenter', [lat, lng])
+    },
+    setMapZoom (level) {
+      this.$store.commit('setMapZoom', level)
     },
   }
 }

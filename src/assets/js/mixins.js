@@ -9,6 +9,8 @@ export default {
       },
       computed: {
         mixinIsMobile () { return window.innerWidth < 500 },
+
+        mixinMap () { return this.$store.getters.getMap },
         mixinMarkers () { return this.$store.getters.getMarkers },
         mixinSelectedMarker () { return this.$store.getters.getSelectedMarker },
       },

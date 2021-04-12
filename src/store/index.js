@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    Map: {},
     markers: [
       {
         id: '1',
@@ -86,8 +87,12 @@ export default new Vuex.Store({
     addMarker (state, marker) {
       state.markers.push(marker)
     },
+    setMap (state, value) { state.Map = value },
+    setMapCenter (state, [lat, lng]) { state.Map.setCenter(lat, lng) },
+    setMapZoom (state, level) { state.Map.setZoom(level, true) },
   },
   getters: {
+    getMap: state => state.Map,
     getMarkers: state => state.markers,
     getSelectedMarker: state => state.selectedMarker,
   },

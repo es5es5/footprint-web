@@ -1,5 +1,6 @@
 <template>
   <div id="map_container">
+    <!-- <button type="button" @click="debug">HI</button> -->
     <!-- <button type="button" @click="addMarker">HI</button> -->
     <naver-maps
       :width="_width"
