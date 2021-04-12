@@ -5,7 +5,7 @@
         v-for="(item, index) in mixinMarkers"
         :key="index"
         :marker="item"
-        :isActiveCard="item.id === activeCardId"
+        :isActiveCard="item.id === mixinSelectedMarker.id"
         :isSliderActive="isSliderActive"
         @click.native="clickCard(item.id)"
       ></Card>
@@ -43,9 +43,8 @@ export default {
   },
   methods: {
     clickCard (markerId) {
-      this.activeCardId = markerId
-      this.setSelectMarker(markerId)
       this.openWindow(null, markerId)
+      this.openModal()
     }
   }
 }

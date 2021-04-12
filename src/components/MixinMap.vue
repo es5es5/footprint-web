@@ -6,9 +6,8 @@
 export default {
   name: 'MixinMap',
   methods: {
-    openModal () {
-      this.$eventBus.$emit('openModal', 'ModalSample')
-    },
+    openModal () { this.$eventBus.$emit('openModal', 'ModalSample') },
+    closeModal () { this.$eventBus.$emit('closeModal', 'ModalSample') },
     loadMap () {
       if (this.isMapStateConsole) console.log('loadMap', arguments)
     },
@@ -18,6 +17,7 @@ export default {
     clickMap () {
       if (this.isMapStateConsole) console.log('clickMap', arguments)
       this.closeWindow()
+      this.closeModal()
       this.isMarkerClickState = false
     },
     clickMarker (event, markerId) {
@@ -28,7 +28,7 @@ export default {
     },
     hoverMarker (event, markerId) {
       if (!this.mixinIsMobile) {
-        this.openWindow(event, markerId)
+        this.openWindow(null, markerId)
       }
     },
     hoverOutMarker () {
@@ -36,19 +36,21 @@ export default {
       this.closeWindow()
     },
     setSelectMarker (markerId) {
-      console.log('setSelectMarker', markerId)
+      if (this.isMapStateConsole) console.log('setSelectMarker', markerId)
       const _marker = this.mixinMarkers.find(marker => { return marker.id === markerId })
-      console.log('_marker', _marker)
+      if (this.isMapStateConsole) console.log('_marker', _marker)
       this.$store.commit('setSelectedMarker', _marker)
     },
     openWindow (event, markerId) {
-      console.log('openWindow', arguments, markerId)
-      this.isWindowOpen = false
+      if (this.isMapStateConsole) console.log('openWindow', arguments, markerId)
+      this.closeWindow()
       this.setSelectMarker(markerId)
-      this.$nextTick(() => { this.isWindowOpen = true })
+      this.$nextTick(() => {
+        this.isWindowOpen = true
+      })
     },
     onMarkerLoaded () {
-      console.log('onMarkerLoaded', arguments[0], arguments[1])
+      if (this.isMapStateConsole) console.log('onMarkerLoaded', arguments[0], arguments[1])
       this.$store.commit('markerLoaded', [arguments[0], arguments[1]])
     },
     closeWindow () {
