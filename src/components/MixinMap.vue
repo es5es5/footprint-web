@@ -7,6 +7,8 @@ export default {
   name: 'MixinMap',
   data () {
     return {
+      isWindowOpen: false,
+      isMarkerClickState: false,
       isMapStateConsole: false,
     }
   },

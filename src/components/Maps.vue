@@ -46,8 +46,6 @@ export default {
   ],
   data () {
     return {
-      isWindowOpen: false,
-      isMarkerClickState: false,
       mapOptions: {
         lat: 37.873785,
         lng: 127.742249,

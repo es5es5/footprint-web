@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     clickCard (markerId) {
-      this.openWindow(null, markerId)
+      this.setSelectMarker(markerId)
       this.openModal()
     }
   }
