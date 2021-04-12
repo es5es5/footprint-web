@@ -66,11 +66,7 @@ export default {
 
       if (window.innerHeight - modalTop < document.getElementById(`${_this._modalId}`).innerHeight) {
         document.getElementById(`${_this._modalId}`).style.top = `${window.innerHeight - window.innerHeight.innerHeight}px`
-        // $(`#${_this._modalId}`).css('top', ($(window).height() - $(`#${_this._modalId}`).height()) + 'px')
       }
-      // if ($(window).height() - modalTop < $(`#${_this._modalId}`).height()) {
-      //   $(`#${_this._modalId}`).css('top', ($(window).height() - $(`#${_this._modalId}`).height()) + 'px')
-      // }
     }
   }
 }
@@ -82,6 +78,12 @@ export default {
   display: inline-block;
   margin-left: 2px;
   min-width: 200px;
+  max-width: 200px;
+
+  @media (min-width: 500px) { max-width: 230px; }
+  @media (min-width: 750px) { max-width: 400px; }
+  @media (min-width: 1024px) { max-width: 500px; }
+
   vertical-align: top;
   background-color: #fff;
   box-shadow: 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
