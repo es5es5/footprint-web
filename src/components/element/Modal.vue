@@ -125,6 +125,11 @@ export default {
   color: $gray;
   background: none;
   border: 0;
+  outline: none;
   color: rgb(179, 179, 179);
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 </style>
