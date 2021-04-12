@@ -41,6 +41,9 @@ export default new Vuex.Store({
   mutations: {
     setMarkers (state, value) { state.markers = value },
     setSelectedMarker (state, value) { state.selectedMarker = value },
+    markerLoaded (state, [_naverMarker, _markerId]) {
+      state.markers.find(marker => { return marker.id === _markerId }).naverMarker = _naverMarker
+    },
   },
   getters: {
     getMarkers: state => state.markers,

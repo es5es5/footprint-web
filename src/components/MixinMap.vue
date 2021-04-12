@@ -21,6 +21,7 @@ export default {
       this.isMarkerClickState = false
     },
     clickMarker (event, markerId) {
+      console.log('clickMarker', arguments)
       this.isMarkerClickState = true
       this.setSelectMarker(markerId)
       this.openModal()
@@ -35,19 +36,24 @@ export default {
       this.closeWindow()
     },
     setSelectMarker (markerId) {
-      this.$store.commit('setSelectedMarker', this.mixinMarkers.find(marker => { return marker.id === markerId }))
+      console.log('setSelectMarker', markerId)
+      const _marker = this.mixinMarkers.find(marker => { return marker.id === markerId })
+      console.log('_marker', _marker)
+      this.$store.commit('setSelectedMarker', _marker)
     },
     openWindow (event, markerId) {
+      console.log('openWindow', arguments, markerId)
       this.isWindowOpen = false
       this.setSelectMarker(markerId)
       this.$nextTick(() => { this.isWindowOpen = true })
     },
     onMarkerLoaded () {
-      this.mixinMarkers.find(marker => { return marker.id === arguments[1] }).naverMarker = arguments[0]
+      console.log('onMarkerLoaded', arguments[0], arguments[1])
+      this.$store.commit('markerLoaded', [arguments[0], arguments[1]])
     },
     closeWindow () {
       this.isWindowOpen = false
-      this.$store.commit('setSelectedMarker', { naverMarker: null })
+      this.$store.commit('setSelectedMarker', { naverMarker: {} })
     },
   }
 }

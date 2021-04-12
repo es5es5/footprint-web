@@ -7,7 +7,7 @@
         :marker="item"
         :isActiveCard="item.id === activeCardId"
         :isSliderActive="isSliderActive"
-        @click.native="setCardActive(item.id)"
+        @click.native="clickCard(item.id)"
       ></Card>
     </div>
   </div>
@@ -42,9 +42,10 @@ export default {
     }
   },
   methods: {
-    setCardActive (markerId) {
+    clickCard (markerId) {
       this.activeCardId = markerId
-      this.clickMarker(null, markerId)
+      this.setSelectMarker(markerId)
+      this.openWindow(null, markerId)
     }
   }
 }

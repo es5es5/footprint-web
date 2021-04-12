@@ -10,7 +10,7 @@
       <naver-info-window
         class="info-window"
         @load="loadWindow"
-        :isOpen="_isWindowOpen"
+        :isOpen="isWindowOpen"
         :marker="mixinSelectedMarker.naverMarker">
         <div class="info-window-container">
           <h1>{{ mixinSelectedMarker.title }}</h1>
@@ -39,9 +39,6 @@ export default {
   computed: {
     _width () { return window.innerWidth },
     _height () { return window.innerHeight - 50 },
-    _isWindowOpen () {
-      return this.isWindowOpen
-    },
   },
   mixins: [
     MixinMap,
