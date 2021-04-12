@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import MixinMap from './MixinMap'
+import MixinMaps from './MixinMaps'
 
 export default {
   name: 'Maps',
@@ -43,7 +43,7 @@ export default {
     _height () { return window.innerHeight - 50 },
   },
   mixins: [
-    MixinMap,
+    MixinMaps,
   ],
   data () {
     return {

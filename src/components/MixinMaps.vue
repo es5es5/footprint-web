@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'MixinMap',
+  name: 'MixinMaps',
   data () {
     return {
       isMapStateConsole: true,
@@ -17,7 +17,6 @@ export default {
     openModal () { this.$eventBus.$emit('openModal', 'ModalSample') },
     closeModal () { this.$eventBus.$emit('closeModal', 'ModalSample') },
     debug () {
-      console.log(this.Map.getCenterPoint())
     },
     loadMap () {
       if (this.isMapStateConsole) console.log('loadMap', arguments)

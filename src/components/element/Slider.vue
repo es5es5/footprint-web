@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import MixinMap from '../MixinMap'
+import MixinMaps from '../MixinMaps'
 import Card from './Card'
 
 export default {
@@ -29,7 +29,7 @@ export default {
   computed: {
   },
   mixins: [
-    MixinMap,
+    MixinMaps,
   ],
   watch: {
   },
