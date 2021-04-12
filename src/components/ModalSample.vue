@@ -7,6 +7,10 @@
       {{ mixinSelectedMarker.contents }}
     </template>
     <div slot="modalActions">
+      <div v-if="mixinDebug">
+        <p>lat: {{ mixinSelectedMarker.lat }}</p>
+        <p>lng: {{ mixinSelectedMarker.lng }}</p>
+      </div>
     </div>
   </Modal>
 </template>
@@ -17,6 +21,8 @@ export default {
   props: {
   },
   methods: {
+    a () {
+    }
   }
 }
 </script>

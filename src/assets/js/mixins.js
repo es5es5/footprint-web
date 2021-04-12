@@ -9,6 +9,7 @@ export default {
       },
       computed: {
         mixinIsMobile () { return window.innerWidth < 500 },
+        mixinDebug () { return process.env.VUE_APP_DEBUG },
 
         mixinMap () { return this.$store.getters.getMap },
         mixinLatlng () { return this.$store.getters.getLatlng },

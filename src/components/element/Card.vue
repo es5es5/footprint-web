@@ -9,6 +9,8 @@
       >
         <p class="title">{{ marker.title }}</p>
         <p class="contents">{{ marker.contents }}</p>
+        <p class="latlng" v-if="mixinDebug">{{ marker.lat }}</p>
+        <p class="latlng" v-if="mixinDebug">{{ marker.lng }}</p>
         <p class="createtime">{{ marker.createtime }}</p>
       </div>
     </div>
@@ -104,6 +106,12 @@ export default {
   > .createtime {
     text-align: right;
     font-size: .6em;
+  }
+
+  > .latlng {
+    font-size: 1em;
+    font-weight: normal;
+    color: #000;
   }
 }
 </style>

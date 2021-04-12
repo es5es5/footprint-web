@@ -7,8 +7,6 @@ export default {
   name: 'MixinMaps',
   data () {
     return {
-      isMapStateConsole: true,
-
       isWindowOpen: false,
       isMarkerClickState: false,
       latlng: {
@@ -23,14 +21,14 @@ export default {
     debug () {
     },
     loadMap () {
-      if (this.isMapStateConsole) console.log('loadMap', arguments)
+      if (this.mixinDebug) console.log('loadMap', arguments)
       this.$store.commit('setMap', arguments[0])
     },
     loadWindow () {
-      if (this.isMapStateConsole) console.log('loadWindow', arguments)
+      if (this.mixinDebug) console.log('loadWindow', arguments)
     },
     clickMap () {
-      if (this.isMapStateConsole) console.log('clickMap', arguments)
+      if (this.mixinDebug) console.log('clickMap', arguments)
       console.log('lat: ', arguments[0].latlng._lat)
       console.log('lng: ', arguments[0].latlng._lng)
       this.$store.commit('setLatlng', {
@@ -55,34 +53,34 @@ export default {
       })
     },
     clickMarker (event, markerId) {
-      if (this.isMapStateConsole) console.log('clickMarker', arguments)
+      if (this.mixinDebug) console.log('clickMarker', arguments)
       this.isMarkerClickState = true
       this.setSelectMarker(markerId)
       this.openModal()
     },
     hoverMarker (event, markerId) {
-      if (this.mixinIsMobile) {
-        return false
-      } else {
-        this.openWindow(null, markerId)
-      }
+      // if (this.mixinIsMobile) {
+      //   return false
+      // } else {
+      //   this.openWindow(null, markerId)
+      // }
     },
     hoverOutMarker () {
-      if (this.isMarkerClickState) return false
-      if (this.mixinIsMobile) {
-        return false
-      } else {
-        this.closeWindow()
-      }
+      // if (this.isMarkerClickState) return false
+      // if (this.mixinIsMobile) {
+      //   return false
+      // } else {
+      //   this.closeWindow()
+      // }
     },
     setSelectMarker (markerId) {
-      if (this.isMapStateConsole) console.log('setSelectMarker', markerId)
+      if (this.mixinDebug) console.log('setSelectMarker', markerId)
       const _marker = this.mixinMarkers.find(marker => { return marker.id === markerId })
-      if (this.isMapStateConsole) console.log('_marker', _marker)
+      if (this.mixinDebug) console.log('_marker', _marker)
       this.$store.commit('setSelectedMarker', _marker)
     },
     openWindow (event, markerId) {
-      // if (this.isMapStateConsole) console.log('openWindow', arguments, markerId)
+      // if (this.mixinDebug) console.log('openWindow', arguments, markerId)
       // this.closeWindow()
       // this.setSelectMarker(markerId)
       // this.$nextTick(() => {
@@ -90,7 +88,7 @@ export default {
       // })
     },
     onMarkerLoaded () {
-      if (this.isMapStateConsole) console.log('onMarkerLoaded', arguments[0], arguments[1])
+      if (this.mixinDebug) console.log('onMarkerLoaded', arguments[0], arguments[1])
       this.$store.commit('markerLoaded', [arguments[0], arguments[1]])
     },
     closeWindow () {
