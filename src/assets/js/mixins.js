@@ -9,7 +9,7 @@ export default {
       },
       computed: {
         mixinIsMobile () { return window.innerWidth < 500 },
-        mixinDebug () { return process.env.VUE_APP_DEBUG },
+        mixinDebug () { return process.env.VUE_APP_DEBUG === 'true' },
 
         mixinMap () { return this.$store.getters.getMap },
         mixinPosition () { return this.$store.getters.getPosition },
