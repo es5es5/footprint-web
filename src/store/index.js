@@ -6,6 +6,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     Map: {},
+    latlng: {
+      lat: 37.873785,
+      lng: 127.742590,
+    },
     markers: [
       {
         id: '1',
@@ -50,6 +54,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setMarkers (state, value) { state.markers = value },
+    setLatlng (state, value) { state.latlng = value },
     setDeSelectMarker (state) {
       state.markers.forEach(marker => {
         marker.naverMarker = marker.naverMarker.setIcon({
@@ -93,6 +98,7 @@ export default new Vuex.Store({
   },
   getters: {
     getMap: state => state.Map,
+    getLatlng: state => state.latlng,
     getMarkers: state => state.markers,
     getSelectedMarker: state => state.selectedMarker,
   },

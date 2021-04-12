@@ -11,6 +11,10 @@ export default {
 
       isWindowOpen: false,
       isMarkerClickState: false,
+      latlng: {
+        lat: 37.873785,
+        lng: 127.742249,
+      }
     }
   },
   methods: {
@@ -29,17 +33,21 @@ export default {
       if (this.isMapStateConsole) console.log('clickMap', arguments)
       console.log('lat: ', arguments[0].latlng._lat)
       console.log('lng: ', arguments[0].latlng._lng)
+      this.$store.commit('setLatlng', {
+        lat: arguments[0].latlng._lat,
+        lng: arguments[0].latlng._lng,
+      })
       // this.addMarker(arguments[0].latlng)
       this.closeWindow()
       this.closeModal()
       this.setDeSelectMarker()
       this.isMarkerClickState = false
     },
-    addMarker (latlng) {
+    addMarker () {
       this.$store.commit('addMarker', {
         id: this.COMMON.UUID(),
-        lat: latlng._lat,
-        lng: latlng._lng,
+        lat: this.mixinLatlng.lat,
+        lng: this.mixinLatlng.lng,
         title: 'HIHI',
         contents: 'HIHI',
         createtime: '2020-05-13 20:00',

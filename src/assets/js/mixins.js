@@ -11,6 +11,7 @@ export default {
         mixinIsMobile () { return window.innerWidth < 500 },
 
         mixinMap () { return this.$store.getters.getMap },
+        mixinLatlng () { return this.$store.getters.getLatlng },
         mixinMarkers () { return this.$store.getters.getMarkers },
         mixinSelectedMarker () { return this.$store.getters.getSelectedMarker },
       },

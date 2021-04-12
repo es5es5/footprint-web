@@ -1,19 +1,23 @@
 <template>
   <div id="circle">
-    <img src="@/assets/images/icons/marker-add.svg" class="marker-add" alt="marker-add">
+    <div class="button_wrap" @click="addMarker">
+      <img src="@/assets/images/icons/marker-add.svg" class="marker-add" alt="marker-add">
+    </div>
   </div>
 </template>
 
 <script>
+import MixinMaps from '../MixinMaps'
+
 export default {
-  name: 'Circle',
+  name: 'CircleButton',
+  mixins: [
+    MixinMaps,
+  ]
 }
 </script>
 
 <style lang="scss" scoped>
-#circle {
-}
-
 .marker-add {
   font-size: 16px;
   z-index: 9999;
