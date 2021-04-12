@@ -16,6 +16,15 @@ export default new Vuex.Store({
         naverMarker: null,
       },
       {
+        id: '11',
+        lat: 37.873785,
+        lng: 127.741249,
+        title: '3POP',
+        contents: '3POP HIHI',
+        createtime: '2020-05-13 20:00',
+        naverMarker: null,
+      },
+      {
         id: '2',
         lat: 37.874000,
         lng: 127.743000,
@@ -42,7 +51,13 @@ export default new Vuex.Store({
     setMarkers (state, value) { state.markers = value },
     setSelectedMarker (state, value) { state.selectedMarker = value },
     markerLoaded (state, [_naverMarker, _markerId]) {
-      state.markers.find(marker => { return marker.id === _markerId }).naverMarker = _naverMarker
+      const __naverMaker = _naverMarker.setIcon({
+        url: require('@/assets/images/icons/marker-black.svg'),
+        size: [22, 33],
+        origin: [0, 0],
+        anchor: [22 / 2, 33 / 2],
+      })
+      state.markers.find(marker => { return marker.id === _markerId }).naverMarker = __naverMaker
     },
   },
   getters: {
