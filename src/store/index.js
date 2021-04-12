@@ -49,7 +49,19 @@ export default new Vuex.Store({
   },
   mutations: {
     setMarkers (state, value) { state.markers = value },
-    setSelectedMarker (state, value) { state.selectedMarker = value },
+    setDeSelectMarker (state) { state.selectedMarker = { naverMarker: {} } },
+    setSelectedMarker (state, value) {
+      console.log('setSelectedMarker', value)
+      state.markers.forEach(marker => {
+        marker.naverMarker = marker.naverMarker.setIcon({
+          url: require(`@/assets/images/icons/marker-${marker.id === value.id ? 'primary' : 'black'}.svg`),
+          size: [22, 33],
+          origin: [0, 0],
+          anchor: [22 / 2, 33 / 2],
+        })
+      })
+      state.selectedMarker = value
+    },
     markerLoaded (state, [_naverMarker, _markerId]) {
       const __naverMaker = _naverMarker.setIcon({
         url: require('@/assets/images/icons/marker-black.svg'),

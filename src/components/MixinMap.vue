@@ -55,7 +55,7 @@ export default {
     },
     closeWindow () {
       this.isWindowOpen = false
-      this.$store.commit('setSelectedMarker', { naverMarker: {} })
+      this.$store.commit('setDeSelectMarker')
     },
   }
 }
