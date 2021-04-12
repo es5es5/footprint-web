@@ -46,7 +46,7 @@ export default {
 
 <style lang="scss" scoped>
 .card_wrap {
-  padding: .5em 1em;
+  padding: .6em 1.25em;
   opacity: 0;
   transition: opacity .5s ease-in-out;
 
