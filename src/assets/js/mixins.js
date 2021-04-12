@@ -12,6 +12,7 @@ export default {
         mixinDebug () { return process.env.VUE_APP_DEBUG },
 
         mixinMap () { return this.$store.getters.getMap },
+        mixinPosition () { return this.$store.getters.getPosition },
         mixinLatlng () { return this.$store.getters.getLatlng },
         mixinMarkers () { return this.$store.getters.getMarkers },
         mixinSelectedMarker () { return this.$store.getters.getSelectedMarker },

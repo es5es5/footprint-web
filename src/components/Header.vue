@@ -17,6 +17,9 @@ import Slider from './element/Slider'
 
 export default {
   name: 'Header',
+  mounted () {
+    if (!this.mixinIsMobile) this.isSliderActive = true
+  },
   components: {
     Slider,
   },

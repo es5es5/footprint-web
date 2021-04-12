@@ -9,10 +9,6 @@ export default {
     return {
       isWindowOpen: false,
       isMarkerClickState: false,
-      latlng: {
-        lat: 37.873785,
-        lng: 127.742249,
-      }
     }
   },
   methods: {
@@ -35,7 +31,15 @@ export default {
         lat: arguments[0].latlng._lat,
         lng: arguments[0].latlng._lng,
       })
-      // this.addMarker(arguments[0].latlng)
+
+      if (this.mixinPosition.state === 'READY') {
+        this.$store.commit('setPosition', {
+          state: 'COMPLETE',
+          lat: arguments[0].latlng._lat,
+          lng: arguments[0].latlng._lng,
+        })
+        this.addMarker()
+      }
       this.closeWindow()
       this.closeModal()
       this.setDeSelectMarker()
@@ -44,13 +48,17 @@ export default {
     addMarker () {
       this.$store.commit('addMarker', {
         id: this.COMMON.UUID(),
-        lat: this.mixinLatlng.lat,
-        lng: this.mixinLatlng.lng,
+        lat: this.mixinPosition.lat,
+        lng: this.mixinPosition.lng,
         title: 'HIHI',
         contents: 'HIHI',
         createtime: '2020-05-13 20:00',
         naverMarker: null,
       })
+      this.setPositionState('OFF')
+    },
+    setPositionState (state) {
+      this.$store.commit('setPosition', { state })
     },
     clickMarker (event, markerId) {
       if (this.mixinDebug) console.log('clickMarker', arguments)
@@ -73,12 +81,6 @@ export default {
       //   this.closeWindow()
       // }
     },
-    setSelectMarker (markerId) {
-      if (this.mixinDebug) console.log('setSelectMarker', markerId)
-      const _marker = this.mixinMarkers.find(marker => { return marker.id === markerId })
-      if (this.mixinDebug) console.log('_marker', _marker)
-      this.$store.commit('setSelectedMarker', _marker)
-    },
     openWindow (event, markerId) {
       // if (this.mixinDebug) console.log('openWindow', arguments, markerId)
       // this.closeWindow()
@@ -86,6 +88,12 @@ export default {
       // this.$nextTick(() => {
       //   this.isWindowOpen = true
       // })
+    },
+    setSelectMarker (markerId) {
+      if (this.mixinDebug) console.log('setSelectMarker', markerId)
+      const _marker = this.mixinMarkers.find(marker => { return marker.id === markerId })
+      if (this.mixinDebug) console.log('_marker', _marker)
+      this.$store.commit('setSelectedMarker', _marker)
     },
     onMarkerLoaded () {
       if (this.mixinDebug) console.log('onMarkerLoaded', arguments[0], arguments[1])

@@ -10,6 +10,11 @@ export default new Vuex.Store({
       lat: 37.873785,
       lng: 127.742590,
     },
+    position: {
+      state: 'OFF',
+      lat: 37.873785,
+      lng: 127.742249,
+    },
     markers: [
       {
         id: '1',
@@ -63,6 +68,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setMarkers (state, value) { state.markers = value },
+    setPosition (state, value) { Object.assign(state.position, value) },
     setLatlng (state, value) { state.latlng = value },
     setDeSelectMarker (state) {
       state.markers.forEach(marker => {
@@ -107,6 +113,7 @@ export default new Vuex.Store({
   },
   getters: {
     getMap: state => state.Map,
+    getPosition: state => state.position,
     getLatlng: state => state.latlng,
     getMarkers: state => state.markers,
     getSelectedMarker: state => state.selectedMarker,

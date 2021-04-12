@@ -1,7 +1,12 @@
 <template>
   <div id="circle">
-    <div class="button_wrap" @click="addMarker">
-      <img src="@/assets/images/icons/marker-add.svg" class="marker-add" alt="marker-add">
+    <div class="button_wrap" @click="setPositionState('READY')">
+      <template v-if="mixinPosition.state === 'READY'">
+        <img src="@/assets/images/icons/marker-add-success.svg" class="marker-add" alt="marker-add">
+      </template>
+      <template v-else>
+        <img src="@/assets/images/icons/marker-add-primary.svg" class="marker-add" alt="marker-add">
+      </template>
     </div>
   </div>
 </template>
@@ -18,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.marker-add {
+#circle {
   font-size: 16px;
   z-index: 9999;
   width: 3em;
@@ -62,6 +67,11 @@ export default {
     height: 5em;
     right: 4.5em;
     bottom: 5em;
+  }
+
+  .marker-add {
+    width: 80%;
+    margin: 10%;
   }
 }
 </style>
