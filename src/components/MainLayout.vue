@@ -3,6 +3,7 @@
     <Header />
     <ModalGroup />
     <Maps />
+    <CircleButton />
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import Header from './Header'
 import ModalGroup from './ModalGroup'
 import Maps from './Maps'
+import CircleButton from './element/CircleButton'
 
 export default {
   name: 'MainLayout',
@@ -19,6 +21,7 @@ export default {
     Header,
     ModalGroup,
     Maps,
+    CircleButton,
   },
   computed: {
   },
