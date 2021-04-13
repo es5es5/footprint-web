@@ -113,7 +113,7 @@ export default {
     color: $primary;
     font-weight: bold;
     transition: all 1s;
-    margin-bottom: 2px;
+    margin-bottom: .5em;
   }
 
   > .contents {
@@ -123,7 +123,7 @@ export default {
   }
 
   > .createtime {
-    margin-top: .5em;
+    margin-top: 1em;
     text-align: right;
     font-size: .6em;
   }

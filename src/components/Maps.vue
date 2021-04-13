@@ -35,9 +35,13 @@
 
 <script>
 import MixinMaps from './MixinMaps'
+import Datas from '@/assets/js/datas'
 
 export default {
   name: 'Maps',
+  created () {
+    this.mapOptions = Datas[process.env.VUE_APP_DATAS].mapOptions
+  },
   computed: {
     _width () { return window.innerWidth },
     _height () { return window.innerHeight - 50 },
