@@ -8,7 +8,7 @@
       <!-- <p v-html="mixinSelectedMarker.contents"></p> -->
       <div class="photo_wrap">
         <div v-for="(item, index) in mixinSelectedMarker.photos" :key="index" class="image">
-          <img :src="require(`@/assets/photos/${item}.jpg`)" alt="">
+          <img :src="item" alt="">
         </div>
       </div>
     </template>
