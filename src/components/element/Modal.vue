@@ -89,7 +89,7 @@ export default {
 }
 
 .modal_title {
-  padding: 10px;
+  padding: 10px 40px 10px 10px;
   height: 36px;
   line-height: 15px;
   background-color: $success;
@@ -100,6 +100,8 @@ export default {
     display: inline-block;
     color: #fff;
     font-size: 15px;
+    max-width: 100%;
+    @include ellipsis;
   }
 
   .closeImg {

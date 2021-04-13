@@ -115,6 +115,8 @@ export default {
     font-weight: bold;
     transition: all 1s;
     margin-bottom: .5em;
+    max-width: 100%;
+    @include ellipsis;
   }
 
   > .contents {
