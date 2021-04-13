@@ -4,7 +4,7 @@
       {{ mixinSelectedMarker.title }}
     </template>
     <template slot="modalBody">
-      {{ mixinSelectedMarker.contents }}
+      <p v-html="mixinSelectedMarker.contents"></p>
     </template>
     <div slot="modalActions">
       <div v-if="mixinDebug">
