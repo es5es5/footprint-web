@@ -189,7 +189,7 @@ const IT서비스본부 = {
       lng: 126.9806901,
       title: '맥도날드',
       contents: '기훈형님의 압도적 1픽. 먹지도 않지만 지겹다.',
-      createtime: '2020-05-13 20:00',
+      createtime: '2021-04-12 12:00',
       naverMarker: null,
     },
     {
@@ -198,7 +198,7 @@ const IT서비스본부 = {
       lng: 126.9804379,
       title: '국수나무',
       contents: '정결차장님이 메뉴를 시키면 늦게 나온다. 무슨 이유인지는 아무도 모른다.',
-      createtime: '2020-05-13 20:00',
+      createtime: '2020-03-13 20:00',
       naverMarker: null,
     },
     {
@@ -216,7 +216,7 @@ const IT서비스본부 = {
       lng: 126.9812326,
       title: '이수커피',
       contents: '근방에 있는 모든 피플라이프 사람을 만날 수 있는 커피숍이다. "Louis Lee" 쿠폰에 적립이 많이 되있다.',
-      createtime: '2020-05-13 20:00',
+      createtime: '2019-09-19 09:00',
       naverMarker: null,
     },
     {
