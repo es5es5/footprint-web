@@ -31,7 +31,7 @@ export default {
   methods: {
     toggleSlider () {
       this.isSliderActive = !this.isSliderActive
-    }
+    },
   }
 }
 </script>

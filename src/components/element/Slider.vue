@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 .slider_wrap {
-  padding: 3rem 0 2.5rem 0;
+  padding: 4rem 0 2.5rem 0;
   position: fixed;
   top: 50px;
   left: 0;
@@ -78,6 +78,10 @@ export default {
     @media (min-width: 500px) { width: 200px; }
     @media (min-width: 750px) { width: 300px; }
     @media (min-width: 1024px) { width: 400px; }
+
+    .search-card {
+      display: block;
+    }
   }
 
   .total {
@@ -89,7 +93,7 @@ export default {
 
   .search-card {
     position: absolute;
-    display: inline-block;
+    display: none;
     padding: .5rem 1rem;
     margin: 0 auto;
     width: calc(100% - 2rem - 6px);
