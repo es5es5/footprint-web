@@ -4,6 +4,7 @@
       :class="isSliderActive ? 'active' : ''"
     >
       <div
+        :id="marker.id"
         class="card"
         :class="[
           isActiveCard ? 'active' : '',

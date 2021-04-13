@@ -65,6 +65,10 @@ export default {
       this.isMarkerClickState = true
       this.setSelectMarker(markerId)
       this.openModal()
+      document.getElementById(markerId).scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      })
     },
     hoverMarker (event, markerId) {
       // if (this.mixinIsMobile) {
