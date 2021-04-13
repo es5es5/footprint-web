@@ -7,7 +7,7 @@
       :barHeight="6"
       :barWidth="30"
     />
-    <h1 class="heading">Louis Maps</h1>
+    <h1 class="heading">LOUIS MAPS.</h1>
     <Slider :isSliderActive="isSliderActive" />
   </div>
 </template>
@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap');
 
 #header {
   width: 100%;
@@ -47,12 +47,11 @@ export default {
 }
 
 .heading {
-  font-family: 'Fugaz One', cursive;
-  font-weight: bold;
+  font-family: 'Montserrat Subrayada', sans-serif;
   font-size: 32px;
   text-align: center;
   line-height: 32px;
-  letter-spacing: 3px;
+  letter-spacing: 0px;
 }
 </style>
 

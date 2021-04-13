@@ -5,7 +5,10 @@
     >
       <div
         class="card"
-        :class="isActiveCard ? 'active' : ''"
+        :class="[
+          isActiveCard ? 'active' : '',
+          mixinIsMobile ? 'mobile' : ''
+        ]"
       >
         <p class="title">{{ marker.title }}</p>
         <p class="contents">{{ marker.contents }}</p>
@@ -63,14 +66,29 @@ export default {
   color: grey;
   @include shadow;
   transition: all .5s;
+  border: 2px solid transparent;
 
   &:hover {
     cursor: pointer;
     transform: translateX(.5em);
   }
 
+  &.mobile {
+    .contents {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* 라인수 */
+      -webkit-box-orient: vertical;
+      word-wrap:break-word;
+      line-height: 1.2em;
+      height: 2.6em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+    }
+  }
+
   &.active {
     transform: translateX(.5em);
+    border: 2px solid $success;
 
     > .title {
       position: relative;
@@ -95,6 +113,7 @@ export default {
     color: $primary;
     font-weight: bold;
     transition: all 1s;
+    margin-bottom: 2px;
   }
 
   > .contents {
@@ -104,6 +123,7 @@ export default {
   }
 
   > .createtime {
+    margin-top: .5em;
     text-align: right;
     font-size: .6em;
   }

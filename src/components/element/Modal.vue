@@ -92,6 +92,7 @@ export default {
 .modal_title {
   padding: 10px;
   height: 36px;
+  line-height: 15px;
   background-color: $success;
   @include grab;
   @include clearfix;
