@@ -80,19 +80,19 @@ export default {
       if (this._medium) {
         return {
           'min-width': '200px',
-          'max-width': 'calc(350px - 5rem)',
+          'max-width': 'calc(100vw - 350px - 5rem)',
         }
       }
       if (this._large) {
         return {
           'min-width': '200px',
-          'max-width': 'calc(400px - 5rem)',
+          'max-width': 'calc(100vw - 400px - 5rem)',
         }
       }
       if (this._xlarge) {
         return {
           'min-width': '200px',
-          'max-width': 'calc(450px - 5rem)',
+          'max-width': 'calc(100vw - 450px - 5rem)',
         }
       }
     },

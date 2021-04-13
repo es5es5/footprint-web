@@ -113,7 +113,7 @@ export default {
     clickCard (marker) {
       this.setMapCenter(marker.lat, marker.lng)
       this.setSelectMarker(marker.id)
-      if (marker.photos > 0) {
+      if (marker.photos.length > 0) {
         this.openModal()
       }
     },

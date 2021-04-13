@@ -55,30 +55,30 @@ export default {
     setModalSize () {
       if (this._small) {
         return {
-          top: 'calc(50px + 5rem)',
-          // left: 'calc(180px + 1rem)'
-          right: '1rem'
+          top: 'calc(50px + 1rem)',
+          left: 'calc(180px + 1rem)'
+          // right: '1rem'
         }
       }
       if (this._medium) {
         return {
-          top: 'calc(50px + 5rem)',
-          // left: 'calc(200px + 3rem)'
-          right: '3rem'
+          top: 'calc(50px + 1rem)',
+          left: 'calc(200px + 3rem)'
+          // right: '3rem'
         }
       }
       if (this._large) {
         return {
-          top: 'calc(50px + 5rem)',
-          // left: 'calc(300px + 3rem)'
-          right: '3rem'
+          top: 'calc(50px + 1rem)',
+          left: 'calc(300px + 3rem)'
+          // right: '3rem'
         }
       }
       if (this._xlarge) {
         return {
-          top: 'calc(50px + 5rem)',
-          // left: 'calc(400px + 3rem)'
-          right: '3rem'
+          top: 'calc(50px + 1rem)',
+          left: 'calc(400px + 3rem)'
+          // right: '3rem'
         }
       }
     },
