@@ -1,5 +1,5 @@
 <template>
-  <div id="modal_group" :style="{position: 'fixed', 'z-index': 100, top: 'calc(50px + 1rem)', right: '1rem'}">
+  <div id="modal_group" :style="{position: 'fixed', 'z-index': 100, top: 'calc(50px + 5rem)', right: `${mixinIsMobile ? '1em' : '10em'}`}">
     <ModalSample v-if="modals.ModalSample.init" :style="{'z-index': modals.ModalSample.openIndex}" />
   </div>
 </template>
