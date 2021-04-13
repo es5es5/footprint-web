@@ -72,7 +72,7 @@ const IT서비스본부 = {
       lng: 126.9816698,
       title: '시티빌딩 8층',
       contents: '근무지라고 쓰고, 술 먹는 아지트라고 읽는다. 피플라이프의 핵심(Core) 인재들이 모두 모여있다.',
-      createtime: '2021-04-14 09:00',
+      createtime: 'Now',
       naverMarker: null,
     },
     {
