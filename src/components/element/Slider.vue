@@ -1,6 +1,7 @@
 <template>
   <div id="slider">
     <div class="slider_wrap" :class="isSliderActive ? 'active' : ''">
+      <input type="search" class="search-card">
       <div class="card_container">
         <Card
           v-for="(item, index) in mixinMarkers"
@@ -55,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 .slider_wrap {
-  padding: 2.5em 0;
+  padding: 3rem 0 2.5rem 0;
   position: fixed;
   top: 50px;
   left: 0;
@@ -84,6 +85,22 @@ export default {
     font-size: 1rem;
     bottom: 1rem;
     right: 1rem;
+  }
+
+  .search-card {
+    position: absolute;
+    display: inline-block;
+    padding: .5rem 1rem;
+    margin: 0 auto;
+    width: calc(100% - 2rem - 6px);
+    font-size: 1rem;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    height: 2rem;
+    border-radius: 4px;
+    outline: none;
+    border: 2px solid $success;
   }
 }
 

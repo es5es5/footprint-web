@@ -1,6 +1,8 @@
 
 import Vue from 'vue'
 
+import './fbase'
+
 import 'vue-burger-button/dist/vue-burger-button.css'
 import BurgerButton from 'vue-burger-button'
 import naver from 'vue-naver-maps'

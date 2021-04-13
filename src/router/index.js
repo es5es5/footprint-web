@@ -29,9 +29,9 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const routeMetaTitle = to.meta.title
   if (!routeMetaTitle) {
-    document.title = '발자취'
+    document.title = 'LOUIS MAPS'
   } else {
-    document.title = `${to.meta.title} | 발자취`
+    document.title = `${to.meta.title} | LOUIS MAPS`
   }
   next()
 })
