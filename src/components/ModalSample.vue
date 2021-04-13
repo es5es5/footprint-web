@@ -21,8 +21,6 @@ export default {
   props: {
   },
   methods: {
-    a () {
-    }
   }
 }
 </script>
