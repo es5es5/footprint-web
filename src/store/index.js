@@ -36,7 +36,6 @@ export default new Vuex.Store({
       state.selectedMarker = { naverMarker: {} }
     },
     setSelectedMarker (state, value) {
-      console.log('setSelectedMarker', value)
       state.markers.forEach(marker => {
         marker.naverMarker = marker.naverMarker.setIcon({
           url: require(`@/assets/images/icons/marker-${marker.id === value.id ? 'primary' : 'black'}.svg`),

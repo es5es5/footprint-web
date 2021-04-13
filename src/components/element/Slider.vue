@@ -109,7 +109,7 @@ export default {
 }
 
 .card_container {
-  height: calc(100vh - 50px - 5em);
+  height: calc(100vh - 50px - 6.5rem);
   overflow-y: scroll;
 }
 </style>

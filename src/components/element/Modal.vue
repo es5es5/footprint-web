@@ -77,12 +77,11 @@ export default {
 .modal {
   display: inline-block;
   margin-left: 2px;
-  min-width: 200px;
-  max-width: 200px;
+  max-width: calc(100vw - 180px - 2rem);
 
-  @media (min-width: 500px) { max-width: 230px; }
-  @media (min-width: 750px) { max-width: 400px; }
-  @media (min-width: 1024px) { max-width: 500px; }
+  @media (min-width: 500px) { max-width: calc(100vw - 200px - 2rem); }
+  @media (min-width: 750px) { max-width: calc(100vw - 300px - 2rem); }
+  @media (min-width: 1024px) { max-width: calc(100vw - 400px - 2rem); }
 
   vertical-align: top;
   background-color: #fff;
