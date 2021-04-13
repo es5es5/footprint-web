@@ -13,6 +13,7 @@
             id: item.id,
             lat: item.lat,
             lng: item.lng,
+            photos: item.photos,
           })"
         />
       </div>

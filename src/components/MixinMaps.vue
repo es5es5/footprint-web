@@ -60,12 +60,12 @@ export default {
     setPositionState (state) {
       this.$store.commit('setPosition', { state })
     },
-    clickMarker (event, markerId) {
+    clickMarker (event, marker) {
       if (this.mixinDebug) console.log('clickMarker', arguments)
       this.isMarkerClickState = true
-      this.setSelectMarker(markerId)
+      this.setSelectMarker(marker.id)
       this.openModal()
-      document.getElementById(markerId).scrollIntoView({
+      document.getElementById(marker.id).scrollIntoView({
         behavior: 'smooth',
         block: 'center',
       })
@@ -113,7 +113,9 @@ export default {
     clickCard (marker) {
       this.setMapCenter(marker.lat, marker.lng)
       this.setSelectMarker(marker.id)
-      this.openModal()
+      if (marker.photos > 0) {
+        this.openModal()
+      }
     },
     setMapCenter (lat, lng) {
       this.$store.commit('setMapCenter', [lat, lng - 0.00025])

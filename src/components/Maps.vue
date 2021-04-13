@@ -26,7 +26,10 @@
         :lng="item.lng"
         @mouseover="hoverMarker($event, item.id)"
         @mouseout="hoverOutMarker"
-        @click="clickMarker($event, item.id)"
+        @click="clickMarker($event, {
+          id: item.id,
+          photos: item.photos,
+        })"
         @load="onMarkerLoaded($event, item.id)"
       />
     </naver-maps>

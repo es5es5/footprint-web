@@ -16,6 +16,7 @@ const 찌니 = {
       title: '새마을금고',
       contents: '제2항의 재판관중 3인은 국회에서 선출하는 자를, 3인은 대법원장이 지명하는 자를 임명한다.',
       createtime: '2020-05-13 20:00',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -25,6 +26,7 @@ const 찌니 = {
       title: '3POP',
       contents: '국가는 평생교육을 진흥하여야 한다. 대통령은 국무회의의 의장이 되고, 국무총리는 부의장이 된다.',
       createtime: '2020-05-13 20:00',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -34,6 +36,7 @@ const 찌니 = {
       title: 'YOON',
       contents: '농업생산성의 제고와 농지의 합리적인 이용을 위하거나 불가피한 사정으로 발생하는 농지의 임대차와 위탁경영은 법률이 정하는 바에 의하여 인정된다.',
       createtime: '2020-05-13 20:00',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -43,6 +46,7 @@ const 찌니 = {
       title: '강원대학교 병원',
       contents: '사면·감형 및 복권에 관한 사항은 법률로 정한다. 모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.',
       createtime: '2020-05-13 20:00',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -52,6 +56,7 @@ const 찌니 = {
       title: '찌니 공간',
       contents: '대한민국의 경제질서는 개인과 기업의 경제상의 자유와 창의를 존중함을 기본으로 한다. 제1항의 탄핵소추는 국회재적의원 3분의 1 이상의 발의가 있어야 하며, 그 의결은 국회재적의원 과반수의 찬성이 있어야 한다. 다만, 대통령에 대한 탄핵소추는 국회재적의원 과반수의 발의와 국회재적의원 3분의 2 이상의 찬성이 있어야 한다.',
       createtime: '2020-05-13 20:00',
+      photos: [],
       naverMarker: null,
     },
   ]
@@ -73,6 +78,7 @@ const IT서비스본부 = {
       title: '시티빌딩 8층',
       contents: '근무지라고 쓰고, 술 먹는 아지트라고 읽는다. 피플라이프의 핵심(Core) 인재들이 모두 모여있다.',
       createtime: 'Now',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -82,6 +88,7 @@ const IT서비스본부 = {
       title: '(구)베스트 센터',
       contents: '유배지.',
       createtime: '2020-08-24 09:00',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -91,6 +98,7 @@ const IT서비스본부 = {
       title: '버거307',
       contents: '수제버거 좋아하면 한 번쯤은 추천. 버거 이름이 특이함.<br>(박차장님이 404 NOT FOUND 드립치는 곳임).',
       createtime: '2020-01-15 13:14',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -100,6 +108,7 @@ const IT서비스본부 = {
       title: '앙계장집아들',
       contents: '맛닭꼬 이전 시대에 최고의 순살맛집. 웅이가 자주 샀음.<br>"계장님~ 양계장집 치킨 사주세요~" 하면 바로 사줌(호구임).',
       createtime: '2020-01-16 14:28',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -109,6 +118,7 @@ const IT서비스본부 = {
       title: '인형뽑기1',
       contents: '대혁과장님이랑 건이가 최소 10만원씩 탕진하는 곳. 절대 얼마 썻는지 물어보면 안됨. "뽑았냐 못 뽑았냐" 이거만 질문 가능.',
       createtime: '2020-01-23 17:07',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -118,6 +128,7 @@ const IT서비스본부 = {
       title: '스시로로',
       contents: '초밥집. 대혁과장님이 좋아함. (좀 비싼듯).',
       createtime: '2019-12-01 11:50',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -127,6 +138,7 @@ const IT서비스본부 = {
       title: '느린마을양조장',
       contents: '노대표님이 좋아하는 막걸리집. 봄여름가을겨울 순으로 점점 강도가 세지는 막걸리를 즐길 수 있다. 개인적으로 봄-여름이 가장 난 듯. 뒤로 갈수록 빡셈.',
       createtime: '2019-04-24 19:18',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -136,6 +148,7 @@ const IT서비스본부 = {
       title: '삼육가',
       contents: '비싸고 맛있는 고기집. 웅이가 대혁과장님에게 거하게 쏘고 싶다고 해서 한 번 산적 있음(생색).',
       createtime: '2019-12-19 10:48',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -145,6 +158,7 @@ const IT서비스본부 = {
       title: '서가앤쿡',
       contents: '맛있는 플레이트가 있는 곳. 박차장님이 웅이 안 데려감.',
       createtime: '2021-04-02 12:15',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -154,6 +168,7 @@ const IT서비스본부 = {
       title: '영자피트니스',
       contents: '몸짱보이즈 집결지. 건이는 여기서 살 많이 뺏다(대단함).',
       createtime: '2019-12-01 20:00',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -163,6 +178,7 @@ const IT서비스본부 = {
       title: '쌍립빌딩',
       contents: '높으신 분(1100001)이 계신다.',
       createtime: '2020-07-24 09:00',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -172,6 +188,7 @@ const IT서비스본부 = {
       title: '리에또',
       contents: '멀지만 싸고 맛있어서 자주가는 파스타집이다. "1024 박민영"으로 적립하면 된다.',
       createtime: '2021-03-21 12:04',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -181,6 +198,7 @@ const IT서비스본부 = {
       title: '장미맨숀',
       contents: '시끄러운 술집, 웅이가 좋아한다.',
       createtime: '2020-03-29 20:00',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -190,6 +208,7 @@ const IT서비스본부 = {
       title: '맥도날드',
       contents: '기훈형님의 압도적 1픽. 먹지도 않지만 지겹다.',
       createtime: '2021-04-12 12:00',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -199,6 +218,7 @@ const IT서비스본부 = {
       title: '국수나무',
       contents: '정결차장님이 메뉴를 시키면 늦게 나온다. 무슨 이유인지는 아무도 모른다.',
       createtime: '2020-03-13 20:00',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -208,6 +228,7 @@ const IT서비스본부 = {
       title: '니뽕내뽕',
       contents: '파스타에 피자까지 곁들여 먹으면 맛있다(x). 돼지다(o).',
       createtime: '2020-03-25 11:55',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -217,6 +238,7 @@ const IT서비스본부 = {
       title: '이수커피',
       contents: '근방에 있는 모든 피플라이프 사람을 만날 수 있는 커피숍이다. "Louis Lee" 쿠폰에 적립이 많이 되있다.',
       createtime: '2019-09-19 09:00',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -226,6 +248,7 @@ const IT서비스본부 = {
       title: '하노이별',
       contents: '꽤 맛있는 쌀국수집. 요즘은 많이 가서 그런지 약간 질린다.',
       createtime: '2021-04-13 12:15',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -235,6 +258,7 @@ const IT서비스본부 = {
       title: '신전떡볶이',
       contents: '신전 떡볶이 먹으러 갈 원정대 모집합니다. 1/4',
       createtime: '2020-04-01 12:00',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -244,6 +268,7 @@ const IT서비스본부 = {
       title: '짬뽕타임',
       contents: '단체로 갈 때 무난하다. 지겨워하는 여론이 형성되있다.',
       createtime: '2021-02-21 12:02',
+      photos: [],
       naverMarker: null,
     },
     {
@@ -253,6 +278,7 @@ const IT서비스본부 = {
       title: '맛닭꼬',
       contents: '순살치킨이 겁나게 맛있다. 홀에서 먹으면 2,000원 추가다.',
       createtime: '2020-05-13 20:00',
+      photos: [],
       naverMarker: null,
     },
   ],
