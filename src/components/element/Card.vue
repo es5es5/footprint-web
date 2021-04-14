@@ -106,6 +106,19 @@ export default {
         border-radius: .4em;
       }
     }
+
+    &.mobile {
+      .contents {
+        overflow: initial;
+        text-overflow: initial;
+        display: -webkit-box;
+        -webkit-line-clamp: initial; /* 라인수 */
+        -webkit-box-orient: initial;
+        word-wrap:initial;
+        line-height: initial;
+        height: initial;
+      }
+    }
   }
 
   > .title {
