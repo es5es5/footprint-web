@@ -68,9 +68,11 @@ export default {
       if (marker.photos.length > 0) {
         this.openModal()
       }
-      document.getElementById(marker.id).scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
+      this.$nextTick(() => {
+        document.getElementById(marker.id).scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        })
       })
     },
     hoverMarker (event, markerId) {
@@ -120,6 +122,12 @@ export default {
       if (marker.photos.length > 0) {
         this.openModal()
       }
+      this.$nextTick(() => {
+        document.getElementById(marker.id).scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+        })
+      })
     },
     setMapCenter (lat, lng) {
       this.$store.commit('setMapCenter', [lat, lng - 0.00025])
