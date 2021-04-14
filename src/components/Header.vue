@@ -7,7 +7,7 @@
       :barHeight="6"
       :barWidth="30"
     />
-    <h1 class="heading">LOUIS MAPS.</h1>
+    <h1 class="heading">LOUIS MAPS. <span class="for">for KIM GEON</span></h1>
     <Slider :isSliderActive="isSliderActive" />
   </div>
 </template>
@@ -43,7 +43,7 @@ export default {
   width: 100%;
   height: 50px;
   padding: 10px;
-  background-color: $primary;
+  background-color: rgba($primary, .4);
 }
 
 .heading {
@@ -51,6 +51,11 @@ export default {
   font-size: 32px;
   text-align: center;
   line-height: 32px;
+}
+
+.for {
+  font-size: 24px;
+  color: $success;
 }
 </style>
 

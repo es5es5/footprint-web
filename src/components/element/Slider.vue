@@ -2,6 +2,7 @@
   <div id="slider">
     <div class="slider_wrap" :class="isSliderActive ? 'active' : ''">
       <!-- <input type="search" class="search-card"> -->
+      <p class="for">Good bye Geon.</p>
       <div class="card_container">
         <Card
           v-for="(item, index) in mixinMarkers"
@@ -83,6 +84,10 @@ export default {
     .search-card {
       display: block;
     }
+
+    .for {
+      opacity: 1;
+    }
   }
 
   .total {
@@ -106,6 +111,22 @@ export default {
     border-radius: 4px;
     outline: none;
     border: 2px solid $success;
+  }
+
+  .for {
+    position: absolute;
+    opacity: 0;
+    transition: all .5s;
+    padding: .5rem 1rem;
+    margin: 0 auto;
+    width: calc(100% - 2rem - 6px);
+    font-size: 1.25rem;
+    top: 0;
+    left: .5rem;
+    width: 100%;
+    overflow-x: hidden;
+    font-weight: bold;
+    color: $success;
   }
 }
 
