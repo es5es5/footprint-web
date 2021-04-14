@@ -90,22 +90,7 @@ export default {
   &.active {
     transform: translateX(.5em);
     border: 2px solid $success;
-
-    > .title {
-      position: relative;
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: .4em;
-        margin: 0 -.4em;
-        background-color: rgba($success, .6);
-        border-radius: .4em;
-      }
-    }
+    background-color: rgba(#E3F1F3, .9);
 
     &.mobile {
       .contents {
