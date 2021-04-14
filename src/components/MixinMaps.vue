@@ -52,7 +52,7 @@ export default {
         lng: this.mixinPosition.lng,
         title: 'HIHI',
         contents: 'HIHI',
-        createtime: '2020-05-13 20:00',
+        createtime: 'Now',
         naverMarker: null,
       })
       this.setPositionState('OFF')
