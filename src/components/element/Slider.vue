@@ -63,7 +63,7 @@ export default {
   top: 50px;
   left: 0;
   width: 0;
-  height: calc(100vh - 50px);
+  height: calc(100% - 50px);
   z-index: 9000;
   background-color: rgba(#000, .2);
   font-size: 14px;
@@ -111,7 +111,7 @@ export default {
 }
 
 .card_container {
-  max-height: calc(100vh - 50px - 5rem);
+  max-height: calc(100%);
   overflow-y: scroll;
 }
 </style>
