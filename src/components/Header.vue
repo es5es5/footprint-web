@@ -18,14 +18,13 @@ import Slider from './element/Slider'
 export default {
   name: 'Header',
   mounted () {
-    if (!this.mixinIsMobile) this.isSliderActive = true
   },
   components: {
     Slider,
   },
   data () {
     return {
-      isSliderActive: false
+      isSliderActive: true
     }
   },
   methods: {
