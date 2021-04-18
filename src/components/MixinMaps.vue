@@ -104,9 +104,9 @@ export default {
       if (this.mixinDebug) console.log('_marker', _marker)
       this.$store.commit('setSelectedMarker', _marker)
     },
-    onMarkerLoaded () {
-      if (this.mixinDebug) console.log('onMarkerLoaded', arguments[0], arguments[1])
-      this.$store.commit('markerLoaded', [arguments[0], arguments[1]])
+    onMarkerLoaded (naverMarker, marker) {
+      if (this.mixinDebug) console.log('onMarkerLoaded', arguments)
+      this.$store.commit('markerLoaded', [naverMarker, marker])
     },
     closeWindow () {
       this.isWindowOpen = false

@@ -10,6 +10,7 @@
           isActiveCard ? 'active' : '',
           mixinIsMobile ? 'mobile' : ''
         ]"
+        :title="marker.title || ''"
       >
         <p class="title">{{ marker.title }}</p>
         <p class="contents" v-html="marker.contents"></p>
