@@ -13,6 +13,7 @@
             id: item.id,
             lat: item.lat,
             lng: item.lng,
+            zoom: item.zoom,
             photos: item.photos,
           })"
         />

@@ -117,13 +117,21 @@ export default {
     },
     clickCard (marker) {
       this.closeModal()
-      let setRightSide = 0.00000
       if (this.mixinIsMobile) {
-        setRightSide = 0.00025
+        if (marker.zoom && marker.zoom === 21) {
+          this.setMapCenter(marker.lat, marker.lng - 0.000050)
+          this.setMapZoom(marker.zoom, false)
+        } else if (marker.zoom && marker.zoom > 16) {
+          this.setMapCenter(marker.lat, marker.lng - 0.00100)
+          this.setMapZoom(marker.zoom, false)
+        } else {
+          this.setMapCenter(marker.lat, marker.lng - 0.00200)
+          this.setMapZoom(marker.zoom, false)
+        }
       } else {
-        setRightSide = 0.00050
+        this.setMapCenter(marker.lat, marker.lng - 0.000000)
       }
-      this.setMapCenter(marker.lat, marker.lng - setRightSide)
+
       this.setSelectMarker(marker.id)
       if (marker.photos.length > 0) {
         this.openModal()

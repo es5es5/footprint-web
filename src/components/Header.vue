@@ -47,7 +47,7 @@ export default {
   width: 100%;
   height: 50px;
   padding: 10px;
-  background-color: rgba($primary, .4);
+  background-color: rgba($primary, .7);
 }
 
 .heading {

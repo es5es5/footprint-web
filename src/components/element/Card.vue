@@ -15,6 +15,7 @@
         <p class="contents" v-html="marker.contents"></p>
         <p class="latlng" v-if="mixinDebug">{{ marker.lat }}</p>
         <p class="latlng" v-if="mixinDebug">{{ marker.lng }}</p>
+        <p class="latlng" v-if="mixinDebug">{{ marker.zoom }}</p>
         <p class="createtime">{{ marker.createtime }}</p>
       </div>
     </div>
