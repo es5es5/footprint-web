@@ -62,7 +62,7 @@ export default new Vuex.Store({
     },
     setMap (state, value) { state.Map = value },
     setMapCenter (state, [lat, lng]) { state.Map.setCenter(lat, lng) },
-    setMapZoom (state, level) { state.Map.setZoom(level, true) },
+    setMapZoom (state, [level, effect]) { state.Map.setZoom(level, effect) },
   },
   getters: {
     getMap: state => state.Map,

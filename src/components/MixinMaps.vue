@@ -138,8 +138,8 @@ export default {
     setMapCenter (lat, lng) {
       this.$store.commit('setMapCenter', [lat, lng])
     },
-    setMapZoom (level) {
-      this.$store.commit('setMapZoom', level)
+    setMapZoom (level, effect) {
+      this.$store.commit('setMapZoom', [level, effect])
     },
   }
 }
