@@ -49,7 +49,7 @@ const 제주도 = {
       zoom: 21,
       title: '월정리 해수욕장',
       contents: '인생샷 많이 찍은 곳.<br><b>Nice Weather !</b>',
-      createtime: '2021-04-15 17:40',
+      createtime: '2021-04-15 17:53',
       photos: [],
       naverMarker: null,
     },
