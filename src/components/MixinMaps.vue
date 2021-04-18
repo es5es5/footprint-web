@@ -117,7 +117,13 @@ export default {
     },
     clickCard (marker) {
       this.closeModal()
-      this.setMapCenter(marker.lat, marker.lng)
+      let setRightSide = 0.00000
+      if (this.mixinIsMobile) {
+        setRightSide = 0.00025
+      } else {
+        setRightSide = 0.00050
+      }
+      this.setMapCenter(marker.lat, marker.lng - setRightSide)
       this.setSelectMarker(marker.id)
       if (marker.photos.length > 0) {
         this.openModal()
@@ -130,7 +136,7 @@ export default {
       })
     },
     setMapCenter (lat, lng) {
-      this.$store.commit('setMapCenter', [lat, lng - 0.00025])
+      this.$store.commit('setMapCenter', [lat, lng])
     },
     setMapZoom (level) {
       this.$store.commit('setMapZoom', level)
