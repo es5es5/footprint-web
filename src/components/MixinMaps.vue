@@ -104,9 +104,9 @@ export default {
       if (this.mixinDebug) console.log('_marker', _marker)
       this.$store.commit('setSelectedMarker', _marker)
     },
-    onMarkerLoaded () {
-      if (this.mixinDebug) console.log('onMarkerLoaded', arguments[0], arguments[1])
-      this.$store.commit('markerLoaded', [arguments[0], arguments[1]])
+    onMarkerLoaded (naverMarker, marker) {
+      if (this.mixinDebug) console.log('onMarkerLoaded', arguments)
+      this.$store.commit('markerLoaded', [naverMarker, marker])
     },
     closeWindow () {
       this.isWindowOpen = false
@@ -117,7 +117,21 @@ export default {
     },
     clickCard (marker) {
       this.closeModal()
-      this.setMapCenter(marker.lat, marker.lng)
+      if (this.mixinIsMobile) {
+        if (marker.zoom && marker.zoom === 21) {
+          this.setMapCenter(marker.lat, marker.lng - 0.000050)
+          this.setMapZoom(marker.zoom, false)
+        } else if (marker.zoom && marker.zoom > 16) {
+          this.setMapCenter(marker.lat, marker.lng - 0.00100)
+          this.setMapZoom(marker.zoom, false)
+        } else {
+          this.setMapCenter(marker.lat, marker.lng - 0.00200)
+          this.setMapZoom(marker.zoom, false)
+        }
+      } else {
+        this.setMapCenter(marker.lat, marker.lng - 0.000000)
+      }
+
       this.setSelectMarker(marker.id)
       if (marker.photos.length > 0) {
         this.openModal()
@@ -130,10 +144,10 @@ export default {
       })
     },
     setMapCenter (lat, lng) {
-      this.$store.commit('setMapCenter', [lat, lng - 0.00025])
+      this.$store.commit('setMapCenter', [lat, lng])
     },
-    setMapZoom (level) {
-      this.$store.commit('setMapZoom', level)
+    setMapZoom (level, effect) {
+      this.$store.commit('setMapZoom', [level, effect])
     },
   }
 }

@@ -30,7 +30,10 @@
           id: item.id,
           photos: item.photos,
         })"
-        @load="onMarkerLoaded($event, item.id)"
+        @load="onMarkerLoaded($event, {
+          id: item.id,
+          title: item.title,
+        })"
       />
     </naver-maps>
   </div>

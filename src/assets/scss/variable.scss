@@ -12,3 +12,8 @@ $border: #E2E4EE;
 $title: #17233d;
 
 @mixin shadow() { box-shadow: 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15); }
+
+.primary { color: $primary; }
+.success { color: $success; }
+.warning { color: $warning; }
+.error { color: $error; }

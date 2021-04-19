@@ -46,15 +46,18 @@ export default new Vuex.Store({
       })
       state.selectedMarker = value
     },
-    markerLoaded (state, [_naverMarker, _markerId]) {
+    markerLoaded (state, [_naverMarker, _marker]) {
       const __naverMaker = _naverMarker.setIcon({
         url: require('@/assets/images/icons/marker-black.svg'),
         size: [22, 33],
         origin: [0, 0],
         anchor: [22 / 2, 33 / 2],
       })
+
+      __naverMaker.setTitle(_marker.title || '')
+
       state.markers.find(marker => {
-        return marker.id === _markerId
+        return marker.id === _marker.id
       }).naverMarker = __naverMaker
     },
     addMarker (state, marker) {
@@ -62,7 +65,7 @@ export default new Vuex.Store({
     },
     setMap (state, value) { state.Map = value },
     setMapCenter (state, [lat, lng]) { state.Map.setCenter(lat, lng) },
-    setMapZoom (state, level) { state.Map.setZoom(level, true) },
+    setMapZoom (state, [level, effect]) { state.Map.setZoom(level, effect) },
   },
   getters: {
     getMap: state => state.Map,

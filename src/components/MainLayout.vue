@@ -3,7 +3,7 @@
     <Header />
     <ModalGroup />
     <Maps />
-    <CircleButton />
+    <CircleButton v-if="mixinDebug" />
   </div>
 </template>
 

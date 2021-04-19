@@ -2,7 +2,6 @@
   <div id="slider">
     <div class="slider_wrap" :class="isSliderActive ? 'active' : ''">
       <!-- <input type="search" class="search-card"> -->
-      <p class="for">Good bye Geon.</p>
       <div class="card_container">
         <Card
           v-for="(item, index) in mixinMarkers"
@@ -14,6 +13,7 @@
             id: item.id,
             lat: item.lat,
             lng: item.lng,
+            zoom: item.zoom,
             photos: item.photos,
           })"
         />
@@ -63,7 +63,7 @@ export default {
   top: 50px;
   left: 0;
   width: 0;
-  height: calc(100vh - 50px);
+  height: calc(100% - 50px);
   z-index: 9000;
   background-color: rgba(#000, .2);
   font-size: 14px;
@@ -83,10 +83,6 @@ export default {
 
     .search-card {
       display: block;
-    }
-
-    .for {
-      opacity: 1;
     }
   }
 
@@ -112,26 +108,10 @@ export default {
     outline: none;
     border: 2px solid $success;
   }
-
-  .for {
-    position: absolute;
-    opacity: 0;
-    transition: all .5s;
-    padding: .5rem 1rem;
-    margin: 0 auto;
-    width: calc(100% - 2rem - 6px);
-    font-size: 1.25rem;
-    top: 0;
-    left: .5rem;
-    width: 100%;
-    overflow-x: hidden;
-    font-weight: bold;
-    color: $success;
-  }
 }
 
 .card_container {
-  max-height: calc(100vh - 50px - 5rem);
+  max-height: calc(100%);
   overflow-y: scroll;
 }
 </style>

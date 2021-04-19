@@ -7,7 +7,7 @@
       :barHeight="6"
       :barWidth="30"
     />
-    <h1 class="heading">LOUIS MAPS. <span class="for">for KIM GEON</span></h1>
+    <h1 class="heading">LOUIS MAPS.<span class="schema" v-if="_scheme"> for {{ _scheme }}</span></h1>
     <Slider :isSliderActive="isSliderActive" />
   </div>
 </template>
@@ -18,14 +18,18 @@ import Slider from './element/Slider'
 export default {
   name: 'Header',
   mounted () {
-    if (!this.mixinIsMobile) this.isSliderActive = true
   },
   components: {
     Slider,
   },
+  computed: {
+    _scheme () {
+      return process.env.VUE_APP_DATAS || false
+    }
+  },
   data () {
     return {
-      isSliderActive: false
+      isSliderActive: true
     }
   },
   methods: {
@@ -43,7 +47,7 @@ export default {
   width: 100%;
   height: 50px;
   padding: 10px;
-  background-color: rgba($primary, .4);
+  background-color: rgba($primary, .7);
 }
 
 .heading {
@@ -53,9 +57,10 @@ export default {
   line-height: 32px;
 }
 
-.for {
+.schema {
   font-size: 24px;
   color: $success;
+  font-weight: bold;
 }
 </style>
 
