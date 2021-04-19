@@ -4,12 +4,12 @@
     'z-index': 100,
     ...setModalSize()
   }">
-    <ModalSample v-if="modals.ModalSample.init" :style="{'z-index': modals.ModalSample.openIndex}" />
+    <ModalPhotos v-if="modals.ModalPhotos.init" :style="{'z-index': modals.ModalPhotos.openIndex}" />
   </div>
 </template>
 
 <script>
-import ModalSample from './ModalSample'
+import ModalPhotos from './ModalPhotos'
 
 export default {
   name: 'ModalGroup',
@@ -22,7 +22,7 @@ export default {
     this.$eventBus.$off('closeModal')
   },
   components: {
-    ModalSample,
+    ModalPhotos,
   },
   computed: {
     _small () { return window.innerWidth < 500 },
@@ -33,7 +33,7 @@ export default {
   data () {
     return {
       modals: {
-        ModalSample: {
+        ModalPhotos: {
           init: false,
           openIndex: 0
         },

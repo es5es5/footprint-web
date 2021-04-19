@@ -12,8 +12,8 @@ export default {
     }
   },
   methods: {
-    openModal () { this.$eventBus.$emit('openModal', 'ModalSample') },
-    closeModal () { this.$eventBus.$emit('closeModal', 'ModalSample') },
+    openModal () { this.$eventBus.$emit('openModal', 'ModalPhotos') },
+    closeModal () { this.$eventBus.$emit('closeModal', 'ModalPhotos') },
     debug () {
     },
     loadMap () {

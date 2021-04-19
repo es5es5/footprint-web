@@ -1,5 +1,5 @@
 <template>
-  <Modal :id="'ModalSample'">
+  <Modal :id="'ModalPhotos'">
     <template slot="modalTitle">
       {{ mixinSelectedMarker.title }}
     </template>
@@ -27,7 +27,7 @@ import {
 } from '@/plugins/fbase'
 
 export default {
-  name: 'ModalSample',
+  name: 'ModalPhotos',
   mounted () {
     this.setPhotosURL()
   },
