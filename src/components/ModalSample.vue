@@ -7,8 +7,8 @@
       <!-- <img :src="require('@/assets/photos/시티빌딩001.jpg')" alt=""> -->
       <!-- <p v-html="mixinSelectedMarker.contents"></p> -->
       <div class="photo_wrap">
-        <div v-for="(item, index) in mixinSelectedMarker.photos" :key="index" class="image">
-          <img :src="item" alt="">
+        <div v-for="(item, index) in photoURL" :key="index" class="image">
+          <img :src="item" :alt="''">
         </div>
       </div>
     </template>
@@ -22,11 +22,42 @@
 </template>
 
 <script>
+import {
+  storageService
+} from '@/plugins/fbase'
+
 export default {
   name: 'ModalSample',
+  mounted () {
+    this.setPhotosURL()
+  },
+  data () {
+    return {
+      photoURL: []
+    }
+  },
   props: {
   },
   methods: {
+    async setPhotosURL () {
+      this.mixinSelectedMarker.photos.forEach(photo => {
+        this.getPhotoURL(photo).then(url => {
+          this.photoURL.push(url)
+        })
+      })
+    },
+    getPhotoURL (fileName) {
+      return new Promise((resolve, reject) => {
+        storageService
+          .child(`photos/${fileName}`)
+          .getDownloadURL()
+          .then(url => {
+            return resolve(url)
+          }).catch(error => {
+            return reject(error)
+          })
+      })
+    }
   }
 }
 </script>

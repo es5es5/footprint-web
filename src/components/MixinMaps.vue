@@ -25,6 +25,7 @@ export default {
     },
     clickMap () {
       if (this.mixinDebug) console.log('clickMap', arguments)
+      this.closeModal()
       console.log('lat: ', arguments[0].latlng._lat)
       console.log('lng: ', arguments[0].latlng._lng)
       this.$store.commit('setLatlng', {
@@ -41,7 +42,6 @@ export default {
         this.addMarker()
       }
       this.closeWindow()
-      this.closeModal()
       this.setDeSelectMarker()
       this.isMarkerClickState = false
     },
