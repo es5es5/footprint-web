@@ -44,7 +44,6 @@ export default {
   props: {
   },
   methods: {
-    // "https://firebasestorage.googleapis.com/v0/b/maps-9dc64.appspot.com/o/photos%2F%EB%A9%94%EA%B0%80%EB%B0%95%EC%8A%A4001.jpg?alt=media&token=16804161-bb4a-44f8-861e-b12edd06ff61"
     setPhotosURL () {
       this.mixinSelectedMarker.photos.forEach(photo => {
         this.urlList.push(this.getPhotoURL(photo))
@@ -67,28 +66,8 @@ export default {
         token,
       ]
       const photoURL = photoURLArray.join('')
-      console.log(photoURL)
       return photoURL
     }
-    // async setPhotosURL () {
-    //   this.mixinSelectedMarker.photos.forEach(photo => {
-    //     this.getPhotoURL(photo).then(url => {
-    //       this.photoURL.push(url)
-    //     })
-    //   })
-    // },
-    // getPhotoURL (fileName) {
-    //   return new Promise((resolve, reject) => {
-    //     storageService
-    //       .child(`photos/${fileName}`)
-    //       .getDownloadURL()
-    //       .then(url => {
-    //         return resolve(url)
-    //       }).catch(error => {
-    //         return reject(error)
-    //       })
-    //   })
-    // }
   }
 }
 </script>

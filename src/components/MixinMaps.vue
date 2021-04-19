@@ -134,7 +134,9 @@ export default {
 
       this.setSelectMarker(marker.id)
       if (marker.photos.length > 0) {
-        this.openModal()
+        this.$nextTick(() => {
+          this.openModal()
+        })
       }
       this.$nextTick(() => {
         document.getElementById(marker.id).scrollIntoView({
