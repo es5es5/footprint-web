@@ -48,9 +48,7 @@ export default {
       this.mixinSelectedMarker.photos.forEach(photo => {
         this.urlList.push(this.getPhotoURL(photo))
       })
-      this.$nextTick(() => {
-        this.photoInit = true
-      })
+      this.$nextTick(() => { this.photoInit = true })
     },
     getPhotoURL (fileName) {
       const firebase = 'https://firebasestorage.googleapis.com/v0/b/'
