@@ -1,6 +1,7 @@
 <template>
   <div id="slider">
     <div class="slider_wrap" :class="isSliderActive ? 'active' : ''">
+      <p class="schema" v-if="_scheme">{{ _scheme }}</p>
       <!-- <input type="search" class="search-card"> -->
       <div class="card_container">
         <Card
@@ -32,8 +33,6 @@ export default {
   components: {
     Card,
   },
-  computed: {
-  },
   mixins: [
     MixinMaps,
   ],
@@ -44,6 +43,11 @@ export default {
       type: Boolean,
       require: true,
       default: () => false,
+    }
+  },
+  computed: {
+    _scheme () {
+      return process.env.VUE_APP_DATAS || false
     }
   },
   data () {
@@ -91,6 +95,14 @@ export default {
     font-size: 1rem;
     bottom: 1rem;
     right: 1rem;
+  }
+
+  .schema {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: $success;
+    font-weight: bold;
   }
 
   .search-card {
