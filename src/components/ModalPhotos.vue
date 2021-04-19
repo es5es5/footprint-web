@@ -55,7 +55,7 @@ export default {
     },
     getPhotoURL (fileName) {
       const firebase = 'https://firebasestorage.googleapis.com/v0/b/'
-      const encode = 'photos%2' + encodeURI(fileName)
+      const encode = 'photos%2F' + encodeURI(fileName)
       const alt = '?alt=media'
       const token = '&token='
       const photoURLArray = [
