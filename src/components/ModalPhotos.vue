@@ -6,8 +6,8 @@
     <template slot="modalBody">
       <!-- <img :src="require('@/assets/photos/시티빌딩001.jpg')" alt=""> -->
       <!-- <p v-html="mixinSelectedMarker.contents"></p> -->
-      <div class="photo_wrap">
-        <div v-for="(item, index) in photoURL" :key="index" class="image">
+      <div class="photo_wrap" v-if="photoInit">
+        <div v-for="(item, index) in urlList" :key="index" class="image">
           <img :src="item" :alt="''">
         </div>
       </div>
@@ -22,42 +22,73 @@
 </template>
 
 <script>
-import {
-  storageService
+import {// storageService
 } from '@/plugins/fbase'
 
 export default {
   name: 'ModalPhotos',
   mounted () {
+    this.photoURL = []
     this.setPhotosURL()
+    // this.getPhotoURL('시티빌딩001.jpg')
+  },
+  computed: {
+    _VUE_APP_STORAGE_BUCKET () { return process.env.VUE_APP_STORAGE_BUCKET }
   },
   data () {
     return {
-      photoURL: []
+      photoInit: false,
+      urlList: [],
     }
   },
   props: {
   },
   methods: {
-    async setPhotosURL () {
+    // "https://firebasestorage.googleapis.com/v0/b/maps-9dc64.appspot.com/o/photos%2F%EB%A9%94%EA%B0%80%EB%B0%95%EC%8A%A4001.jpg?alt=media&token=16804161-bb4a-44f8-861e-b12edd06ff61"
+    setPhotosURL () {
       this.mixinSelectedMarker.photos.forEach(photo => {
-        this.getPhotoURL(photo).then(url => {
-          this.photoURL.push(url)
-        })
+        this.urlList.push(this.getPhotoURL(photo))
+      })
+      this.$nextTick(() => {
+        this.photoInit = true
       })
     },
     getPhotoURL (fileName) {
-      return new Promise((resolve, reject) => {
-        storageService
-          .child(`photos/${fileName}`)
-          .getDownloadURL()
-          .then(url => {
-            return resolve(url)
-          }).catch(error => {
-            return reject(error)
-          })
-      })
+      const firebase = 'https://firebasestorage.googleapis.com/v0/b/'
+      const encode = 'photos%2' + encodeURI(fileName)
+      const alt = '?alt=media'
+      const token = '&token='
+      const photoURLArray = [
+        firebase,
+        this._VUE_APP_STORAGE_BUCKET,
+        '/o/',
+        encode,
+        alt,
+        token,
+      ]
+      const photoURL = photoURLArray.join('')
+      console.log(photoURL)
+      return photoURL
     }
+    // async setPhotosURL () {
+    //   this.mixinSelectedMarker.photos.forEach(photo => {
+    //     this.getPhotoURL(photo).then(url => {
+    //       this.photoURL.push(url)
+    //     })
+    //   })
+    // },
+    // getPhotoURL (fileName) {
+    //   return new Promise((resolve, reject) => {
+    //     storageService
+    //       .child(`photos/${fileName}`)
+    //       .getDownloadURL()
+    //       .then(url => {
+    //         return resolve(url)
+    //       }).catch(error => {
+    //         return reject(error)
+    //       })
+    //   })
+    // }
   }
 }
 </script>
