@@ -7,8 +7,10 @@
       :barHeight="6"
       :barWidth="30"
     />
-    <h1 class="heading">LOUIS MAPS.</h1>
-    <!-- <span class="schema" v-if="_scheme"> for {{ _scheme }}</span> -->
+    <h1 class="heading">
+      LOUIS MAPS.
+      <span class="schema" v-if="_scheme && !mixinIsMobile"> for {{ _scheme }}</span>
+    </h1>
     <div class="user_wrap">
       <img :src="mixinUser.photoURL" alt="avatar" class="avatar">
       <b class="userName" v-if="!mixinIsMobile">{{ mixinUser.displayName }}</b>
@@ -73,7 +75,11 @@ export default {
   top: 0;
   right: 10px;
 
-  line-height: 42px;
+  @media (min-width: 500px) { right: 16px; }
+  @media (min-width: 750px) { right: 20px; }
+  @media (min-width: 1024px) { right: 24px; }
+
+  line-height: 46px;
 
   &:hover {
     cursor: pointer;
@@ -81,17 +87,19 @@ export default {
   }
 
   .avatar {
-    width: 32px;
-    height: 32px;
+    @include shadow;
+
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 14px;
     vertical-align: middle;
   }
 
   .userName {
     color: $success;
     vertical-align: middle;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
   }
 }

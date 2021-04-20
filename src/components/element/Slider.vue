@@ -1,7 +1,7 @@
 <template>
   <div id="slider">
     <div class="slider_wrap" :class="isSliderActive ? 'active' : ''">
-      <p class="schema" v-if="_scheme">for {{ _scheme }}</p>
+      <p class="schema" v-if="_scheme">for "{{ _scheme }}"</p>
       <!-- <input type="search" class="search-card"> -->
       <div class="card_container">
         <Card
@@ -99,7 +99,7 @@ export default {
 
   .schema {
     position: absolute;
-    top: 10px;
+    top: .6rem;
     width: 180px;
     @media (min-width: 500px) { width: 200px; }
     @media (min-width: 750px) { width: 300px; }

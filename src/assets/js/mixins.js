@@ -8,7 +8,7 @@ export default {
         }
       },
       computed: {
-        mixinIsMobile () { return window.outerWidth < 550 },
+        mixinIsMobile () { return window.outerWidth < 750 },
         mixinDebug () { return process.env.VUE_APP_DEBUG === 'true' },
 
         mixinUser () { return this.$store.getters.getUser },

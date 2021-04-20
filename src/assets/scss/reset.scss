@@ -1,4 +1,6 @@
 html, body {
+  @include no-highlight;
+
   font-size: 16px;
   @media (min-width: 500px) { font-size: 16px; }
   @media (min-width: 750px) { font-size: 18px; }
