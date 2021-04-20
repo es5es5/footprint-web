@@ -2,7 +2,7 @@
   <div id="login">
     <div class="polaroid_container">
       <div class="polaroid_wrap">
-        <img src="@/assets/images/polaroid.svg" alt="polaroid" class="polaroid _1">
+        <img src="@/assets/images/polaroid.svg" alt="polaroid" class="polaroid _1" @click="socialLogin('google')">
         <img src="@/assets/images/polaroid.svg" alt="polaroid" class="polaroid _2" v-if="!mixinIsMobile">
       </div>
     </div>
@@ -10,8 +10,25 @@
 </template>
 
 <script>
+import { authService, firebaseInstance } from '@/plugins/fbase'
+
 export default {
-  name: 'Login'
+  name: 'Login',
+  methods: {
+    async socialLogin (social) {
+      let provider = null
+      switch (social) {
+        case 'google':
+          provider = new firebaseInstance.auth.GoogleAuthProvider()
+          break
+        default:
+          break
+      }
+      const user = await authService.signInWithPopup(provider)
+      this.$store.commit('setUser', user.user)
+      this.$router.push({ name: 'Main' })
+    },
+  }
 }
 </script>
 
@@ -20,7 +37,7 @@ export default {
   width: 100%;
   height: 100%;
   height: 100vh;
-  background-color: rgba($success, .2);
+  background-color: rgba($success, .1);
 
   font-size: 20px;
 

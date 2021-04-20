@@ -16,11 +16,17 @@ const routes = [
   {
     path: '/main',
     name: 'Main',
+    meta: {
+      title: '발자취'
+    },
     component: Main
   },
   {
     path: '/login',
     name: 'Login',
+    meta: {
+      title: '로그인'
+    },
     component: Login
   },
 ]

@@ -11,6 +11,7 @@ export default {
         mixinIsMobile () { return window.outerWidth < 550 },
         mixinDebug () { return process.env.VUE_APP_DEBUG === 'true' },
 
+        mixinUser () { return this.$store.getters.getUser },
         mixinMap () { return this.$store.getters.getMap },
         mixinPosition () { return this.$store.getters.getPosition },
         mixinLatlng () { return this.$store.getters.getLatlng },

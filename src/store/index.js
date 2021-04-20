@@ -19,9 +19,25 @@ export default new Vuex.Store({
     selectedMarker: {
       photos: [],
       naverMarker: {}
-    }
+    },
+    user: {
+      uid: '',
+      displayName: '',
+      email: '',
+      isAnonymous: false
+    },
   },
   mutations: {
+    setUser (state, value) {
+      Object.assign(state.user, {
+        uid: value.uid,
+        displayName: value.displayName,
+        email: value.email,
+        isAnonymous: value.isAnonymous
+      })
+
+      // if (state.user.isAnonymous) state.user.displayName = '게스트'
+    },
     setMarkers (state, value) { state.markers = value },
     setPosition (state, value) { Object.assign(state.position, value) },
     setLatlng (state, value) { state.latlng = value },
@@ -74,6 +90,7 @@ export default new Vuex.Store({
     setMapZoom (state, [level, effect]) { state.Map.setZoom(level, effect) },
   },
   getters: {
+    getUser: state => state.user,
     getMap: state => state.Map,
     getPosition: state => state.position,
     getLatlng: state => state.latlng,
