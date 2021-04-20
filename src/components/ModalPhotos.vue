@@ -4,8 +4,6 @@
       {{ mixinSelectedMarker.title }}
     </template>
     <template slot="modalBody">
-      <!-- <img :src="require('@/assets/photos/시티빌딩001.jpg')" alt=""> -->
-      <!-- <p v-html="mixinSelectedMarker.contents"></p> -->
       <div class="photo_wrap" v-if="photoInit">
         <div v-for="(item, index) in urlList" :key="index" class="image">
           <img :src="item" :alt="''">
@@ -13,6 +11,7 @@
       </div>
     </template>
     <div slot="modalActions">
+      <p v-html="mixinSelectedMarker.contents"></p>
       <div v-if="mixinDebug">
         <p>lat: {{ mixinSelectedMarker.lat }}</p>
         <p>lng: {{ mixinSelectedMarker.lng }}</p>
@@ -30,7 +29,6 @@ export default {
   mounted () {
     this.photoURL = []
     this.setPhotosURL()
-    // this.getPhotoURL('시티빌딩001.jpg')
   },
   computed: {
     _VUE_APP_STORAGE_BUCKET () { return process.env.VUE_APP_STORAGE_BUCKET }
@@ -72,7 +70,7 @@ export default {
 
 <style lang="scss" scoped>
 .photo_wrap {
-  max-height: calc(100vh - 200px);
+  max-height: calc(100vh - 250px);
   overflow-y: scroll;
 }
 .image {
