@@ -23,6 +23,7 @@ export default new Vuex.Store({
     user: {
       uid: '',
       displayName: '',
+      photoURL: '',
       email: '',
       isAnonymous: false
     },
@@ -32,6 +33,7 @@ export default new Vuex.Store({
       Object.assign(state.user, {
         uid: value.uid,
         displayName: value.displayName,
+        photoURL: value.photoURL,
         email: value.email,
         isAnonymous: value.isAnonymous
       })

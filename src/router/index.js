@@ -4,6 +4,8 @@ import Home from '@/components/Home'
 import Main from '@/components/MainLayout'
 import Login from '@/components/Login'
 
+import { authService } from '@/plugins/fbase'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -29,6 +31,10 @@ const routes = [
     },
     component: Login
   },
+  {
+    path: '*',
+    redirect: '/',
+  },
 ]
 
 const router = new VueRouter({
@@ -45,6 +51,18 @@ router.beforeEach((to, from, next) => {
   } else {
     document.title = `${to.meta.title} | LOUIS MAPS`
   }
+
+  authService.onAuthStateChanged(user => {
+    console.log('user', user)
+    if (!user) {
+      next({ name: 'Login' })
+    } else {
+      if (to.name === 'Login') {
+        next({ name: 'Main' })
+      }
+    }
+  })
+
   next()
 })
 

@@ -7,7 +7,12 @@
       :barHeight="6"
       :barWidth="30"
     />
-    <h1 class="heading">LOUIS MAPS.<span class="schema" v-if="_scheme"> for {{ _scheme }}</span></h1>
+    <h1 class="heading">LOUIS MAPS.</h1>
+    <!-- <span class="schema" v-if="_scheme"> for {{ _scheme }}</span> -->
+    <div class="user_wrap">
+      <img :src="mixinUser.photoURL" alt="avatar" class="avatar">
+      <b class="userName" v-if="!mixinIsMobile">{{ mixinUser.displayName }}</b>
+    </div>
     <Slider :isSliderActive="isSliderActive" />
   </div>
 </template>
@@ -47,7 +52,7 @@ export default {
   width: 100%;
   height: 50px;
   padding: 10px;
-  background-color: rgba($primary, .7);
+  background-color: rgba($primary, .5);
 }
 
 .heading {
@@ -61,6 +66,34 @@ export default {
   font-size: 24px;
   color: $success;
   font-weight: bold;
+}
+
+.user_wrap {
+  position: absolute;
+  top: 0;
+  right: 10px;
+
+  line-height: 42px;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  .userName {
+    color: $success;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: bold;
+  }
 }
 </style>
 

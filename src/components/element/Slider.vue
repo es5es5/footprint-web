@@ -1,7 +1,7 @@
 <template>
   <div id="slider">
     <div class="slider_wrap" :class="isSliderActive ? 'active' : ''">
-      <p class="schema" v-if="_scheme">{{ _scheme }}</p>
+      <p class="schema" v-if="_scheme">for {{ _scheme }}</p>
       <!-- <input type="search" class="search-card"> -->
       <div class="card_container">
         <Card
@@ -98,9 +98,16 @@ export default {
   }
 
   .schema {
+    position: absolute;
+    top: 10px;
+    width: 180px;
+    @media (min-width: 500px) { width: 200px; }
+    @media (min-width: 750px) { width: 300px; }
+    @media (min-width: 1024px) { width: 400px; }
+
+    font-size: 1.1rem;
     text-align: center;
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    // margin-bottom: 1rem;
     color: $success;
     font-weight: bold;
   }
