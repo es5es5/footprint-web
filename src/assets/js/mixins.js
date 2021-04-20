@@ -8,7 +8,7 @@ export default {
         }
       },
       computed: {
-        mixinIsMobile () { return window.innerWidth < 500 },
+        mixinIsMobile () { return window.outerWidth < 550 },
         mixinDebug () { return process.env.VUE_APP_DEBUG === 'true' },
 
         mixinMap () { return this.$store.getters.getMap },

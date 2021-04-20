@@ -1,8 +1,10 @@
 <template>
   <div id="login">
-    <div class="polaroid_wrap">
-      <img src="@/assets/images/polaroid.svg" alt="polaroid" class="polaroid _1">
-      <img src="@/assets/images/polaroid.svg" alt="polaroid" class="polaroid _2">
+    <div class="polaroid_container">
+      <div class="polaroid_wrap">
+        <img src="@/assets/images/polaroid.svg" alt="polaroid" class="polaroid _1">
+        <img src="@/assets/images/polaroid.svg" alt="polaroid" class="polaroid _2" v-if="!mixinIsMobile">
+      </div>
     </div>
   </div>
 </template>
@@ -22,12 +24,12 @@ export default {
 
   font-size: 20px;
 
-  @media (max-width: 1024px) { font-size: 16px; }
-  @media (max-width: 750px) { font-size: 12px; }
-  @media (max-width: 500px) { font-size: 8px; }
+  @media (max-width: 1024px) { font-size: 18px; }
+  @media (max-width: 750px) { font-size: 16px; }
+  @media (max-width: 500px) { font-size: 12px; }
 }
 
-.polaroid_wrap {
+.polaroid_container {
   @include clearfix;
   position: absolute;
   top: 50%;
@@ -49,7 +51,7 @@ export default {
     &._2 {
       width: 14em;
       height: 16em;
-      transform: rotate(10deg);
+      transform: rotate(5deg);
     }
 
     &:hover {
@@ -57,13 +59,11 @@ export default {
       opacity: 1;
 
       &._1 {
-        transform: rotate(-15deg);
+        transform: rotate(15deg) translate(0, -3em);
       }
 
       &._2 {
-        width: 14em;
-        height: 16em;
-        transform: rotate(5deg);
+        transform: rotate(-5deg) translate(0, -2em);
       }
     }
   }
