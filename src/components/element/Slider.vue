@@ -2,7 +2,6 @@
   <div id="slider">
     <div class="slider_wrap" :class="isSliderActive ? 'active' : ''">
       <p class="schema" v-if="_scheme">for "{{ _scheme }}"</p>
-      <!-- <input type="search" class="search-card"> -->
       <div class="card_container">
         <Card
           v-for="(item, index) in mixinMarkers"
@@ -19,7 +18,8 @@
           })"
         />
       </div>
-      <p class="total">Total: {{ mixinMarkers.length || 0 }}</p>
+      <span class="version">Ver. {{ _version.version }}</span>
+      <span class="total">Total: {{ mixinMarkers.length || 0 }}</span>
     </div>
   </div>
 </template>
@@ -46,9 +46,8 @@ export default {
     }
   },
   computed: {
-    _scheme () {
-      return process.env.VUE_APP_DATAS || false
-    }
+    _scheme () { return process.env.VUE_APP_DATAS || false },
+    _version () { return require('@/../package.json') }
   },
   data () {
     return {
@@ -84,10 +83,13 @@ export default {
     @media (min-width: 500px) { width: 200px; }
     @media (min-width: 750px) { width: 300px; }
     @media (min-width: 1024px) { width: 400px; }
+  }
 
-    .search-card {
-      display: block;
-    }
+  .version {
+    position: absolute;
+    font-size: .5rem;
+    bottom: .2rem;
+    right: 1rem;
   }
 
   .total {
