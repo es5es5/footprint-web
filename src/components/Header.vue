@@ -9,12 +9,20 @@
     />
     <h1 class="heading">
       LOUIS MAPS.
-      <span class="schema" v-if="mixinUser.schema && !mixinIsMobile"> for {{ _scheme }}</span>
+      <span class="schema" v-if="mixinUser.schema && mixinUser.schema !== '' && !mixinIsMobile"> for {{ mixinUser.schema }}</span>
     </h1>
     <transition name="fade" mode="out-in">
-      <div class="user_wrap" v-if="mixinUser.photoURL && mixinUser.photoURL !== ''" @click="signOut">
+      <div class="user_wrap" v-if="mixinUser.photoURL && mixinUser.photoURL !== ''" @click="isFileOpen = !isFileOpen">
         <img :src="mixinUser.photoURL" alt="avatar" class="avatar">
         <b class="userName" v-if="!mixinIsMobile">{{ mixinUser.displayName }}</b>
+      </div>
+    </transition>
+    <transition name="fade" mode="in-out">
+      <div class="settings_container" v-if="isFileOpen" @mouseover="isFileOpen = true" @mouseleave="isFileOpen = false">
+        <div class="settings_wrap">
+          <p>IT서비스본부</p>
+          <p class="signOut" @click="signOut">로그아웃</p>
+        </div>
       </div>
     </transition>
     <Slider :isSliderActive="isSliderActive" />
@@ -36,7 +44,8 @@ export default {
   },
   data () {
     return {
-      isSliderActive: true
+      isSliderActive: true,
+      isFileOpen: false,
     }
   },
   methods: {
@@ -47,6 +56,9 @@ export default {
       authService.signOut()
       this.$store.commit('setUser', null)
       this.$router.push({ name: 'Login' })
+    },
+    tooltip () {
+      this.isFileOpen = !this.isFileOpen
     },
   }
 }
@@ -108,6 +120,39 @@ export default {
     font-weight: bold;
   }
 }
+
+.settings_container {
+  z-index: 2000;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  padding: .5rem 2rem 2rem 3rem;
+}
+
+.settings_wrap {
+  padding: 6px;
+  border: 1px solid border;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.2);
+
+  p {
+    padding: 6px;
+    font-size: .75rem;
+
+    &:hover {
+      cursor: pointer;
+      color: $success;
+    }
+
+    &.signOut {
+      color: $error;
+    }
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active { transition: opacity .1s }
 </style>
 
 <style lang="scss">
