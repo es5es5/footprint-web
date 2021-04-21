@@ -25,6 +25,7 @@ export default {
     },
     clickMap () {
       if (this.mixinDebug) console.log('clickMap', arguments)
+      this.$eventBus.$emit('setSettingOpen', false)
       this.closeModal()
       console.log('lat: ', arguments[0].latlng._lat)
       console.log('lng: ', arguments[0].latlng._lng)
@@ -61,6 +62,7 @@ export default {
       this.$store.commit('setPosition', { state })
     },
     clickMarker (event, marker) {
+      this.$eventBus.$emit('setSettingOpen', false)
       this.closeModal()
       if (this.mixinDebug) console.log('clickMarker', arguments)
       this.isMarkerClickState = true
@@ -116,6 +118,7 @@ export default {
       this.$store.commit('setDeSelectMarker')
     },
     clickCard (marker) {
+      this.$eventBus.$emit('setSettingOpen', false)
       this.closeModal()
       if (this.mixinIsMobile) {
         if (marker.zoom && marker.zoom === 21) {

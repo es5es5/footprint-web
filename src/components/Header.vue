@@ -35,7 +35,14 @@ import { authService } from '@/plugins/fbase'
 
 export default {
   name: 'Header',
-  mounted () {
+  created () {
+    this.$eventBus.$on('setSettingOpen', value => {
+      console.log('setSettingOpen', value)
+      this.setSettingOpen(value)
+    })
+  },
+  beforeDestroy () {
+    this.$eventBus.$off('setSettingOpen')
   },
   components: {
     Slider,
