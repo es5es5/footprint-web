@@ -11,7 +11,7 @@
       LOUIS MAPS.
       <span class="schema" v-if="_scheme && !mixinIsMobile"> for {{ _scheme }}</span>
     </h1>
-    <div class="user_wrap">
+    <div class="user_wrap" @click="signOut">
       <img :src="mixinUser.photoURL" alt="avatar" class="avatar">
       <b class="userName" v-if="!mixinIsMobile">{{ mixinUser.displayName }}</b>
     </div>
@@ -21,6 +21,7 @@
 
 <script>
 import Slider from './element/Slider'
+import { authService } from '@/plugins/fbase'
 
 export default {
   name: 'Header',
@@ -42,6 +43,11 @@ export default {
   methods: {
     toggleSlider () {
       this.isSliderActive = !this.isSliderActive
+    },
+    signOut () {
+      authService.signOut()
+      this.$store.commit('setUser', null)
+      this.$router.push({ name: 'Login' })
     },
   }
 }

@@ -24,7 +24,7 @@ export default {
         default:
           break
       }
-      const user = await authService.signInWithPopup(provider)
+      const user = await authService.signInWithRedirect(provider)
       this.$store.commit('setUser', user.user)
       this.$router.push({ name: 'Main' })
     },
