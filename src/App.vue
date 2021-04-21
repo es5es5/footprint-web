@@ -23,7 +23,7 @@ export default {
     },
     setUserSchema () {
       this.$store.commit('setUserSchema', {
-        schema: 'IT서비스본부',
+        schema: process.env.VUE_APP_DATAS || '제주도',
         schemaList: [
           'IT서비스본부',
           '제주도',
