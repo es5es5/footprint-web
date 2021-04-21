@@ -9,7 +9,7 @@
     />
     <h1 class="heading">
       LOUIS MAPS.
-      <span class="schema" v-if="_scheme && !mixinIsMobile"> for {{ _scheme }}</span>
+      <span class="schema" v-if="mixinUser.schema && !mixinIsMobile"> for {{ _scheme }}</span>
     </h1>
     <transition name="fade" mode="out-in">
       <div class="user_wrap" v-if="mixinUser.photoURL && mixinUser.photoURL !== ''" @click="signOut">
@@ -33,9 +33,6 @@ export default {
     Slider,
   },
   computed: {
-    _scheme () {
-      return process.env.VUE_APP_DATAS || false
-    }
   },
   data () {
     return {

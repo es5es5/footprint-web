@@ -25,7 +25,8 @@ export default new Vuex.Store({
       displayName: '',
       photoURL: '',
       email: '',
-      isAnonymous: false
+      isAnonymous: false,
+      schema: '',
     },
   },
   mutations: {
@@ -35,7 +36,15 @@ export default new Vuex.Store({
         displayName: value.displayName,
         photoURL: value.photoURL,
         email: value.email,
-        isAnonymous: value.isAnonymous
+        isAnonymous: value.isAnonymous,
+        schema: value.schema,
+      })
+
+      // if (state.user.isAnonymous) state.user.displayName = '게스트'
+    },
+    setUserSchema (state, value) {
+      Object.assign(state.user, {
+        schema: value,
       })
 
       // if (state.user.isAnonymous) state.user.displayName = '게스트'

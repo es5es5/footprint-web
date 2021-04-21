@@ -16,7 +16,6 @@ export default {
   name: 'App',
   created () {
     this.setUser()
-    this.initDatas()
   },
   methods: {
     initDatas () {
@@ -25,11 +24,12 @@ export default {
     setUser () {
       authService.onAuthStateChanged(user => {
         console.log('user', user)
+        user.schema = 'IT서비스본부'
         if (user) {
           this.$store.commit('setUser', user)
+          this.$store.commit('setMarkers', Datas[user.schema].markers)
         } else {
           this.$router.push({ name: 'Login' })
-          // this.$store.commit('setUser', null)
         }
       })
     },

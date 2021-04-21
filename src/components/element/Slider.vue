@@ -17,7 +17,7 @@
           })"
         />
       </div>
-      <p class="schema" v-if="_scheme">for "{{ _scheme }}"</p>
+      <p class="schema" v-if="mixinUser.schema && mixinUser.schema !== ''">for "{{ mixinUser.schema }}"</p>
       <span class="version">Ver. {{ _version.version }}</span>
       <span class="total">Total: {{ mixinMarkers.length || 0 }}</span>
     </div>
@@ -46,7 +46,6 @@ export default {
     }
   },
   computed: {
-    _scheme () { return process.env.VUE_APP_DATAS || false },
     _version () { return require('@/../package.json') }
   },
   data () {

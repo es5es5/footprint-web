@@ -46,7 +46,7 @@ import Datas from '@/assets/js/datas'
 export default {
   name: 'Maps',
   created () {
-    this.mapOptions = Datas[process.env.VUE_APP_DATAS].mapOptions
+    this.mapOptions = Datas[this.mixinUser.schema].mapOptions
   },
   computed: {
     _width () { return window.innerWidth },

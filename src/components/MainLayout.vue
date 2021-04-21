@@ -2,7 +2,7 @@
   <div>
     <Header />
     <ModalGroup />
-    <Maps />
+    <Maps v-if="mixinUser.uid && mixinUser.uid !== ''" />
     <CircleButton v-if="mixinDebug" />
   </div>
 </template>

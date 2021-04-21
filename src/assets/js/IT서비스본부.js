@@ -2,8 +2,8 @@ import COMMON from '../../../colony-vue/src/js/common'
 
 const IT서비스본부 = {
   mapOptions: {
-    lat: 37.483737,
-    lng: 126.9816778,
+    lat: 37.4837570,
+    lng: 126.9816698,
     zoom: 16,
     zoomControl: false,
     naverMarker: null,

@@ -31,7 +31,6 @@ export default {
     this.setPhotosURL()
   },
   computed: {
-    _VUE_APP_DATAS () { return process.env.VUE_APP_DATAS },
     _VUE_APP_STORAGE_BUCKET () { return process.env.VUE_APP_STORAGE_BUCKET }
   },
   data () {
@@ -50,9 +49,8 @@ export default {
       this.$nextTick(() => { this.photoInit = true })
     },
     getPhotoURL (fileName) {
-      console.log('this._VUE_APP_DATAS', this._VUE_APP_DATAS)
       const firebase = 'https://firebasestorage.googleapis.com/v0/b/'
-      const encode = 'photos' + '%2F' + encodeURI(this._VUE_APP_DATAS) + '%2F' + encodeURI(fileName)
+      const encode = 'photos' + '%2F' + encodeURI(this.mixinUser.schema) + '%2F' + encodeURI(fileName)
       const alt = '?alt=media'
       const token = '&token='
       const photoURLArray = [
