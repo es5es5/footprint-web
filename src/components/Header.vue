@@ -20,7 +20,7 @@
     <transition name="fade" mode="in-out">
       <div class="settings_container" v-if="isSettingOpen" @mouseover="setSettingOpen(true)" @mouseleave="setSettingOpen(false)">
         <div class="settings_wrap">
-          <p v-for="(item, index) in mixinUser.schemaList" :key="index" @click="setUserSchema(item)">{{ item }}</p>
+          <!-- <p v-for="(item, index) in mixinUser.schemaList" :key="index" @click="setUserSchema(item)">{{ item }}</p> -->
           <p class="signOut" @click="signOut">로그아웃</p>
         </div>
       </div>
