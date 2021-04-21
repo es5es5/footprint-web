@@ -1,7 +1,6 @@
 <template>
   <div id="slider">
     <div class="slider_wrap" :class="isSliderActive ? 'active' : ''">
-      <p class="schema" v-if="_scheme">for "{{ _scheme }}"</p>
       <div class="card_container">
         <Card
           v-for="(item, index) in mixinMarkers"
@@ -18,6 +17,7 @@
           })"
         />
       </div>
+      <p class="schema" v-if="_scheme">for "{{ _scheme }}"</p>
       <span class="version">Ver. {{ _version.version }}</span>
       <span class="total">Total: {{ mixinMarkers.length || 0 }}</span>
     </div>
@@ -88,8 +88,8 @@ export default {
   .version {
     position: absolute;
     font-size: .5rem;
-    bottom: .2rem;
-    right: 1rem;
+    bottom: 1.5rem;
+    left: 1rem;
   }
 
   .total {
@@ -102,13 +102,14 @@ export default {
   .schema {
     position: absolute;
     top: .6rem;
+    left: 1rem;
     width: 180px;
     @media (min-width: 500px) { width: 200px; }
     @media (min-width: 750px) { width: 300px; }
     @media (min-width: 1024px) { width: 400px; }
 
     font-size: 1.1rem;
-    text-align: center;
+    // text-align: center;
     // margin-bottom: 1rem;
     color: $success;
     font-weight: bold;

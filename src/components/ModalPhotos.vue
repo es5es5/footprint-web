@@ -72,7 +72,7 @@ export default {
 
 <style lang="scss" scoped>
 .photo_wrap {
-  max-height: calc(100vh - 250px);
+  max-height: calc(100vh - 280px);
   overflow-y: scroll;
 }
 .image {
