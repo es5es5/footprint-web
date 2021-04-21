@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition name="fade" mode="out-in">
-      <router-view v-if="appInit"></router-view>
+      <router-view></router-view>
     </transition>
   </div>
 </template>
@@ -34,24 +34,18 @@ export default {
             email: user.email,
             isAnonymous: user.isAnonymous,
           })
-          this.appInit = this.findUserId(user.uid)
+
+          this.findUserId(user.uid)
+          // if (!this.appInit) {
+          //   alert('승인이 필요합니다!')
+          //   authService.signOut()
+          //   this.$store.commit('setUser', null)
+          //   this.$router.push({ name: 'Login' })
+          // }
         } else {
           this.$router.push({ name: 'Login' })
         }
       })
-    },
-    async getSalesList () {
-      dbService.collection('sales')
-        .where('customerMobile', '==', this.customerForm.customerMobile)
-        .orderBy('salesDate', 'desc')
-        .get()
-        .then(result => {
-          result.forEach(doc => this.salesList.push({
-            id: doc.id,
-            ...doc.data()
-          }))
-          this.loadData = false
-        })
     },
     async findUserId (UID) {
       dbService.collection('users')
@@ -60,13 +54,18 @@ export default {
         .then(
           result => {
             if (!result.empty) {
-              this.$store.commit('setUserSchema', {
-                schema: result.docs[0].data().schema,
-                schemaList: result.docs[0].data().schemaList,
-              })
-              this.$store.commit('setMarkers', Datas[this.mixinUser.schema].markers)
+              if (result.docs[0].data().schema && result.docs[0].data().schema !== '') {
+                this.$store.commit('setUserSchema', {
+                  schema: result.docs[0].data().schema,
+                  schemaList: result.docs[0].data().schemaList,
+                })
+                this.$store.commit('setMarkers', Datas[this.mixinUser.schema].markers)
+                this.appInit = true
+              } else {
+                this.appInit = false
+              }
             } else {
-              return false
+              this.appInit = false
             }
           }
         )

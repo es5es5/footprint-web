@@ -57,10 +57,11 @@ export default {
   ],
   data () {
     return {
+      mapInit: false,
       mapOptions: {
-        lat: 37.873785,
-        lng: 127.742249,
-        zoom: 19,
+        lat: 37.5666497,
+        lng: 126.9813251,
+        zoom: 16,
         zoomControl: false,
         naverMarker: null,
       },
