@@ -11,10 +11,12 @@
       LOUIS MAPS.
       <span class="schema" v-if="_scheme && !mixinIsMobile"> for {{ _scheme }}</span>
     </h1>
-    <div class="user_wrap" @click="signOut">
-      <img :src="mixinUser.photoURL" alt="avatar" class="avatar">
-      <b class="userName" v-if="!mixinIsMobile">{{ mixinUser.displayName }}</b>
-    </div>
+    <transition name="fade" mode="out-in">
+      <div class="user_wrap" v-if="mixinUser.photoURL && mixinUser.photoURL !== ''" @click="signOut">
+        <img :src="mixinUser.photoURL" alt="avatar" class="avatar">
+        <b class="userName" v-if="!mixinIsMobile">{{ mixinUser.displayName }}</b>
+      </div>
+    </transition>
     <Slider :isSliderActive="isSliderActive" />
   </div>
 </template>
@@ -86,6 +88,7 @@ export default {
   @media (min-width: 1024px) { right: 24px; }
 
   line-height: 46px;
+  color: $success;
 
   &:hover {
     cursor: pointer;
@@ -103,7 +106,6 @@ export default {
   }
 
   .userName {
-    color: $success;
     vertical-align: middle;
     font-size: 18px;
     font-weight: bold;
