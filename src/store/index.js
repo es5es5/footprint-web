@@ -27,25 +27,17 @@ export default new Vuex.Store({
       email: '',
       isAnonymous: false,
       schema: '',
+      schemaList: [],
     },
   },
   mutations: {
     setUser (state, value) {
-      Object.assign(state.user, {
-        uid: value.uid,
-        displayName: value.displayName,
-        photoURL: value.photoURL,
-        email: value.email,
-        isAnonymous: value.isAnonymous,
-        schema: value.schema,
-      })
+      Object.assign(state.user, value)
 
       // if (state.user.isAnonymous) state.user.displayName = '게스트'
     },
     setUserSchema (state, value) {
-      Object.assign(state.user, {
-        schema: value,
-      })
+      Object.assign(state.user, value)
 
       // if (state.user.isAnonymous) state.user.displayName = '게스트'
     },

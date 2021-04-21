@@ -21,13 +21,27 @@ export default {
     initDatas () {
       this.$store.commit('setMarkers', Datas[process.env.VUE_APP_DATAS].markers)
     },
+    setUserSchema () {
+      this.$store.commit('setUserSchema', {
+        schema: 'IT서비스본부',
+        schemaList: [
+          'IT서비스본부',
+          '제주도',
+        ],
+      })
+    },
     setUser () {
       authService.onAuthStateChanged(user => {
-        console.log('user', user)
-        user.schema = 'IT서비스본부'
         if (user) {
-          this.$store.commit('setUser', user)
-          this.$store.commit('setMarkers', Datas[user.schema].markers)
+          this.$store.commit('setUser', {
+            uid: user.uid,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+            email: user.email,
+            isAnonymous: user.isAnonymous,
+          })
+          this.setUserSchema()
+          this.$store.commit('setMarkers', Datas[this.mixinUser.schema].markers)
         } else {
           this.$router.push({ name: 'Login' })
         }

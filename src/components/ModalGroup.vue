@@ -1,9 +1,12 @@
 <template>
-  <div id="modal_group" :style="{
-    position: 'fixed',
-    'z-index': 100,
-    ...setModalSize()
-  }">
+  <div
+    id="modal_group"
+    :style="{
+      position: 'fixed',
+      'z-index': 100,
+      ...setModalSize()
+    }"
+  >
     <ModalPhotos v-if="modals.ModalPhotos.init" :style="{'z-index': modals.ModalPhotos.openIndex}" />
   </div>
 </template>
@@ -87,12 +90,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-//
-
 .modal_group {
   position: fixed;
   top: 70px;
   left: 0px;
-  z-index: 100;
+  z-index: 200;
 }
 </style>

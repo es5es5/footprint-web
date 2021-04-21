@@ -12,15 +12,15 @@
       <span class="schema" v-if="mixinUser.schema && mixinUser.schema !== '' && !mixinIsMobile"> for {{ mixinUser.schema }}</span>
     </h1>
     <transition name="fade" mode="out-in">
-      <div class="user_wrap" v-if="mixinUser.photoURL && mixinUser.photoURL !== ''" @click="isFileOpen = !isFileOpen">
+      <div class="user_wrap" v-if="mixinUser.photoURL && mixinUser.photoURL !== ''" @click="setSettingOpen(!isSettingOpen)">
         <img :src="mixinUser.photoURL" alt="avatar" class="avatar">
         <b class="userName" v-if="!mixinIsMobile">{{ mixinUser.displayName }}</b>
       </div>
     </transition>
     <transition name="fade" mode="in-out">
-      <div class="settings_container" v-if="isFileOpen" @mouseover="isFileOpen = true" @mouseleave="isFileOpen = false">
+      <div class="settings_container" v-if="isSettingOpen" @mouseover="setSettingOpen(true)" @mouseleave="setSettingOpen(false)">
         <div class="settings_wrap">
-          <p>IT서비스본부</p>
+          <p v-for="(item, index) in mixinUser.schemaList" :key="index" @click="setUserSchema(item)">{{ item }}</p>
           <p class="signOut" @click="signOut">로그아웃</p>
         </div>
       </div>
@@ -45,7 +45,7 @@ export default {
   data () {
     return {
       isSliderActive: true,
-      isFileOpen: false,
+      isSettingOpen: false,
     }
   },
   methods: {
@@ -57,8 +57,11 @@ export default {
       this.$store.commit('setUser', null)
       this.$router.push({ name: 'Login' })
     },
-    tooltip () {
-      this.isFileOpen = !this.isFileOpen
+    setSettingOpen (value) { this.isSettingOpen = value },
+    setUserSchema (schema) {
+      this.$store.commit('setUserSchema', {
+        schema,
+      })
     },
   }
 }
@@ -122,11 +125,11 @@ export default {
 }
 
 .settings_container {
-  z-index: 2000;
+  z-index: 100;
   position: absolute;
-  top: 50px;
+  top: 45px;
   right: 0;
-  padding: .5rem 2rem 2rem 3rem;
+  padding: calc(5px + .5rem) 1rem 2rem 3rem;
 }
 
 .settings_wrap {
