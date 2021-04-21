@@ -53,7 +53,6 @@ router.beforeEach((to, from, next) => {
   }
 
   authService.onAuthStateChanged(user => {
-    console.log('user', user)
     if (!user) {
       next({ name: 'Login' })
     } else {

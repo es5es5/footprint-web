@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition name="fade" mode="out-in">
-      <router-view></router-view>
+      <router-view v-if="appInit"></router-view>
     </transition>
   </div>
 </template>
@@ -9,7 +9,8 @@
 <script>
 import Datas from '@/assets/js/datas'
 import {
-  authService
+  authService,
+  dbService
 } from '@/plugins/fbase'
 
 export default {
@@ -17,19 +18,12 @@ export default {
   created () {
     this.setUser()
   },
+  data () {
+    return {
+      appInit: false
+    }
+  },
   methods: {
-    initDatas () {
-      this.$store.commit('setMarkers', Datas[process.env.VUE_APP_DATAS].markers)
-    },
-    setUserSchema () {
-      this.$store.commit('setUserSchema', {
-        schema: process.env.VUE_APP_DATAS || '제주도',
-        schemaList: [
-          'IT서비스본부',
-          '제주도',
-        ],
-      })
-    },
     setUser () {
       authService.onAuthStateChanged(user => {
         if (user) {
@@ -40,11 +34,46 @@ export default {
             email: user.email,
             isAnonymous: user.isAnonymous,
           })
-          this.setUserSchema()
-          this.$store.commit('setMarkers', Datas[this.mixinUser.schema].markers)
+          this.appInit = this.findUserId(user.uid)
         } else {
           this.$router.push({ name: 'Login' })
         }
+      })
+    },
+    async getSalesList () {
+      dbService.collection('sales')
+        .where('customerMobile', '==', this.customerForm.customerMobile)
+        .orderBy('salesDate', 'desc')
+        .get()
+        .then(result => {
+          result.forEach(doc => this.salesList.push({
+            id: doc.id,
+            ...doc.data()
+          }))
+          this.loadData = false
+        })
+    },
+    async findUserId (UID) {
+      dbService.collection('users')
+        .where('userUID', '==', UID)
+        .get()
+        .then(
+          result => {
+            if (!result.empty) {
+              this.$store.commit('setUserSchema', {
+                schema: result.docs[0].data().schema,
+                schemaList: result.docs[0].data().schemaList,
+              })
+              this.$store.commit('setMarkers', Datas[this.mixinUser.schema].markers)
+            } else {
+              return false
+            }
+          }
+        )
+    },
+    async getUserData (id) {
+      await dbService.collection('users').doc(id).get().then(doc => {
+        console.log('doc', doc.data())
       })
     },
   }

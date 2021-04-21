@@ -56,7 +56,6 @@ export default new Vuex.Store({
       state.selectedMarker = { naverMarker: {} }
     },
     setSelectedMarker (state, value) {
-      console.log('setSelectedMarker', value)
       state.selectedMarker = {
         photos: [],
         naverMarker: {}

@@ -37,7 +37,6 @@ export default {
   name: 'Header',
   created () {
     this.$eventBus.$on('setSettingOpen', value => {
-      console.log('setSettingOpen', value)
       this.setSettingOpen(value)
     })
   },

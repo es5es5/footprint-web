@@ -48,11 +48,6 @@ export default {
   created () {
     this.mapOptions = Datas[this.mixinUser.schema].mapOptions
   },
-  watch: {
-    'mixinUser.schema' () {
-      console.log('mixinUser.schema', this.mixinUser.schema)
-    },
-  },
   computed: {
     _width () { return window.innerWidth },
     _height () { return window.innerHeight - 50 },
