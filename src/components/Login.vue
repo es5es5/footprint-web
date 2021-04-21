@@ -1,11 +1,12 @@
 <template>
   <div id="login">
-    <div class="polaroid_container">
+    <div class="polaroid_container" v-if="!loading">
       <div class="polaroid_wrap">
         <img src="@/assets/images/polaroid.svg" alt="polaroid" class="polaroid _1" @click="socialLogin('google')">
         <img src="@/assets/images/polaroid.svg" alt="polaroid" class="polaroid _2" v-if="!mixinIsMobile">
       </div>
     </div>
+    <p v-if="loading" class="loading">Now Loading...</p>
   </div>
 </template>
 
@@ -14,6 +15,11 @@ import { authService, firebaseInstance } from '@/plugins/fbase'
 
 export default {
   name: 'Login',
+  data () {
+    return {
+      loading: false
+    }
+  },
   methods: {
     async socialLogin (social) {
       let provider = null
@@ -24,7 +30,8 @@ export default {
         default:
           break
       }
-      const user = await authService.signInWithRedirect(provider)
+      this.loading = true
+      const user = await authService.signInWithPopup(provider)
       this.$store.commit('setUser', user.user)
       this.$router.push({ name: 'Main' })
     },
