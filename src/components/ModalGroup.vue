@@ -7,7 +7,9 @@
       ...setModalSize()
     }"
   >
+  <transition name="fade" mode="out-in">
     <ModalPhotos v-if="modals.ModalPhotos.init" :style="{'z-index': modals.ModalPhotos.openIndex}" />
+  </transition>
   </div>
 </template>
 

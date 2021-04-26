@@ -1,5 +1,5 @@
 <template>
-  <Modal :id="'ModalPhotos'">
+  <PlainModal :id="'ModalPhotos'">
     <template slot="modalTitle">
       {{ mixinSelectedMarker.title }}
     </template>
@@ -24,7 +24,7 @@
         <p>lng: {{ mixinSelectedMarker.lng }}</p>
       </div>
     </div>
-  </Modal>
+  </PlainModal>
 </template>
 
 <script>
@@ -83,8 +83,10 @@ export default {
 .image {
   width: 100%;
   margin-bottom: .5rem;
-  img {
-    width: 100%;
+  img { width: 100%; }
+
+  &:hover {
+    cursor: pointer;
   }
 }
 </style>

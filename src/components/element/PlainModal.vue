@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" :id="_modalId" v-draggable="draggableOptions" :style="setModalSize()">
+  <div class="plain-modal" :id="_modalId" v-draggable="draggableOptions" :style="setModalSize()">
     <div class="modal_title" v-if="$slots.modalTitle" :ref="`handle_${id}`">
       <h3 class="modal__title">
         <slot name="modalTitle" v-if="$slots.modalTitle"></slot>
@@ -20,7 +20,7 @@
 import { Draggable } from 'draggable-vue-directive'
 
 export default {
-  name: 'Modal',
+  name: 'PlainModal',
   created () {},
   mounted () {
     this.draggableOptions.handle = this.$refs[`handle_${this.id}`]
@@ -101,7 +101,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.modal {
+.plain-modal {
   display: inline-block;
   margin-left: 2px;
   vertical-align: top;

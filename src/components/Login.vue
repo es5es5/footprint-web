@@ -1,26 +1,35 @@
 <template>
   <div id="login">
     <div class="polaroid_container" v-if="!loading">
-      <div class="polaroid_wrap">
-        <img src="@/assets/images/polaroid.svg" alt="polaroid" class="polaroid _1" @click="socialLogin('google')">
+      <div class="polaroid_wrap" @click="socialLogin('google')">
+      <!-- <div class="polaroid_wrap" @click="openModal"> -->
+        <img src="@/assets/images/polaroid.svg" alt="polaroid" class="polaroid _1">
         <img src="@/assets/images/polaroid.svg" alt="polaroid" class="polaroid _2" v-if="!mixinIsMobile">
       </div>
     </div>
     <p v-if="loading" class="loading">Now Loading...</p>
+    <ModalRequest />
   </div>
 </template>
 
 <script>
 import { authService, firebaseInstance } from '@/plugins/fbase'
+import ModalRequest from './ModalRequest'
 
 export default {
   name: 'Login',
+  components: {
+    ModalRequest,
+  },
   data () {
     return {
       loading: false
     }
   },
   methods: {
+    openModal () {
+      this.$modal.show('ModalRequest')
+    },
     async socialLogin (social) {
       let provider = null
       switch (social) {

@@ -8,7 +8,8 @@
         mixinUser.schema !== '' &&
         ['제주도', 'IT서비스본부'].indexOf(mixinUser.schema) > -1 &&
         mixinUser.uid &&
-        mixinUser.uid !== ''" />
+        mixinUser.uid !== ''"
+    />
     <p v-else class="notAllow">승인이 필요합니다 !</p>
     <CircleButton v-if="mixinDebug" />
   </div>
