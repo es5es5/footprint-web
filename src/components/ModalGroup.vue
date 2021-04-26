@@ -59,8 +59,8 @@ export default {
       if (this._small) {
         return {
           top: 'calc(50px + 1rem)',
-          left: 'calc(180px + 1rem)'
-          // right: '1rem'
+          // left: 'calc(180px + 1rem)',
+          right: '.5rem'
         }
       }
       if (this._medium) {

@@ -73,8 +73,7 @@ export default {
     setModalSize () {
       if (this._small) {
         return {
-          'min-width': '200px',
-          'max-width': 'calc(200px - 1rem)',
+          width: '180px'
         }
       }
       if (this._medium) {

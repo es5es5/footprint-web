@@ -88,3 +88,7 @@ export default {
   }
 }
 </style>
+
+<style lang="scss">
+.viewer-backdrop { background-color: rgba(0, 0, 0, .75); }
+</style>
