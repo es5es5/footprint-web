@@ -10,7 +10,7 @@
             keyboard: true,
             title: false,
           }"
-          >
+        >
           <div v-for="(item, index) in urlList" :key="index" class="image">
             <img :src="item" :alt="''">
           </div>

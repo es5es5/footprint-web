@@ -119,11 +119,11 @@ export default {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    margin-right: 14px;
     vertical-align: middle;
   }
 
   .userName {
+    margin-left: 14px;
     vertical-align: middle;
     font-size: 18px;
     font-weight: bold;
