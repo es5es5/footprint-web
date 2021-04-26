@@ -25,7 +25,7 @@ export default {
 <style lang="scss" scoped>
 #circle {
   font-size: 16px;
-  z-index: 9999;
+  z-index: 500;
   width: 3em;
   height: 3em;
   background-color: rgba(#fff, .2);

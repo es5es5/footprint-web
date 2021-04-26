@@ -5,9 +5,16 @@
     </template>
     <template slot="modalBody">
       <div class="photo_wrap" v-if="photoInit">
-        <div v-for="(item, index) in urlList" :key="index" class="image">
-          <img :src="item" :alt="''">
-        </div>
+        <viewer
+          :options="{
+            keyboard: true,
+            title: false,
+          }"
+          >
+          <div v-for="(item, index) in urlList" :key="index" class="image">
+            <img :src="item" :alt="''">
+          </div>
+        </viewer>
       </div>
     </template>
     <div slot="modalActions">

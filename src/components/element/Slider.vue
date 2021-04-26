@@ -66,7 +66,7 @@ export default {
   left: 0;
   width: 0;
   height: calc(100% - 50px);
-  z-index: 9000;
+  z-index: 1000;
   background-color: rgba(#000, .2);
   font-size: 14px;
   @media (min-width: 500px) { font-size: 16px; }

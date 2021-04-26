@@ -2,6 +2,7 @@
 import Vue from 'vue'
 
 import './fbase'
+import './viewer'
 
 import 'vue-burger-button/dist/vue-burger-button.css'
 import BurgerButton from 'vue-burger-button'
