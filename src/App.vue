@@ -8,6 +8,7 @@
 
 <script>
 import Datas from '@/assets/js/datas'
+import Cookies from 'js-cookie'
 import {
   authService,
   dbService
@@ -60,11 +61,14 @@ export default {
                   schemaList: result.docs[0].data().schemaList,
                 })
                 this.$store.commit('setMarkers', Datas[this.mixinUser.schema].markers)
+                Cookies.set('maps-schema', this.mixinUser.schema)
                 this.appInit = true
               } else {
+                Cookies.remove('maps-schema')
                 this.appInit = false
               }
             } else {
+              Cookies.remove('maps-schema')
               this.appInit = false
             }
           }

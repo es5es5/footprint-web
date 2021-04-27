@@ -32,6 +32,7 @@
 
 <script>
 import { dbService, authService, firebaseInstance } from '@/plugins/fbase'
+import Cookies from 'js-cookie'
 
 export default {
   name: 'ModalRequest',
@@ -48,7 +49,7 @@ export default {
       width: '300',
       height: '43',
       requestForm: {
-        schema: '',
+        schema: Cookies.get('maps-schema') || '',
         comments: '',
       }
     }
@@ -57,7 +58,6 @@ export default {
     openEvent () {},
     closeEvent () { this.$emit('callback') },
     async socialLogin (social) {
-      console.log('this._checkValidate', this._checkValidate)
       if (this._checkValidate) {
         alert('사진첩을 입력해주세요.')
         document.getElementById('사진첩').focus()
