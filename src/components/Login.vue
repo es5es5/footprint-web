@@ -1,8 +1,8 @@
 <template>
   <div id="login">
     <div class="polaroid_container" v-if="!loading">
-      <div class="polaroid_wrap" @click="socialLogin('google')">
-      <!-- <div class="polaroid_wrap" @click="openModal"> -->
+      <!-- <div class="polaroid_wrap" @click="socialLogin('google')"> -->
+      <div class="polaroid_wrap" @click="openModal">
         <img src="@/assets/images/polaroid.svg" alt="polaroid" class="polaroid _1">
         <img src="@/assets/images/polaroid.svg" alt="polaroid" class="polaroid _2" v-if="!mixinIsMobile">
       </div>
@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import { authService, firebaseInstance } from '@/plugins/fbase'
 import ModalRequest from './ModalRequest'
 
 export default {
@@ -29,20 +28,6 @@ export default {
   methods: {
     openModal () {
       this.$modal.show('ModalRequest')
-    },
-    async socialLogin (social) {
-      let provider = null
-      switch (social) {
-        case 'google':
-          provider = new firebaseInstance.auth.GoogleAuthProvider()
-          break
-        default:
-          break
-      }
-      this.loading = true
-      const user = await authService.signInWithPopup(provider)
-      this.$store.commit('setUser', user.user)
-      this.$router.push({ name: 'Main' })
     },
   }
 }
