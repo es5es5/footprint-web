@@ -16,40 +16,54 @@
       <h2 class="greeting">안녕하세요 !</h2>
       <div class="row">
         <label for="사진첩">사진첩</label>
-        <input type="text" id="사진첩" placeholder="보고싶은 사진첩을 입력해주세요.">
+        <input type="text" id="사진첩" placeholder="보고싶은 사진첩을 입력해주세요." v-model="requestForm.schema">
       </div>
 
       <div class="row">
         <label for="한마디">개발자에게 한마디</label>
-        <textarea name="한마디" id="한마디" placeholder="김루이가 사진 보여준대서 왔음." />
+        <textarea name="한마디" id="한마디" placeholder="김루이가 사진 보여준대서 왔음." v-model="requestForm.comments" />
       </div>
 
-      <img src="@/assets/images/social/google.svg" alt="google" class="google" draggable="false" @click="socialLogin('google')">
+      <img src="@/assets/images/social/google.svg" alt="google" class="google" draggable="false" :disabled="_checkValidate" @click="socialLogin('google')">
     </div>
 
   </modal>
 </template>
 
 <script>
-import { authService, firebaseInstance } from '@/plugins/fbase'
+import { dbService, authService, firebaseInstance } from '@/plugins/fbase'
 
 export default {
   name: 'ModalRequest',
   created () {
   },
   computed: {
+    _checkValidate () {
+      return this.requestForm.schema === ''
+    }
   },
   data () {
     return {
       // rem 으로 작성
       width: '300',
-      height: '43'
+      height: '43',
+      requestForm: {
+        schema: '',
+        comments: '',
+      }
     }
   },
   methods: {
     openEvent () {},
     closeEvent () { this.$emit('callback') },
     async socialLogin (social) {
+      console.log('this._checkValidate', this._checkValidate)
+      if (this._checkValidate) {
+        alert('사진첩을 입력해주세요.')
+        document.getElementById('사진첩').focus()
+        return
+      }
+
       let provider = null
       switch (social) {
         case 'google':
@@ -60,8 +74,57 @@ export default {
       }
       this.loading = true
       const user = await authService.signInWithPopup(provider)
-      this.$store.commit('setUser', user.user)
-      this.$router.push({ name: 'Main' })
+      await this.addUsers({
+        displayName: user.user.displayName,
+        userUID: user.user.uid,
+      })
+      await this.$store.commit('setUser', {
+        uid: user.user.uid,
+        displayName: user.user.displayName,
+        photoURL: user.user.photoURL,
+        email: user.user.email,
+        isAnonymous: user.user.isAnonymous,
+        schema: this.requestForm.schema,
+        schemaList: [this.requestForm.schema],
+      })
+      this.$router.go('/')
+    },
+    async addUsers (user) {
+      const isExistUser = await this.checkUsersExist(user)
+      if (!isExistUser) {
+        await dbService.collection('users').add({
+          displayName: user.displayName,
+          userUID: user.userUID,
+          schema: this.requestForm.schema,
+          schemaList: [this.requestForm.schema],
+          comments: this.requestForm.comments
+        })
+      }
+    },
+    async checkUsersExist (user) {
+      let checkResult = null
+      await dbService
+        .collection('users')
+        .where('userUID', '==', user.userUID)
+        .get()
+        .then(result => {
+          if (result.empty) {
+            checkResult = false
+          } else if (result.size > 0) {
+            const list = []
+            result.forEach(doc => list.push(doc.data()))
+            checkResult = list
+          }
+        })
+      return checkResult
+    },
+    checkValidate () {
+      if (this.requestForm.schema === '') {
+        alert('사진첩을 입력해주세요.')
+        return false
+      } else {
+        return true
+      }
     },
   }
 }
@@ -84,6 +147,12 @@ export default {
 
   &:hover {
     cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: $disabled;
+    color: $gray;
+    cursor: not-allowed;
   }
 }
 
