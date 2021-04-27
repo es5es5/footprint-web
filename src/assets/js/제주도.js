@@ -137,7 +137,7 @@ const 제주도 = {
       contents: '바베큐등 일용할 식량을 구입.<span class="success">(꿀)</span><br>소주 6병 사서 4병밖에 못 먹었다.<span class="success">(꿀)</span>',
       createtime: '2021-04-15 19:30',
       photos: [
-        '하나로_01.jpg',
+        '하나로마트_01.jpg',
       ],
       naverMarker: null,
     },
