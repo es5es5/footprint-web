@@ -99,6 +99,20 @@ export default {
           schemaList: [this.requestForm.schema],
           comments: this.requestForm.comments
         })
+      } else {
+        const form = {
+          ...isExistUser[0]
+        }
+
+        if (form.schemaList.indexOf(this.requestForm.schema) < 0) {
+          form.schemaList.push(this.requestForm.schema)
+        }
+
+        form.comments.push(this.requestForm.comments)
+
+        await dbService.doc(`users/${isExistUser[0].id}`).update(
+          form,
+        )
       }
     },
     async checkUsersExist (user) {
