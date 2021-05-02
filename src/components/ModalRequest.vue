@@ -16,15 +16,15 @@
       <h2 class="greeting">안녕하세요 !</h2>
       <div class="row">
         <label for="사진첩">사진첩</label>
-        <input type="text" id="사진첩" placeholder="보고싶은 사진첩을 입력해주세요." v-model="requestForm.schema">
+        <input tabindex="0" type="text" id="사진첩" placeholder="보고싶은 사진첩을 입력해주세요." v-model="requestForm.schema">
       </div>
 
       <div class="row">
         <label for="한마디">개발자에게 한마디</label>
-        <textarea name="한마디" id="한마디" placeholder="김루이가 사진 보여준대서 왔음." v-model="requestForm.comments" />
+        <textarea tabindex="0" name="한마디" id="한마디" placeholder="김루이가 사진 보여준대서 왔음." v-model="requestForm.comments" />
       </div>
 
-      <img src="@/assets/images/social/google.svg" alt="google" class="google" draggable="false" :disabled="_checkValidate" @click="socialLogin('google')">
+      <img tabindex="0" src="@/assets/images/social/google.svg" alt="google" class="google" draggable="false" :disabled="_checkValidate" @click="socialLogin('google')">
     </div>
 
   </modal>
@@ -51,15 +51,25 @@ export default {
       requestForm: {
         schema: Cookies.get('maps-schema') || '',
         comments: '',
-      }
+      },
+      allowSchemaList: [],
     }
   },
   methods: {
-    openEvent () {},
+    openEvent () {
+      this.getAllowSchemaList()
+    },
     closeEvent () { this.$emit('callback') },
     async socialLogin (social) {
       if (this._checkValidate) {
         alert('사진첩을 입력해주세요.')
+        document.getElementById('사진첩').focus()
+        return
+      }
+
+      if (this.allowSchemaList.indexOf(this.requestForm.schema) < 0) {
+        alert('해당 사진첩이 없습니다.\n루이에게 문의해주세요!')
+        this.requestForm.schema = ''
         document.getElementById('사진첩').focus()
         return
       }
@@ -131,6 +141,16 @@ export default {
           }
         })
       return checkResult
+    },
+    async getAllowSchemaList () {
+      this.allowSchemaList = []
+      dbService.collection('schema')
+        .get()
+        .then(result => {
+          result.forEach(doc => this.allowSchemaList.push(
+            doc.id,
+          ))
+        })
     },
     checkValidate () {
       if (this.requestForm.schema === '') {
