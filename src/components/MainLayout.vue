@@ -6,7 +6,7 @@
       v-if="
         mixinUser.schema &&
         mixinUser.schema !== '' &&
-        ['제주도', 'IT서비스본부'].indexOf(mixinUser.schema) > -1 &&
+        allowSchemaList.indexOf(mixinUser.schema) > -1 &&
         mixinUser.uid &&
         mixinUser.uid !== ''"
     />
@@ -20,10 +20,12 @@ import Header from './Header'
 import ModalGroup from './ModalGroup'
 import Maps from './Maps'
 import CircleButton from './element/CircleButton'
+import { dbService } from '@/plugins/fbase'
 
 export default {
   name: 'MainLayout',
   mounted () {
+    this.getAllowSchemaList()
   },
   components: {
     Header,
@@ -35,8 +37,21 @@ export default {
   },
   data () {
     return {
+      allowSchemaList: []
     }
   },
+  methods: {
+    async getAllowSchemaList () {
+      this.allowSchemaList = []
+      dbService.collection('schema')
+        .get()
+        .then(result => {
+          result.forEach(doc => this.allowSchemaList.push(
+            doc.id,
+          ))
+        })
+    },
+  }
 }
 </script>
 
