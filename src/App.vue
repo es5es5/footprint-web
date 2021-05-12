@@ -17,7 +17,27 @@ import {
 export default {
   name: 'App',
   created () {
-    this.setUser()
+    if (this._portfolio) {
+      this.$store.commit('setUser', {
+        uid: 'portfolio',
+        displayName: 'Portfolio',
+        photoURL: 'https://camo.githubusercontent.com/c8f91d18976e27123643a926a2588b8d931a0292fd0b6532c3155379e8591629/68747470733a2f2f7675656a732e6f72672f696d616765732f6c6f676f2e706e67',
+        email: 'portfolio',
+        isAnonymous: 'portfolio',
+      })
+      this.$store.commit('setUserSchema', {
+        schema: process.env.VUE_APP_PORTFOLIO_SCHEMA,
+        schemaList: process.env.VUE_APP_PORTFOLIO_SCHEMA,
+      })
+      this.$store.commit('setMarkers', Datas[process.env.VUE_APP_PORTFOLIO_SCHEMA].markers)
+    } else {
+      this.setUser()
+    }
+  },
+  computed: {
+    _portfolio () {
+      return this.$route.query.portfolio || false
+    }
   },
   data () {
     return {
@@ -76,7 +96,6 @@ export default {
     },
     async getUserData (id) {
       await dbService.collection('users').doc(id).get().then(doc => {
-        console.log('doc', doc.data())
       })
     },
   }
