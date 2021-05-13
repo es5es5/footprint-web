@@ -54,8 +54,14 @@ router.beforeEach((to, from, next) => {
 
   authService.onAuthStateChanged(user => {
     if (!user) {
-      if (to.query && to.query.portfolio) {
-        next({ name: 'Main', query: { portfolio: true } })
+      if (to.query && to.query.portfolio && to.query.user) {
+        next({
+          name: 'Main',
+          query: {
+            portfolio: to.query.portfolio,
+            user: to.query.user,
+          }
+        })
       } else {
         next({ name: 'Login' })
       }

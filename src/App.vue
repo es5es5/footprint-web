@@ -17,13 +17,22 @@ import {
 export default {
   name: 'App',
   created () {
-    if (this._portfolio) {
+    if (this._portfolio && this._isUser) {
+      let photoURL = 'https://camo.githubusercontent.com/c8f91d18976e27123643a926a2588b8d931a0292fd0b6532c3155379e8591629/68747470733a2f2f7675656a732e6f72672f696d616765732f6c6f676f2e706e67'
+      switch (this._isUser) {
+        case '패스트파이브':
+          photoURL = 'https://cf.channel.io/thumb/200x200/pub-file/44692/6098c32812bfd947f9f6/191209_fastfive_symbol_bk_500.png'
+          break
+        default:
+          break
+      }
+
       this.$store.commit('setUser', {
-        uid: 'portfolio',
-        displayName: 'Portfolio',
-        photoURL: 'https://camo.githubusercontent.com/c8f91d18976e27123643a926a2588b8d931a0292fd0b6532c3155379e8591629/68747470733a2f2f7675656a732e6f72672f696d616765732f6c6f676f2e706e67',
-        email: 'portfolio',
-        isAnonymous: 'portfolio',
+        uid: this._isUser ? this._isUser : 'Portfolio',
+        displayName: this._isUser ? this._isUser : 'Portfolio',
+        photoURL,
+        email: this._isUser ? this._isUser : 'Portfolio',
+        isAnonymous: this._isUser ? this._isUser : 'Portfolio',
       })
       this.$store.commit('setUserSchema', {
         schema: process.env.VUE_APP_PORTFOLIO_SCHEMA,
@@ -35,9 +44,8 @@ export default {
     }
   },
   computed: {
-    _portfolio () {
-      return this.$route.query.portfolio || false
-    }
+    _portfolio () { return this.$route.query.portfolio || false },
+    _isUser () { return ((process.env.VUE_APP_PORTFOLIO_USER || '').indexOf(this.$route.query.user) > -1) ? this.$route.query.user : false || false },
   },
   data () {
     return {
