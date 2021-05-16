@@ -13,7 +13,6 @@ Vue.use(GlobalComponents)
 Vue.use(MIXSINS)
 
 Vue.config.productionTip = false
-Vue.config.devtools = true
 
 Vue.prototype.$eventBus = new Vue()
 
