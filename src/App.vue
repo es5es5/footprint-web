@@ -34,10 +34,12 @@ export default {
         email: this._isUser ? this._isUser : 'Portfolio',
         isAnonymous: this._isUser ? this._isUser : 'Portfolio',
       })
+
       this.$store.commit('setUserSchema', {
         schema: process.env.VUE_APP_PORTFOLIO_SCHEMA,
         schemaList: process.env.VUE_APP_PORTFOLIO_SCHEMA,
       })
+
       this.$store.commit('setMarkers', Datas[process.env.VUE_APP_PORTFOLIO_SCHEMA].markers)
     } else {
       this.setUser()
