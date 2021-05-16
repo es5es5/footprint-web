@@ -25,7 +25,15 @@ function browserCheck(){
 	if (agt.indexOf('opera') !== -1) return 'Opera'
 	if (agt.indexOf('safari') !== -1) return 'Safari'
 	if (agt.indexOf('firefox') !== -1) return 'Firefox'
+
+  // in App
 	if (agt.indexOf('kakaotalk') !== -1) return 'Kakaotalk'
+  if (agt.indexOf('band') !== -1) return 'Band'
+  if (agt.indexOf('line') !== -1) return 'Line'
+  if (agt.indexOf('kakaostory') !== -1) return 'Kakaostory'
+  if (agt.indexOf('twitter') !== -1) return 'Twitter'
+  if (agt.indexOf('fb') !== -1) return 'Fb'
+  if (agt.indexOf('samsungbrowser') !== -1) return 'Samsungbrowser'
 
 	if (agt.indexOf('mozilla/5.0') !== -1) return 'Mozilla'
 	if (agt.indexOf('staroffice') !== -1) return 'Star Office'
@@ -50,14 +58,20 @@ function browserCheck(){
 
 const browser = browserCheck()
 console.log('brower', browser)
+
 switch (browser) {
   case 'Chrome':
   case 'Safari':
   case 'Edge':
     break
   case 'Kakaotalk':
-  default:
-    location.href='intent://louis-maps.netlify.app/#Intent;scheme=http;package=com.android.chrome;end'
+  case 'Band':
+  case 'Line':
+  case 'Kakaostory':
+  case 'Twitter':
+  case 'Fb':
+  case 'Samsungbrowser':
+    location.href='intent://' + location.href + '/#Intent;scheme=http;package=com.android.chrome;end'
     break
 }
 </script>
