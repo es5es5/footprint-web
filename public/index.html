@@ -60,7 +60,7 @@ function browserCheck(){
 
 const browser = browserCheck()
 // console.log('brower', browser)
-alert(browser)
+// alert(browser)
 
 switch (browser) {
   case 'Chrome':
@@ -74,7 +74,7 @@ switch (browser) {
   case 'Twitter':
   case 'Fb':
   case 'Samsungbrowser':
-    location.href='intent:' + location.href + '/#Intent;scheme=http;package=com.android.chrome;end'
+    location.href='intent://' + location.host + location.pathname + location.search + '/#Intent;scheme=http;package=com.android.chrome;end'
     break
 }
 </script>
