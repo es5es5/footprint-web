@@ -17,9 +17,21 @@ import {
 export default {
   name: 'App',
   created () {
-    if (this._portfolio && this._isUser) {
+    console.log('created () {')
+    console.log('this._portfolio', this._portfolio)
+    console.log('this._user', this._user)
+    console.log('this._portfolio && this._user', this._portfolio && this._user)
+    alert(JSON.stringify(this.$route.query))
+    if (this._portfolio && this._user) {
+      console.log('process.env.VUE_APP_PORTFOLIO_USER.indexOf(this._user)', process.env.VUE_APP_PORTFOLIO_USER.indexOf(this._user))
+      console.log('process.env.VUE_APP_PORTFOLIO_USER', process.env.VUE_APP_PORTFOLIO_USER)
+      if (process.env.VUE_APP_PORTFOLIO_USER.indexOf(this._user) === -1) {
+        this.setUser()
+        return
+      }
+
       let photoURL = 'https://camo.githubusercontent.com/c8f91d18976e27123643a926a2588b8d931a0292fd0b6532c3155379e8591629/68747470733a2f2f7675656a732e6f72672f696d616765732f6c6f676f2e706e67'
-      switch (this._isUser) {
+      switch (this._user) {
         case '패스트파이브':
           photoURL = 'https://cf.channel.io/thumb/200x200/pub-file/44692/6098c32812bfd947f9f6/191209_fastfive_symbol_bk_500.png'
           break
@@ -28,11 +40,11 @@ export default {
       }
 
       this.$store.commit('setUser', {
-        uid: this._isUser ? this._isUser : 'Portfolio',
-        displayName: this._isUser ? this._isUser : 'Portfolio',
+        uid: this._user ? this._user : 'Portfolio',
+        displayName: this._user ? this._user : 'Portfolio',
         photoURL,
-        email: this._isUser ? this._isUser : 'Portfolio',
-        isAnonymous: this._isUser ? this._isUser : 'Portfolio',
+        email: this._user ? this._user : 'Portfolio',
+        isAnonymous: this._user ? this._user : 'Portfolio',
       })
 
       this.$store.commit('setUserSchema', {
@@ -46,8 +58,8 @@ export default {
     }
   },
   computed: {
-    _portfolio () { return this.$route.query.portfolio || false },
-    _isUser () { return ((process.env.VUE_APP_PORTFOLIO_USER || '').indexOf(this.$route.query.user) > -1) ? this.$route.query.user : false || false },
+    _user () { return this.$route.query.user },
+    _portfolio () { return this.$route.query.portfolio },
   },
   data () {
     return {

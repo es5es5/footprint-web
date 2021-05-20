@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Main from '@/components/MainLayout'
 import Login from '@/components/Login'
 
+// eslint-disable-next-line no-unused-vars
 import { authService } from '@/plugins/fbase'
 
 Vue.use(VueRouter)
@@ -52,27 +53,30 @@ router.beforeEach((to, from, next) => {
     document.title = `${to.meta.title} | LOUIS MAPS`
   }
 
-  authService.onAuthStateChanged(user => {
-    if (!user) {
-      if (to.query && to.query.portfolio && to.query.user) {
-        next({
-          name: 'Main',
-          query: {
-            portfolio: to.query.portfolio,
-            user: to.query.user,
-          }
-        })
-      } else {
-        next({ name: 'Login' })
-      }
-    } else {
-      if (to.name === 'Login') {
-        next({ name: 'Main' })
-      }
-    }
-  })
+  // authService.onAuthStateChanged(user => {
+  //   console.log('authService.onAuthStateChanged(user => {', user)
+  //   if (!user) {
+  //     if (to.query && to.query.portfolio && to.query.user) {
+  //       next({
+  //         name: 'Main',
+  //         query: {
+  //           portfolio: to.query.portfolio,
+  //           user: to.query.user,
+  //         }
+  //       })
+  //     } else {
+  //       next({ name: 'Login' })
+  //     }
+  //   } else {
+  //     if (to.name === 'Login') {
+  //       next({ name: 'Main' })
+  //     }
+  //   }
+  // })
 
   next()
 })
 
 export default router
+
+// http://localhost:8000/main?portfolio=true&user=louis
