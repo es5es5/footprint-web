@@ -17,14 +17,7 @@ import {
 export default {
   name: 'App',
   created () {
-    console.log('created () {')
-    console.log('this._portfolio', this._portfolio)
-    console.log('this._user', this._user)
-    console.log('this._portfolio && this._user', this._portfolio && this._user)
-    alert(JSON.stringify(this.$route.query))
     if (this._portfolio && this._user) {
-      console.log('process.env.VUE_APP_PORTFOLIO_USER.indexOf(this._user)', process.env.VUE_APP_PORTFOLIO_USER.indexOf(this._user))
-      console.log('process.env.VUE_APP_PORTFOLIO_USER', process.env.VUE_APP_PORTFOLIO_USER)
       if (process.env.VUE_APP_PORTFOLIO_USER.indexOf(this._user) === -1) {
         this.setUser()
         return

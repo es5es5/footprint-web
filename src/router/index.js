@@ -4,8 +4,7 @@ import Home from '@/components/Home'
 import Main from '@/components/MainLayout'
 import Login from '@/components/Login'
 
-// eslint-disable-next-line no-unused-vars
-import { authService } from '@/plugins/fbase'
+// import { authService } from '@/plugins/fbase'
 
 Vue.use(VueRouter)
 
@@ -78,5 +77,3 @@ router.beforeEach((to, from, next) => {
 })
 
 export default router
-
-// http://localhost:8000/main?portfolio=true&user=louis
