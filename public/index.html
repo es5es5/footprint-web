@@ -21,31 +21,31 @@ function browserCheck(){
 	const agt = navigator.userAgent.toLowerCase()
 
   // in-App Browser
-	if (agt.indexOf('kakaotalk') !== -1) return 'Kakaotalk'
-  if (agt.indexOf('band') !== -1) return 'Band'
-  if (agt.indexOf('line') !== -1) return 'Line'
-  if (agt.indexOf('kakaostory') !== -1) return 'Kakaostory'
-  if (agt.indexOf('twitter') !== -1) return 'Twitter'
-  if (agt.indexOf('fb') !== -1) return 'Fb'
-  if (agt.indexOf('samsungbrowser') !== -1) return 'Samsungbrowser'
+	if (agt.indexOf('kakaotalk') !== -1) return 'kakaotalk'
+  if (agt.indexOf('band') !== -1) return 'band'
+  if (agt.indexOf('line') !== -1) return 'line'
+  if (agt.indexOf('kakaostory') !== -1) return 'kakaostory'
+  if (agt.indexOf('twitter') !== -1) return 'twitter'
+  if (agt.indexOf('fb') !== -1) return 'fb'
+  if (agt.indexOf('samsungbrowser') !== -1) return 'samsungbrowser'
 
   // Major Browser
-  if (agt.indexOf('chrome') !== -1) return 'Chrome'
-	if (agt.indexOf('edge') !== -1) return 'Edge'
-	if (agt.indexOf('opera') !== -1) return 'Opera'
-	if (agt.indexOf('safari') !== -1) return 'Safari'
-	if (agt.indexOf('firefox') !== -1) return 'Firefox'
-	if (agt.indexOf('mozilla/5.0') !== -1) return 'Mozilla'
+  if (agt.indexOf('chrome') !== -1) return 'chrome'
+	if (agt.indexOf('edge') !== -1) return 'edge'
+	if (agt.indexOf('opera') !== -1) return 'opera'
+	if (agt.indexOf('safari') !== -1) return 'safari'
+	if (agt.indexOf('firefox') !== -1) return 'firefox'
+	if (agt.indexOf('mozilla/5.0') !== -1) return 'mozilla'
 
   // Others
-	if (agt.indexOf('staroffice') !== -1) return 'Star Office'
-	if (agt.indexOf('webtv') !== -1) return 'WebTV'
-	if (agt.indexOf('beonex') !== -1) return 'Beonex'
-	if (agt.indexOf('chimera') !== -1) return 'Chimera'
-	if (agt.indexOf('netpositive') !== -1) return 'NetPositive'
-	if (agt.indexOf('phoenix') !== -1) return 'Phoenix'
-	if (agt.indexOf('skipstone') !== -1) return 'SkipStone'
-	if (agt.indexOf('netscape') !== -1) return 'Netscape'
+	if (agt.indexOf('staroffice') !== -1) return 'star office'
+	if (agt.indexOf('webtv') !== -1) return 'webtv'
+	if (agt.indexOf('beonex') !== -1) return 'beonex'
+	if (agt.indexOf('chimera') !== -1) return 'chimera'
+	if (agt.indexOf('netpositive') !== -1) return 'netpositive'
+	if (agt.indexOf('phoenix') !== -1) return 'phoenix'
+	if (agt.indexOf('skipstone') !== -1) return 'skipstone'
+	if (agt.indexOf('netscape') !== -1) return 'netscape'
 	if (agt.indexOf('msie') !== -1) {
     let rv = -1
 		if (navigator.appName == 'Microsoft Internet Explorer') {
@@ -54,7 +54,7 @@ function browserCheck(){
 		if (re.exec(ua) != null)
 			rv = parseFloat(RegExp.$1)
 		}
-		return 'Internet Explorer ' + rv
+		return 'internet explorer ' + rv
 	}
 }
 
@@ -63,17 +63,17 @@ const browser = browserCheck()
 // alert(browser)
 
 switch (browser) {
-  case 'Chrome':
-  case 'Safari':
-  case 'Edge':
+  case 'chrome':
+  case 'safari':
+  case 'edge':
     break
-  case 'Kakaotalk':
-  case 'Band':
-  case 'Line':
-  case 'Kakaostory':
-  case 'Twitter':
-  case 'Fb':
-  case 'Samsungbrowser':
+  case 'kakaotalk':
+  case 'band':
+  case 'line':
+  case 'kakaostory':
+  case 'twitter':
+  case 'fb':
+  case 'samsungbrowser':
     location.href='intent://' + location.host + location.pathname + location.search + '/#Intent;scheme=http;package=com.android.chrome;end'
     break
 }
