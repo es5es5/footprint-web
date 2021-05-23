@@ -18,13 +18,13 @@ export default {
   name: 'App',
   created () {
     if (this._portfolio && this._user) {
-      if (process.env.VUE_APP_PORTFOLIO_USER.indexOf(this._user) === -1) {
+      if (process.env.VUE_APP_PORTFOLIO_USER.indexOf(decodeURI(this._user)) === -1) {
         this.setUser()
         return
       }
 
       let photoURL = 'https://camo.githubusercontent.com/c8f91d18976e27123643a926a2588b8d931a0292fd0b6532c3155379e8591629/68747470733a2f2f7675656a732e6f72672f696d616765732f6c6f676f2e706e67'
-      switch (this._user) {
+      switch (decodeURI(this._user)) {
         case '패스트파이브':
           photoURL = 'https://cf.channel.io/thumb/200x200/pub-file/44692/6098c32812bfd947f9f6/191209_fastfive_symbol_bk_500.png'
           break
@@ -36,11 +36,11 @@ export default {
       }
 
       this.$store.commit('setUser', {
-        uid: this._user ? this._user : 'Portfolio',
-        displayName: this._user ? this._user : 'Portfolio',
+        uid: this._user ? decodeURI(this._user) : 'Portfolio',
+        displayName: this._user ? decodeURI(this._user) : 'Portfolio',
         photoURL,
-        email: this._user ? this._user : 'Portfolio',
-        isAnonymous: this._user ? this._user : 'Portfolio',
+        email: this._user ? decodeURI(this._user) : 'Portfolio',
+        isAnonymous: this._user ? decodeURI(this._user) : 'Portfolio',
       })
 
       this.$store.commit('setUserSchema', {
@@ -54,6 +54,7 @@ export default {
     }
   },
   computed: {
+    // _user () { return this.$route.query.user ? decodeURI(this._user) : undefined },
     _user () { return this.$route.query.user },
     _portfolio () { return this.$route.query.portfolio },
   },
