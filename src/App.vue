@@ -28,6 +28,9 @@ export default {
         case '패스트파이브':
           photoURL = 'https://cf.channel.io/thumb/200x200/pub-file/44692/6098c32812bfd947f9f6/191209_fastfive_symbol_bk_500.png'
           break
+        case '여기어때':
+          photoURL = 'https://image.goodchoice.kr/images/web_v3/favicon_170822.ico'
+          break
         default:
           break
       }
