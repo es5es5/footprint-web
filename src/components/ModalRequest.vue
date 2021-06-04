@@ -110,9 +110,9 @@ export default {
           comments: this.requestForm.comments
         })
       } else {
-        const form = {
-          ...isExistUser[0]
-        }
+        const form = { ...isExistUser[0], }
+
+        if (!form.comments) { form.comments = [] }
 
         if (form.schemaList.indexOf(this.requestForm.schema) < 0) {
           form.schemaList.push(this.requestForm.schema)
@@ -120,7 +120,7 @@ export default {
 
         form.comments.push(this.requestForm.comments)
 
-        await dbService.doc(`users/${isExistUser[0].id}`).update(
+        await dbService.doc(`users/${isExistUser[0].userUID}`).update(
           form,
         )
       }
